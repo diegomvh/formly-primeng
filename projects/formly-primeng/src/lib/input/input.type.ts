@@ -10,6 +10,7 @@ import { FieldType } from '@ngx-formly/core';
       [type]="to.type || 'text'"
       [formControl]="formControl"
       [formlyAttributes]="field"
+      [ngClass]="{'p-invalid': showError}"
     />
     <ng-template #numberTmp>
       <input type="number" pInputText [formControl]="formControl" [formlyAttributes]="field" />
