@@ -13,7 +13,12 @@ import { FieldType } from '@ngx-formly/core';
       [ngClass]="{'p-invalid': showError}"
     />
     <ng-template #numberTmp>
-      <input type="number" pInputText [formControl]="formControl" [formlyAttributes]="field" />
+      <input type="number"
+        pInputText
+        [formControl]="formControl"
+        [formlyAttributes]="field"
+        [ngClass]="{'p-invalid': showError}"
+      />
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -6,6 +6,7 @@ import { FormlyRadioModule } from './radio/radio.module';
 import { FormlyCheckboxModule } from './checkbox/checkbox.module';
 import { FormlySelectModule } from './select/select.module';
 import { FormlyDatePickerModule } from './datepicker/datepicker.module';
+import { FormlyColorPickerModule } from './colorpicker/colorpicker.module';
 import { FormlyNullModule } from './null/null.module';
 import { FormlyArrayModule } from './array/array.module';
 import { FormlyObjectModule } from './object/object.module';
@@ -20,6 +21,7 @@ import { FormlyMultiSchemaModule } from './multischema/multischema.module';
     FormlyCheckboxModule,
     FormlySelectModule,
     FormlyDatePickerModule,
+    FormlyColorPickerModule,
     FormlyNullModule,
     FormlyArrayModule,
     FormlyObjectModule,

@@ -10,11 +10,13 @@ import { FieldWrapper } from '@ngx-formly/core';
         <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
       </label>
       <ng-container #fieldComponent></ng-container>
-      <small class="p-invalid" *ngIf="showError">
-        <formly-validation-message [field]="field"></formly-validation-message>
-      </small>
+      <div>
+        <small class="p-ml-auto" *ngIf="to.description && to.hideDescription !== true"> {{ to.description }} </small>
+        <small class="p-mr-auto p-invalid" *ngIf="showError"> <formly-validation-message [field]="field"> </formly-validation-message> </small>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyWrapperFormField extends FieldWrapper {}
+export class FormlyWrapperFormField extends FieldWrapper {
+}
