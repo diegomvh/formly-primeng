@@ -5,6 +5,7 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'formly-field-primeng-colorpicker',
   template: `
     <p-colorPicker
+      [style]="{'display': 'block', 'width': '60px'}"
       [format]="to.format"
       [showTransitionOptions]="to.showTransitionOptions"
       [hideTransitionOptions]="to.hideTransitionOptions"

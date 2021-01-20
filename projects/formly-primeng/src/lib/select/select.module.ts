@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
 
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
+import { FormlyFormFieldModule } from '../wrapper/wrapper.module';
 import { FormlyFieldSelect } from './select.type';
 
 @NgModule({

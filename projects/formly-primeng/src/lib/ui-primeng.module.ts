@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormlyFormFieldModule } from './form-field/form-field.module';
+import { FormlyFormFieldModule } from './wrapper/wrapper.module';
 import { FormlyInputModule } from './input/input.module';
 import { FormlyTextAreaModule } from './textarea/textarea.module';
 import { FormlyRadioModule } from './radio/radio.module';

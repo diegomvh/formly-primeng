@@ -14,9 +14,9 @@ import { FormlyWrapperFormField } from './form-field.wrapper';
         {
           name: 'form-field',
           component: FormlyWrapperFormField,
-        },
-      ],
-    }),
-  ],
+        }
+      ]
+    })
+  ]
 })
 export class FormlyFormFieldModule {}
