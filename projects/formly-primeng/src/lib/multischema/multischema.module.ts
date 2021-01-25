@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormlyFormFieldModule } from '../wrapper/wrapper.module';
+import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
 import { FormlyFieldMultiSchema } from './multischema.type';
 
