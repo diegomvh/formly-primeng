@@ -9,7 +9,9 @@ import { FieldType } from '@ngx-formly/core';
         <h6 *ngIf="to.label">{{ to.label }}</h6>
         <p *ngIf="to.description">{{ to.description }}</p>
       </div>
-      <formly-field *ngFor="let f of field.fieldGroup" [field]="f" class="p-col-12 p-md-{{12 / field.fieldGroup.length}}"></formly-field>
+      <div *ngFor="let field of field.fieldGroup;let i = index;" class="p-col-12 p-md-{{12 / field.fieldGroup.length}}">
+        <formly-field [field]="field"></formly-field>
+      </div>
       <small class="p-col-12 p-invalid" *ngIf="showError && formControl.errors">
         <formly-validation-message [field]="field"></formly-validation-message>
       </small>
