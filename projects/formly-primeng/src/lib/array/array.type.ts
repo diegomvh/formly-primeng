@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldArrayType } from '@ngx-formly/core';
+import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-array-type',
@@ -25,4 +25,8 @@ import { FieldArrayType } from '@ngx-formly/core';
   </div>
   `,
 })
-export class FormlyFieldArray extends FieldArrayType {}
+export class FormlyFieldArray extends FieldArrayType {
+  constructor(builder?: FormlyFormBuilder) {
+    super(builder);
+  }
+}
