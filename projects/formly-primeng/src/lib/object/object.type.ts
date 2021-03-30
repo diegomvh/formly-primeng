@@ -6,17 +6,26 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <div class="p-grid">
       <div class="p-col-12">
-        <h6 *ngIf="to.label">{{ to.label }}</h6>
-        <p *ngIf="to.description">{{ to.description }}</p>
+        <h5 *ngIf="to.label">{{ to.label }}
+          <small *ngIf="to.description">({{ to.description }})</small>
+        </h5>
       </div>
-      <div *ngFor="let field of field.fieldGroup;let i = index;" class="p-col-12 p-md-{{12 / field.fieldGroup.length}}">
-        <formly-field [field]="field"></formly-field>
-      </div>
-      <small class="p-col-12 p-invalid" *ngIf="showError && formControl.errors">
-        <formly-validation-message [field]="field"></formly-validation-message>
+      <formly-field *ngFor="let subField of fields()"
+        [field]="subField"
+        class="p-col-12 p-md-{{12 / groupLength()}}"
+      ></formly-field>
+      <small class="p-mr-auto" [ngStyle]="{color: '#f44336'}" *ngIf="showError">
+        <formly-validation-message [field]="field"> </formly-validation-message>
       </small>
     </div>
   `,
 })
 export class FormlyFieldObject extends FieldType {
+  groupLength() {
+    return this.field.fieldGroup?.length || 1;
+  }
+
+  fields() {
+    return this.field.fieldGroup || [];
+  }
 }

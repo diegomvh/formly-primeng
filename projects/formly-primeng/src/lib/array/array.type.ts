@@ -4,29 +4,39 @@ import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 @Component({
   selector: 'formly-array-type',
   template: `
-  <div class="mb-3">
-    <legend *ngIf="to.label">{{ to.label }}</legend>
-    <p *ngIf="to.description">{{ to.description }}</p>
-
-    <div class="alert alert-danger" role="alert" *ngIf="showError && formControl.errors">
-      <formly-validation-message [field]="field"></formly-validation-message>
-    </div>
-
-    <div *ngFor="let field of field.fieldGroup;let i = index;" class="row">
-      <formly-field class="col-10" [field]="field"></formly-field>
-      <div class="col-2 text-right">
-        <button class="btn btn-danger" type="button" (click)="remove(i)">-</button>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h5 *ngIf="to.label">{{ to.label }}
+          <small *ngIf="to.description">({{ to.description }})</small>
+        </h5>
       </div>
+      <div class="p-col-12" *ngFor="let subField of fields(); let i = index">
+        <div class="p-grid">
+          <formly-field [field]="subField" class="p-col-9"></formly-field>
+          <div class="p-col-3">
+            <button pButton pRipple
+            icon="pi pi-minus-circle"
+            class="p-button-rounded p-button-text p-button-danger" (click)="remove(i)"></button>
+          <button pButton pRipple *ngIf="i === (groupLength() - 1)"
+            icon="pi pi-plus-circle"
+            class="p-button-rounded p-button-text p-button-success" (click)="add()"></button>
+          </div>
+        </div>
+      </div>
+      <button pButton pRipple *ngIf="groupLength() === 0"
+        icon="pi pi-plus-circle"
+        class="p-button-rounded p-button-text p-button-success" (click)="add()"></button>
+      <small class="p-mr-auto" [ngStyle]="{color: '#f44336'}" *ngIf="showError">
+        <formly-validation-message [field]="field"> </formly-validation-message>
+      </small>
     </div>
-
-    <div class="d-flex flex-row-reverse">
-      <button class="btn btn-primary" type="button" (click)="add()">+</button>
-    </div>
-  </div>
   `,
 })
 export class FormlyFieldArray extends FieldArrayType {
-  constructor(builder?: FormlyFormBuilder) {
-    super(builder);
+  groupLength() {
+    return this.field.fieldGroup?.length || 0;
+  }
+  fields() {
+    return this.field.fieldGroup || [];
   }
 }

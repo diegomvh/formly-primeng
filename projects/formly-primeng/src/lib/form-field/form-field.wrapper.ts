@@ -4,15 +4,17 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   selector: 'formly-wrapper-primeng-form-field',
   template: `
-    <div class="p-field">
+    <div class="p-field" *ngIf="to.type !== 'hidden'">
       <label [for]="id" *ngIf="to.label && to.hideLabel !== true">
         {{ to.label }}
         <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
       </label>
       <ng-container #fieldComponent></ng-container>
       <div>
-        <small class="p-ml-auto" *ngIf="to.description && to.hideDescription !== true"> {{ to.description }} </small>
-        <small class="p-mr-auto p-invalid" *ngIf="showError"> <formly-validation-message [field]="field"> </formly-validation-message> </small>
+        <small class="p-mr-auto" [ngStyle]="{color: '#f44336'}" *ngIf="showError">
+          <formly-validation-message [field]="field"> </formly-validation-message>
+        </small>
+        <small class="p-ml-auto" *ngIf="!showError && to.description && to.hideDescription !== true"> {{ to.description }} </small>
       </div>
     </div>
   `,

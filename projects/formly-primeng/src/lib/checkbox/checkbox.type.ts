@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'formly-field-primeng-checkbox',
   template: `
     <p-checkbox
-      binary="true"
+      [binary]="true"
       [label]="to.label"
       [formControl]="formControl"
       [formlyAttributes]="field"

@@ -11,6 +11,7 @@ import { FieldType } from '@ngx-formly/core';
       [hideTransitionOptions]="to.hideTransitionOptions"
       [format]="to.format || 'hex'"
       [inline]="to.inline"
+      appendTo="body"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

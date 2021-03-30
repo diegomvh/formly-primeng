@@ -1,27 +1,15 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import { Calendar } from 'primeng/calendar';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'formly-field-primeng-datepicker',
   template: `
     <p-calendar
-      [defaultDate]="to.defaultDate"
-      [dateFormat]="to.dateFormat"
-      [hourFormat]="to.hourFormat"
-      [showTime]="to.showTime"
-      [showIcon]="to.showIcon"
-      [showButtonBar]="to.showButtonBar"
-      [showOtherMonths]="to.showOtherMonths"
-      [selectOtherMonths]="to.selectOtherMonths"
-      [selectionMode]="to.selectionMode || 'single'"
-      [numberOfMonths]="to.numberOfMonths"
-      [inline]="to.inline"
-      [readonlyInput]="to.readonlyInput"
-      [touchUI]="to.touchUI"
-      [monthNavigator]="to.monthNavigator"
-      [yearNavigator]="to.yearNavigator"
-      [yearRange]="to.yearRange"
-      [placeholder]="to.placeholder"
+      #calendar
+      [view]="to.calendar.view"
+      appendTo="body"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -29,4 +17,24 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyDatePicker extends FieldType {}
+export class FormlyDatePicker extends FieldType implements AfterViewInit, OnDestroy {
+  @ViewChild('calendar', { static: true }) calendar!: Calendar;
+  defaultOptions = {
+    templateOptions: {
+      calendar: {
+        view: 'date'
+      },
+      events: {
+
+      }
+    }
+  };
+  subscriptions: Subscription[] = [];
+  ngAfterViewInit() {
+    Object.assign(this.calendar, this.to.calendar);
+    Object.entries(this.to.events).forEach(([k, v]) => this.subscriptions.push((<any>this.calendar)[k].subscribe(v)));
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+}
