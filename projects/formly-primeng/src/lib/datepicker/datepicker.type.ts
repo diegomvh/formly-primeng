@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
   selector: 'formly-field-primeng-datepicker',
   template: `
     <p-calendar
-      #calendar
       [view]="to.calendar.view"
       appendTo="body"
       [formControl]="formControl"
@@ -18,15 +17,13 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyDatePicker extends FieldType implements AfterViewInit, OnDestroy {
-  @ViewChild('calendar', { static: true }) calendar!: Calendar;
+  @ViewChild(Calendar) calendar!: Calendar;
   defaultOptions = {
     templateOptions: {
       calendar: {
         view: 'date'
       },
-      events: {
-
-      }
+      events: {}
     }
   };
   subscriptions: Subscription[] = [];
