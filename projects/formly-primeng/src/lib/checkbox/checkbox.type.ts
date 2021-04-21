@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Checkbox } from 'primeng/checkbox';
+import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-field-primeng-checkbox',
+  selector: 'formly-primeng-checkbox',
   template: `
     <p-checkbox
       [binary]="true"
@@ -15,10 +16,12 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCheckbox extends FieldType {
-  defaultOptions = {
-    templateOptions: {
-      hideLabel: true,
-    },
-  };
+export class FormlyPrimengCheckbox extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(Checkbox) checkbox!: Checkbox;
+  ngAfterViewInit() {
+    this.bind(this.checkbox);
+  }
+  ngOnDestroy(): void {
+    this.unbind();
+  }
 }

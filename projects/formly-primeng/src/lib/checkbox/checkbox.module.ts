@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
-import { FormlyFieldCheckbox } from './checkbox.type';
+import { FormlyPrimengCheckbox } from './checkbox.type';
 
 @NgModule({
-  declarations: [FormlyFieldCheckbox],
+  declarations: [FormlyPrimengCheckbox],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +18,7 @@ import { FormlyFieldCheckbox } from './checkbox.type';
       types: [
         {
           name: 'checkbox',
-          component: FormlyFieldCheckbox,
+          component: FormlyPrimengCheckbox,
           wrappers: ['form-field'],
         },
         {
@@ -29,4 +29,4 @@ import { FormlyFieldCheckbox } from './checkbox.type';
     }),
   ],
 })
-export class FormlyCheckboxModule {}
+export class PrimengCheckboxModule {}

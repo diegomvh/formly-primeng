@@ -3,30 +3,29 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyFieldSelect } from './select.type';
+import { FormlyPrimengDropdown } from './dropdown.type';
 
 @NgModule({
-  declarations: [FormlyFieldSelect],
+  declarations: [FormlyPrimengDropdown],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     DropdownModule,
-
     FormlyFormFieldModule,
-    FormlyCoreSelectModule,
+    FormlySelectModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'select',
-          component: FormlyFieldSelect,
+          name: 'dropdown',
+          component: FormlyPrimengDropdown,
           wrappers: ['form-field'],
         },
-        { name: 'enum', extends: 'select' },
+        { name: 'enum', extends: 'dropdown' },
       ],
     }),
   ],
 })
-export class FormlySelectModule {}
+export class PrimengDropdownModule {}

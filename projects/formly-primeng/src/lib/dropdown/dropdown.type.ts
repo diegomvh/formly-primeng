@@ -2,9 +2,10 @@ import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy
 import { FieldType } from '@ngx-formly/core';
 import { Dropdown } from 'primeng/dropdown';
 import { Subscription } from 'rxjs';
+import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-field-primeng-select',
+  selector: 'formly-primeng-dropdown',
   template: `
     <p-dropdown
       [placeholder]="to.placeholder"
@@ -18,21 +19,12 @@ import { Subscription } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldSelect extends FieldType implements AfterViewInit, OnDestroy {
+export class FormlyPrimengDropdown extends PrimengComponentType implements AfterViewInit, OnDestroy {
   @ViewChild(Dropdown) dropdown!: Dropdown;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
-      dropdown: {},
-      events: {}
-    }
-  };
-  subscriptions: Subscription[] = [];
   ngAfterViewInit() {
-    Object.assign(this.dropdown, this.to.dropdown);
-    Object.entries(this.to.events).forEach(([k, v]) => this.subscriptions.push((<any>this.dropdown)[k].subscribe(v)));
+    this.bind(this.dropdown);
   }
   ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.unbind();
   }
 }

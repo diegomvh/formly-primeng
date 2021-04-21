@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-primeng-input',
+  selector: 'formly-primeng-input',
   template: `
     <input
       *ngIf="to.type !== 'number'; else numberTmp"
@@ -17,4 +17,4 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInput extends FieldType {}
+export class FormlyPrimengInput extends FieldType {}

@@ -1,8 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import { RadioButton } from 'primeng/radiobutton';
+import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-field-primeng-radio',
+  selector: 'formly-primeng-radioButton',
   template: `
     <p-radioButton
       *ngFor="let option of to.options | formlySelectOptions: field | async"
@@ -15,8 +17,12 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldRadio extends FieldType {
-  defaultOptions = {
-    templateOptions: { options: [] },
-  };
+export class FormlyPrimengRadioButton extends PrimengComponentType implements OnDestroy, AfterViewInit {
+  @ViewChild(RadioButton) radio!: RadioButton;
+  ngAfterViewInit() {
+    this.bind(this.radio);
+  }
+  ngOnDestroy(): void {
+    this.unbind();
+  }
 }

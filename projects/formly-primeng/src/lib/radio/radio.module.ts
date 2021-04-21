@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyFieldRadio } from './radio.type';
+import { FormlyPrimengRadioButton } from './radio.type';
 
 @NgModule({
-  declarations: [FormlyFieldRadio],
+  declarations: [FormlyPrimengRadioButton],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -19,12 +19,12 @@ import { FormlyFieldRadio } from './radio.type';
     FormlyModule.forChild({
       types: [
         {
-          name: 'radio',
-          component: FormlyFieldRadio,
+          name: 'radioButton',
+          component: FormlyPrimengRadioButton,
           wrappers: ['form-field'],
         },
       ],
     }),
   ],
 })
-export class FormlyRadioModule {}
+export class PrimengRadioButtonModule {}

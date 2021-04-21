@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyPrimengAutoComplete } from './autocomplete.type';
+import { FormlyPrimengCalendar } from './calendar.type';
 
 @NgModule({
-  declarations: [FormlyPrimengAutoComplete],
+  declarations: [FormlyPrimengCalendar],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AutoCompleteModule,
+    CalendarModule,
     FormlyFormFieldModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'autoComplete',
-          component: FormlyPrimengAutoComplete,
+          name: 'calendar',
+          component: FormlyPrimengCalendar,
           wrappers: ['form-field'],
         },
       ],
     }),
   ],
 })
-export class PrimengAutoCompleteModule {}
+export class PrimengCalendarModule {}

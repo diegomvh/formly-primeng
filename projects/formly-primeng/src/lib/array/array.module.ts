@@ -7,7 +7,6 @@ import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
 import { FormlyFieldArray } from './array.type';
 import { ButtonModule } from 'primeng/button';
-import { FormlyDatePickerModule } from '../datepicker/datepicker.module';
 
 @NgModule({
   declarations: [FormlyFieldArray],
@@ -15,7 +14,6 @@ import { FormlyDatePickerModule } from '../datepicker/datepicker.module';
     CommonModule,
     ReactiveFormsModule,
     InputTextModule,
-    FormlyDatePickerModule,
     ButtonModule,
     FormlyFormFieldModule,
     FormlyModule.forChild({

@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { AutoComplete } from 'primeng/autocomplete';
+import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-field-primeng-autocomplete',
+  selector: 'formly-primeng-autoComplete',
   template: `
     <p-autoComplete
       [placeholder]="to.placeholder"
@@ -18,4 +19,12 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyAutoComplete extends FieldType {}
+export class FormlyPrimengAutoComplete extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(AutoComplete, {static: true}) autoComplete!: AutoComplete;
+  ngAfterViewInit() {
+    this.bind(this.autoComplete);
+  }
+  ngOnDestroy(): void {
+    this.unbind();
+  }
+}

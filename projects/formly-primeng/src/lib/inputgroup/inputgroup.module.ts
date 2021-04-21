@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
-import { FormlyPrimengInput } from './input.type';
+import { FormlyFieldInputGroup } from './inputgroup.type';
 
 @NgModule({
-  declarations: [FormlyPrimengInput],
+  declarations: [FormlyFieldInputGroup],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -17,19 +17,19 @@ import { FormlyPrimengInput } from './input.type';
     FormlyModule.forChild({
       types: [
         {
-          name: 'input',
-          component: FormlyPrimengInput,
+          name: 'inputgroup',
+          component: FormlyFieldInputGroup,
           wrappers: ['form-field'],
         },
-        { name: 'string', extends: 'input' },
-        { name: 'number', extends: 'input',
+        { name: 'string', extends: 'inputgroup' },
+        { name: 'number', extends: 'inputgroup',
           defaultOptions: {
             templateOptions: {
               type: 'number',
             },
           },
         },
-        { name: 'integer', extends: 'input',
+        { name: 'integer', extends: 'inputgroup',
           defaultOptions: {
             templateOptions: {
               type: 'number',
@@ -40,4 +40,4 @@ import { FormlyPrimengInput } from './input.type';
     }),
   ],
 })
-export class PrimengInputModule {}
+export class FormlyInputGroupModule {}

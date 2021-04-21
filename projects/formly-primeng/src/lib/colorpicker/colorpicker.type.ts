@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { ColorPicker } from 'primeng/colorpicker';
+import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-field-primeng-colorpicker',
+  selector: 'formly-primeng-colorPicker',
   template: `
     <p-colorPicker
       [style]="{'display': 'block', 'width': '60px'}"
@@ -19,4 +20,12 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyColorPicker extends FieldType {}
+export class FormlyPrimengColorPicker extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(ColorPicker) checkbox!: ColorPicker;
+  ngAfterViewInit() {
+    this.bind(this.checkbox);
+  }
+  ngOnDestroy(): void {
+    this.unbind();
+  }
+}

@@ -4,10 +4,10 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyFieldTextArea } from './textarea.type';
+import { FormlyPrimengTextArea } from './textarea.type';
 
 @NgModule({
-  declarations: [FormlyFieldTextArea],
+  declarations: [FormlyPrimengTextArea],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,11 +18,11 @@ import { FormlyFieldTextArea } from './textarea.type';
       types: [
         {
           name: 'textarea',
-          component: FormlyFieldTextArea,
+          component: FormlyPrimengTextArea,
           wrappers: ['form-field'],
         },
       ],
     }),
   ],
 })
-export class FormlyTextAreaModule {}
+export class PrimengTextAreaModule {}

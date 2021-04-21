@@ -4,10 +4,10 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyColorPicker } from './colorpicker.type';
+import { FormlyPrimengColorPicker } from './colorpicker.type';
 
 @NgModule({
-  declarations: [FormlyColorPicker],
+  declarations: [FormlyPrimengColorPicker],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -16,12 +16,12 @@ import { FormlyColorPicker } from './colorpicker.type';
     FormlyModule.forChild({
       types: [
         {
-          name: 'colorpicker',
-          component: FormlyColorPicker,
+          name: 'colorPicker',
+          component: FormlyPrimengColorPicker,
           wrappers: ['form-field'],
         },
       ],
     }),
   ],
 })
-export class FormlyColorPickerModule {}
+export class PrimengColorPickerModule {}
