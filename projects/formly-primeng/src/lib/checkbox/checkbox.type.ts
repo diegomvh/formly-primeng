@@ -18,6 +18,13 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengCheckbox extends PrimengComponentType implements AfterViewInit, OnDestroy {
   @ViewChild(Checkbox) checkbox!: Checkbox;
+  defaultOptions = {
+    templateOptions: {
+      hideLabel: true,
+      properties: {},
+      events: {}
+    }
+  };
   ngAfterViewInit() {
     this.bind(this.checkbox);
   }

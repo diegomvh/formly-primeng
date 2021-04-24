@@ -1,14 +1,12 @@
 import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { Calendar } from 'primeng/calendar';
-import { Subscription } from 'rxjs';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
   selector: 'formly-primeng-calendar',
   template: `
     <p-calendar
-      [view]="to.calendar.view"
+      [view]="to.properties.view"
       appendTo="body"
       [formControl]="formControl"
       [formlyAttributes]="field"

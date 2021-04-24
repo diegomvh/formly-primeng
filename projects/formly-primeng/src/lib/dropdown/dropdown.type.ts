@@ -1,7 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { Dropdown } from 'primeng/dropdown';
-import { Subscription } from 'rxjs';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
@@ -21,6 +19,13 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengDropdown extends PrimengComponentType implements AfterViewInit, OnDestroy {
   @ViewChild(Dropdown) dropdown!: Dropdown;
+  defaultOptions = {
+    templateOptions: {
+      options: [],
+      properties: {},
+      events: {}
+    }
+  };
   ngAfterViewInit() {
     this.bind(this.dropdown);
   }

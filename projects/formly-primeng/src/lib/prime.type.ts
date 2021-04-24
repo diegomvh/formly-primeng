@@ -1,4 +1,3 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { Subscription } from 'rxjs';
 
