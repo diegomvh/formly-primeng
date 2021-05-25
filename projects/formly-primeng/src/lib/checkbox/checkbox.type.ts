@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild, OnInit } from '@angular/core';
 import { Checkbox } from 'primeng/checkbox';
 import { PrimengComponentType } from '../prime.type';
 
@@ -16,8 +16,8 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCheckbox extends PrimengComponentType implements AfterViewInit, OnDestroy {
-  @ViewChild(Checkbox) checkbox!: Checkbox;
+export class FormlyPrimengCheckbox extends PrimengComponentType implements OnInit, OnDestroy {
+  @ViewChild(Checkbox, {static: true}) checkbox!: Checkbox;
   defaultOptions = {
     templateOptions: {
       hideLabel: true,
@@ -25,7 +25,7 @@ export class FormlyPrimengCheckbox extends PrimengComponentType implements After
       events: {}
     }
   };
-  ngAfterViewInit() {
+  ngOnInit(): void {
     this.bind(this.checkbox);
   }
   ngOnDestroy(): void {

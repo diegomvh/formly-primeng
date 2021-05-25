@@ -17,9 +17,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengRadioButton extends PrimengComponentType implements OnDestroy, AfterViewInit {
-  @ViewChild(RadioButton) radio!: RadioButton;
-  ngAfterViewInit() {
+export class FormlyPrimengRadioButton extends PrimengComponentType implements OnDestroy, OnInit {
+  @ViewChild(RadioButton, {static: true}) radio!: RadioButton;
+  ngOnInit() {
     this.bind(this.radio);
   }
   ngOnDestroy(): void {

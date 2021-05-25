@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild, OnInit } from '@angular/core';
 import { ColorPicker } from 'primeng/colorpicker';
 import { PrimengComponentType } from '../prime.type';
 
@@ -20,9 +20,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengColorPicker extends PrimengComponentType implements AfterViewInit, OnDestroy {
-  @ViewChild(ColorPicker) checkbox!: ColorPicker;
-  ngAfterViewInit() {
+export class FormlyPrimengColorPicker extends PrimengComponentType implements OnInit, OnDestroy {
+  @ViewChild(ColorPicker, {static: true}) checkbox!: ColorPicker;
+  ngOnInit(): void {
     this.bind(this.checkbox);
   }
   ngOnDestroy(): void {

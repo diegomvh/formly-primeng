@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { Calendar } from 'primeng/calendar';
 import { PrimengComponentType } from '../prime.type';
 
@@ -15,9 +15,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCalendar extends PrimengComponentType implements AfterViewInit, OnDestroy {
-  @ViewChild(Calendar) calendar!: Calendar;
-  ngAfterViewInit() {
+export class FormlyPrimengCalendar extends PrimengComponentType implements OnInit, OnDestroy {
+  @ViewChild(Calendar, {static: true}) calendar!: Calendar;
+  ngOnInit(): void {
     this.bind(this.calendar);
   }
   ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { AutoComplete } from 'primeng/autocomplete';
 import { PrimengComponentType } from '../prime.type';
 
@@ -19,9 +19,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengAutoComplete extends PrimengComponentType implements AfterViewInit, OnDestroy {
+export class FormlyPrimengAutoComplete extends PrimengComponentType implements OnInit, OnDestroy {
   @ViewChild(AutoComplete, {static: true}) autoComplete!: AutoComplete;
-  ngAfterViewInit() {
+  ngOnInit(): void {
     this.bind(this.autoComplete);
   }
   ngOnDestroy(): void {
