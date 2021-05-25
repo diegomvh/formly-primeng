@@ -13,6 +13,7 @@ import { FormlyInputGroupModule } from './inputgroup/inputgroup.module';
 import { PrimengRadioButtonModule } from './radio/radio.module';
 import { PrimengCalendarModule } from './calendar/calendar.module';
 import { PrimengEditorModule } from './editor/editor.module';
+import { PrimengCurrencyModule } from './currency/currency.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { PrimengEditorModule } from './editor/editor.module';
     PrimengCalendarModule,
     PrimengColorPickerModule,
     PrimengEditorModule,
+    PrimengCurrencyModule,
   ],
 })
 export class FormlyPrimeNGModule {}
