@@ -7,11 +7,7 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-autoComplete
       [placeholder]="to.placeholder"
-      [suggestions]="to.suggestions | formlySelectOptions: field | async"
-      [dropdown]="to.dropdown"
-      [multiple]="to.multiple"
-      [minLength]="to.minLength"
-      (completeMethod)="to.search && to.search(field, $event)"
+      [suggestions]="suggestions"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -21,6 +17,7 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengAutoComplete extends PrimengComponentType implements OnInit, OnDestroy {
   @ViewChild(AutoComplete, {static: true}) autoComplete!: AutoComplete;
+  suggestions: any[] = [];
   ngOnInit(): void {
     this.bind(this.autoComplete);
   }

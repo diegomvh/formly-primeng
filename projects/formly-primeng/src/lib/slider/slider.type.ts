@@ -15,6 +15,7 @@ import { PrimengComponentType } from '../prime.type';
 export class FormlyPrimengSliderButton extends PrimengComponentType implements OnDestroy, OnInit {
   @ViewChild(RadioButton, {static: true}) slider!: RadioButton;
   ngOnInit() {
+    console.log(this.to);
     this.bind(this.slider);
   }
   ngOnDestroy(): void {

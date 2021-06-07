@@ -7,7 +7,7 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-checkbox
       [binary]="true"
-      [label]="to.label"
+      [label]="to.description || to.label"
       [formControl]="formControl"
       [formlyAttributes]="field"
       (onChange)="to.change && to.change(field, $event)"
@@ -20,7 +20,6 @@ export class FormlyPrimengCheckbox extends PrimengComponentType implements OnIni
   @ViewChild(Checkbox, {static: true}) checkbox!: Checkbox;
   defaultOptions = {
     templateOptions: {
-      hideLabel: true,
       properties: {},
       events: {}
     }

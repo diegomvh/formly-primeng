@@ -15,6 +15,8 @@ import { PrimengCalendarModule } from './calendar/calendar.module';
 import { PrimengEditorModule } from './editor/editor.module';
 import { PrimengCurrencyModule } from './currency/currency.module';
 import { PrimengSliderModule } from './slider/slider.module';
+import { PrimengAutoCompleteModule } from './autocomplete/autocomplete.module';
+import { PrimengInputMaskModule } from './inputMask/inputmask.module';
 
 @NgModule({
   imports: [
@@ -29,11 +31,13 @@ import { PrimengSliderModule } from './slider/slider.module';
     PrimengRadioButtonModule,
     PrimengCheckboxModule,
     PrimengDropdownModule,
+    PrimengAutoCompleteModule,
     PrimengCalendarModule,
     PrimengColorPickerModule,
     PrimengEditorModule,
     PrimengCurrencyModule,
-    PrimengSliderModule
+    PrimengSliderModule,
+    PrimengInputMaskModule
   ],
 })
 export class FormlyPrimeNGModule {}
