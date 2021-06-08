@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldWrapper } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-primeng-inputgroup',
+  selector: 'formly-wrapper-primeng-form-field-group',
   template: `
   <div class="p-inputgroup">
     <span *ngFor="let addon of to.prefix_addons" class="p-inputgroup-addon">
@@ -11,16 +11,17 @@ import { FieldType } from '@ngx-formly/core';
         {{addon}}
       </ng-template>
     </span>
-    <input
-      *ngIf="to.type !== 'number'; else numberTmp"
-      pInputText
-      [type]="to.type || 'text'"
-      [formControl]="formControl"
-      [formlyAttributes]="field"
-    />
-    <ng-template #numberTmp>
-      <input type="number" pInputText [formControl]="formControl" [formlyAttributes]="field" />
-    </ng-template>
+    <button *ngFor="let button of to.prefix_buttons"
+      type="button" pButton
+      (click)="buttonClick($event, button)"
+      icon="{{button.icon}}"
+    ></button>
+    <ng-container #fieldComponent></ng-container>
+    <button *ngFor="let button of to.suffix_buttons"
+      type="button" pButton
+      (click)="buttonClick($event, button)"
+      icon="{{button.icon}}"
+    ></button>
     <span *ngFor="let addon of to.suffix_addons" class="p-inputgroup-addon">
       <i *ngIf="addon.icon; else textAddon" class="{{addon.icon}}" style="{{addon.style}}"></i>
       <ng-template #textAddon>
@@ -31,10 +32,17 @@ import { FieldType } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInputGroup extends FieldType {
+export class FormlyWrapperFormFieldGroup extends FieldWrapper {
   defaultOptions = {
     templateOptions: {
-      addons: []
+      prefix_addons: [],
+      suffix_addons: [],
+      suffix_buttons: []
     }
   };
+  buttonClick(event: any, button: any) {
+    if (button.click) {
+      button.click(event);
+    }
+  }
 }

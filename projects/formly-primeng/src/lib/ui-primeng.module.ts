@@ -9,19 +9,18 @@ import { FormlyNullModule } from './null/null.module';
 import { FormlyArrayModule } from './array/array.module';
 import { FormlyObjectModule } from './object/object.module';
 import { FormlyMultiSchemaModule } from './multischema/multischema.module';
-import { FormlyInputGroupModule } from './inputgroup/inputgroup.module';
 import { PrimengRadioButtonModule } from './radio/radio.module';
 import { PrimengCalendarModule } from './calendar/calendar.module';
 import { PrimengEditorModule } from './editor/editor.module';
 import { PrimengCurrencyModule } from './currency/currency.module';
 import { PrimengSliderModule } from './slider/slider.module';
 import { PrimengAutoCompleteModule } from './autocomplete/autocomplete.module';
-import { PrimengInputMaskModule } from './inputMask/inputmask.module';
+import { FormlyFormFieldGroupModule } from './form-field-group/form-field-group.module';
 
 @NgModule({
   imports: [
     FormlyFormFieldModule,
-    FormlyInputGroupModule,
+    FormlyFormFieldGroupModule,
     FormlyNullModule,
     FormlyArrayModule,
     FormlyObjectModule,
@@ -36,8 +35,7 @@ import { PrimengInputMaskModule } from './inputMask/inputmask.module';
     PrimengColorPickerModule,
     PrimengEditorModule,
     PrimengCurrencyModule,
-    PrimengSliderModule,
-    PrimengInputMaskModule
+    PrimengSliderModule
   ],
 })
 export class FormlyPrimeNGModule {}

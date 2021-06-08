@@ -7,12 +7,7 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-colorPicker
       [style]="{'display': 'block', 'width': '60px'}"
-      [format]="to.format"
-      [showTransitionOptions]="to.showTransitionOptions"
-      [hideTransitionOptions]="to.hideTransitionOptions"
-      [format]="to.format || 'hex'"
-      [inline]="to.inline"
-      appendTo="body"
+      [format]="'hex'"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -20,10 +15,10 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengColorPicker extends PrimengComponentType implements OnInit, OnDestroy {
-  @ViewChild(ColorPicker, {static: true}) checkbox!: ColorPicker;
-  ngOnInit(): void {
-    this.bind(this.checkbox);
+export class FormlyPrimengColorPicker extends PrimengComponentType implements OnDestroy, AfterViewInit {
+  @ViewChild(ColorPicker) picker!: ColorPicker;
+  ngAfterViewInit(): void {
+    this.bind(this.picker);
   }
   ngOnDestroy(): void {
     this.unbind();

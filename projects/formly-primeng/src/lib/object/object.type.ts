@@ -5,8 +5,8 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'formly-object-type',
   template: `
     <div class="p-grid">
-      <div class="p-col-12">
-        <h5 *ngIf="to.label">{{ to.label }}
+      <div class="p-col-12" *ngIf="to.label && to.hideLabel !== true">
+        <h5>{{ to.label }}
           <small *ngIf="to.description">({{ to.description }})</small>
         </h5>
       </div>
