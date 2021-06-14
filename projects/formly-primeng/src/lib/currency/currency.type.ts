@@ -13,9 +13,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCurrency extends PrimengComponentType implements OnDestroy, OnInit {
-  @ViewChild(InputNumber, {static: true}) input!: InputNumber;
-  ngOnInit(): void {
+export class FormlyPrimengCurrency extends PrimengComponentType implements OnDestroy, AfterViewInit {
+  @ViewChild(InputNumber) input!: InputNumber;
+  ngAfterViewInit(): void {
     this.bind(this.input);
   }
   ngOnDestroy(): void {

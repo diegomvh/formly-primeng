@@ -15,10 +15,10 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengAutoComplete extends PrimengComponentType implements OnInit, OnDestroy {
-  @ViewChild(AutoComplete, {static: true}) autoComplete!: AutoComplete;
+export class FormlyPrimengAutoComplete extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(AutoComplete) autoComplete!: AutoComplete;
   suggestions: any[] = [];
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.bind(this.autoComplete);
   }
   ngOnDestroy(): void {

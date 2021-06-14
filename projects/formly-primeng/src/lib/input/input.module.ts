@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { PasswordModule } from 'primeng/password';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
 import { FormlyPrimengInput } from './input.type';
@@ -17,6 +18,7 @@ import { FormlyPrimengInput } from './input.type';
     InputTextModule,
     InputMaskModule,
     InputNumberModule,
+    PasswordModule,
     FormlyFormFieldModule,
     FormlyModule.forChild({
       types: [

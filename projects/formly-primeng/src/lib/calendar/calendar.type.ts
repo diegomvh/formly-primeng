@@ -6,7 +6,6 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-calendar',
   template: `
     <p-calendar
-      [view]="to.properties.view"
       appendTo="body"
       [formControl]="formControl"
       [formlyAttributes]="field"
@@ -15,9 +14,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCalendar extends PrimengComponentType implements OnInit, OnDestroy {
-  @ViewChild(Calendar, {static: true}) calendar!: Calendar;
-  ngOnInit(): void {
+export class FormlyPrimengCalendar extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(Calendar) calendar!: Calendar;
+  ngAfterViewInit(): void {
     this.bind(this.calendar);
   }
   ngOnDestroy(): void {

@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, Input, ViewChild, OnDestroy, OnInit
 import { FieldType } from '@ngx-formly/core';
 import { InputMask } from 'primeng/inputmask';
 import { InputNumber } from 'primeng/inputnumber';
+import { Password } from 'primeng/password';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
@@ -20,6 +21,13 @@ import { PrimengComponentType } from '../prime.type';
       [formlyAttributes]="field"
     ></p-inputMask>
     <input
+      *ngSwitchCase="'password'"
+      pPassword
+      [type]="'password'"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+    />
+    <input
       #input
       *ngSwitchDefault
       pInputText
@@ -34,6 +42,7 @@ import { PrimengComponentType } from '../prime.type';
 export class FormlyPrimengInput extends PrimengComponentType implements OnDestroy, AfterViewInit {
   @ViewChild(InputNumber) number!: InputNumber;
   @ViewChild(InputMask) mask!: InputMask;
+  @ViewChild(Password) password!: Password;
   @ViewChild('input') input!: ElementRef;
   ngAfterViewInit(): void {
     console.log(this.to);
@@ -43,6 +52,9 @@ export class FormlyPrimengInput extends PrimengComponentType implements OnDestro
         break;
       case 'mask':
         this.bind(this.mask);
+        break;
+      case 'password':
+        this.bind(this.password);
         break;
       default:
         this.bind(this.input);

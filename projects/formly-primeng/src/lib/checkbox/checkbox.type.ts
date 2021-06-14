@@ -6,25 +6,22 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-checkbox',
   template: `
     <p-checkbox
-      [binary]="true"
-      [label]="to.description || to.label"
+      [label]="to.label"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      (onChange)="to.change && to.change(field, $event)"
-    >
-    </p-checkbox>
+    ></p-checkbox>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCheckbox extends PrimengComponentType implements OnInit, OnDestroy {
-  @ViewChild(Checkbox, {static: true}) checkbox!: Checkbox;
+export class FormlyPrimengCheckbox extends PrimengComponentType implements OnDestroy, AfterViewInit {
+  @ViewChild(Checkbox) checkbox!: Checkbox;
   defaultOptions = {
     templateOptions: {
       properties: {},
       events: {}
     }
   };
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.bind(this.checkbox);
   }
   ngOnDestroy(): void {

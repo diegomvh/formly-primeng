@@ -12,7 +12,7 @@ export class PrimengComponentType extends FieldType {
   bind(prime: any) {
     Object.assign(prime, this.to.properties);
     Object.entries(this.to.events).forEach(([name, callback]) => {
-      this.subscriptions.push(prime[name].subscribe((event: any) => (callback as Function)(event, this)));
+      this.subscriptions.push(prime[name].subscribe((event: any) => (callback as Function)(this, event)));
     });
   }
   unbind(): void {
