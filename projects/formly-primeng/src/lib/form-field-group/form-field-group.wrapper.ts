@@ -16,7 +16,9 @@ import { FieldType, FieldWrapper } from '@ngx-formly/core';
       (click)="buttonClick($event, button)"
       icon="{{button.icon}}"
     ></button>
-    <ng-container #fieldComponent></ng-container>
+    <div style="width: 100%">
+      <ng-container #fieldComponent></ng-container>
+    </div>
     <button *ngFor="let button of to.suffix_buttons"
       type="button" pButton
       (click)="buttonClick($event, button)"

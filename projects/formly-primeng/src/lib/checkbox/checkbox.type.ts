@@ -6,9 +6,11 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-checkbox',
   template: `
     <p-checkbox
+      [binary]="true"
       [label]="to.label"
       [formControl]="formControl"
       [formlyAttributes]="field"
+      (onChange)="to.change && to.change(field, $event)"
     ></p-checkbox>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +19,7 @@ export class FormlyPrimengCheckbox extends PrimengComponentType implements OnDes
   @ViewChild(Checkbox) checkbox!: Checkbox;
   defaultOptions = {
     templateOptions: {
+      hideLabel: true,
       properties: {},
       events: {}
     }

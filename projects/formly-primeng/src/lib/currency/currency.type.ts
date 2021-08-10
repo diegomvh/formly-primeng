@@ -6,7 +6,9 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-currency',
   template: `
     <p-inputNumber
-      mode="currency"
+      [mode]="'currency'"
+      [currency]="to.currency || 'USD'"
+      [locale]="to.locale || 'en-US'"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-inputNumber>

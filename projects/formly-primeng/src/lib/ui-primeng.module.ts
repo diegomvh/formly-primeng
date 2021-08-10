@@ -4,6 +4,7 @@ import { PrimengInputModule } from './input/input.module';
 import { PrimengTextAreaModule } from './textarea/textarea.module';
 import { PrimengCheckboxModule } from './checkbox/checkbox.module';
 import { PrimengDropdownModule } from './dropdown/dropdown.module';
+import { PrimengMultiSelectModule } from './multiselect/multiselect.module';
 import { PrimengColorPickerModule } from './colorpicker/colorpicker.module';
 import { FormlyNullModule } from './null/null.module';
 import { FormlyArrayModule } from './array/array.module';
@@ -30,6 +31,7 @@ import { FormlyFormFieldGroupModule } from './form-field-group/form-field-group.
     PrimengRadioButtonModule,
     PrimengCheckboxModule,
     PrimengDropdownModule,
+    PrimengMultiSelectModule,
     PrimengAutoCompleteModule,
     PrimengCalendarModule,
     PrimengColorPickerModule,

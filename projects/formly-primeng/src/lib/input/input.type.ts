@@ -11,17 +11,25 @@ import { PrimengComponentType } from '../prime.type';
   <ng-container [ngSwitch]="to.type">
     <p-inputNumber
       *ngSwitchCase="'number'"
+      [style]="{'width': '100%'}"
+      [suffix]="to.suffix"
+      [prefix]="to.prefix"
+      [locale]="to.locale || 'en-US'"
+      [min]="to.min"
+      [max]="to.max"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-inputNumber>
     <p-inputMask
       *ngSwitchCase="'mask'"
-      mask="''"
+      [style]="{'width': '100%'}"
+      [mask]="to.mask || ''"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-inputMask>
     <input
       *ngSwitchCase="'password'"
+      [style]="{'width': '100%'}"
       pPassword
       [type]="'password'"
       [formControl]="formControl"
@@ -30,6 +38,7 @@ import { PrimengComponentType } from '../prime.type';
     <input
       #input
       *ngSwitchDefault
+      [style]="{'width': '100%'}"
       pInputText
       [type]="to.type || 'text'"
       [formControl]="formControl"
@@ -44,8 +53,8 @@ export class FormlyPrimengInput extends PrimengComponentType implements OnDestro
   @ViewChild(InputMask) mask!: InputMask;
   @ViewChild(Password) password!: Password;
   @ViewChild('input') input!: ElementRef;
+
   ngAfterViewInit(): void {
-    console.log(this.to);
     switch(this.to.type) {
       case 'number':
         this.bind(this.number);
@@ -60,6 +69,7 @@ export class FormlyPrimengInput extends PrimengComponentType implements OnDestro
         this.bind(this.input);
     }
   }
+
   ngOnDestroy(): void {
     this.unbind();
   }

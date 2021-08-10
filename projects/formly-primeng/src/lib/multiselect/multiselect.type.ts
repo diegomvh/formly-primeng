@@ -1,25 +1,29 @@
 import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
-import { Dropdown } from 'primeng/dropdown';
+import { MultiSelect } from 'primeng/multiselect';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-primeng-dropdown',
+  selector: 'formly-primeng-multiSelect',
   template: `
-    <p-dropdown
+    <p-multiSelect
       [placeholder]="to.placeholder"
       [options]="to.options | formlySelectOptions: field | async"
       [disabled]="to.disabled"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [showClear]="!to.required"
+      [defaultLabel]="to.defaultLabel"
+      [optionLabel]="to.optionLabel || 'label'"
+      [optionValue]="to.optionValue || 'value'"
+      [emptyFilterMessage]="to.emptyFilterMessage"
+      [emptyMessage]="to.emptyMessage"
       appendTo="body"
     >
-    </p-dropdown>
+    </p-multiSelect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengDropdown extends PrimengComponentType implements AfterViewInit, OnDestroy {
-  @ViewChild(Dropdown) dropdown!: Dropdown;
+export class FormlyPrimengMultiSelect extends PrimengComponentType implements AfterViewInit, OnDestroy {
+  @ViewChild(MultiSelect) multiselect!: MultiSelect;
   defaultOptions = {
     templateOptions: {
       options: [],
@@ -28,7 +32,7 @@ export class FormlyPrimengDropdown extends PrimengComponentType implements After
     }
   };
   ngAfterViewInit(): void {
-    this.bind(this.dropdown);
+    this.bind(this.multiselect);
   }
   ngOnDestroy(): void {
     this.unbind();
