@@ -25,23 +25,11 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengDropdown
-  extends PrimengComponentType
-  implements AfterViewInit, OnDestroy
-{
+export class FormlyPrimengDropdown extends PrimengComponentType {
   @ViewChild(Dropdown) dropdown!: Dropdown;
   defaultOptions = {
     templateOptions: {
       options: [],
-      events: {},
     },
   };
-
-  ngAfterViewInit(): void {
-    this.bind(this.dropdown);
-  }
-
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }

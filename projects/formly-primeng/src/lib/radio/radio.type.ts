@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { RadioButton } from 'primeng/radiobutton';
 import { PrimengComponentType } from '../prime.type';
 
@@ -16,12 +23,6 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengRadioButton extends PrimengComponentType implements OnDestroy, AfterViewInit {
+export class FormlyPrimengRadioButton extends PrimengComponentType {
   @ViewChild(RadioButton) radio!: RadioButton;
-  ngAfterViewInit(): void {
-    this.bind(this.radio);
-  }
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }

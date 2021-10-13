@@ -14,36 +14,30 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-autoComplete
       [placeholder]="to.placeholder"
+      [tabindex]="to.tabindex || null"
+      [disabled]="to.disabled || false"
+      [required]="to.required || false"
+      [showEmptyMessage]="to.showEmptyMessage || false"
+      [emptyMessage]="to.emptyMessage"
       [suggestions]="to.suggestions"
-      [field]="to.field"
-      [disabled]="to.disabled"
-      [formControl]="formControl"
       [multiple]="to.multiple || false"
       [dropdown]="to.dropdown || false"
+      [field]="to.field"
+      [forceSelection]="to.forceSelection || false"
+      [autofocus]="to.autofocus || false"
       (completeMethod)="to.completeMethod && to.completeMethod(field, $event)"
+      [formControl]="formControl"
       [formlyAttributes]="field"
     >
     </p-autoComplete>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengAutoComplete
-  extends PrimengComponentType
-  implements AfterViewInit, OnDestroy
-{
+export class FormlyPrimengAutoComplete extends PrimengComponentType {
   @ViewChild(AutoComplete) autoComplete!: AutoComplete;
   defaultOptions = {
     templateOptions: {
       suggestions: [],
-      events: {},
     },
   };
-
-  ngAfterViewInit(): void {
-    this.bind(this.autoComplete);
-  }
-
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }

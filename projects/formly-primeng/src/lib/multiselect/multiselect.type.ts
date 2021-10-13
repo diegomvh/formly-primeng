@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { MultiSelect } from 'primeng/multiselect';
 import { PrimengComponentType } from '../prime.type';
 
@@ -22,19 +29,11 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengMultiSelect extends PrimengComponentType implements AfterViewInit, OnDestroy {
+export class FormlyPrimengMultiSelect extends PrimengComponentType {
   @ViewChild(MultiSelect) multiselect!: MultiSelect;
   defaultOptions = {
     templateOptions: {
       options: [],
-      properties: {},
-      events: {}
-    }
+    },
   };
-  ngAfterViewInit(): void {
-    this.bind(this.multiselect);
-  }
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }

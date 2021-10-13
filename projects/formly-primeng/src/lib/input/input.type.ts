@@ -8,7 +8,6 @@ import {
   AfterViewInit,
   ElementRef,
 } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
 import { InputMask } from 'primeng/inputmask';
 import { InputNumber } from 'primeng/inputnumber';
 import { Password } from 'primeng/password';
@@ -58,32 +57,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengInput
-  extends PrimengComponentType
-  implements OnDestroy, AfterViewInit
-{
+export class FormlyPrimengInput extends PrimengComponentType {
   @ViewChild(InputNumber) number!: InputNumber;
   @ViewChild(InputMask) mask!: InputMask;
   @ViewChild(Password) password!: Password;
   @ViewChild('input') input!: ElementRef;
-
-  ngAfterViewInit(): void {
-    switch (this.to.type) {
-      case 'number':
-        this.bind(this.number);
-        break;
-      case 'mask':
-        this.bind(this.mask);
-        break;
-      case 'password':
-        this.bind(this.password);
-        break;
-      default:
-        this.bind(this.input);
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }

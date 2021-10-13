@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, ViewChild, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  ViewChild,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Calendar } from 'primeng/calendar';
 import { PrimengComponentType } from '../prime.type';
 
@@ -7,6 +14,9 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-calendar
       [appendTo]="'body'"
+      [tabindex]="to.tabindex || null"
+      [disabled]="to.disabled || false"
+      [required]="to.required || false"
       [view]="to.view || 'date'"
       [monthNavigator]="to.monthNavigator || false"
       [yearNavigator]="to.yearNavigator || false"
@@ -24,12 +34,6 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCalendar extends PrimengComponentType implements AfterViewInit, OnDestroy {
+export class FormlyPrimengCalendar extends PrimengComponentType {
   @ViewChild(Calendar) calendar!: Calendar;
-  ngAfterViewInit(): void {
-    this.bind(this.calendar);
-  }
-  ngOnDestroy(): void {
-    this.unbind();
-  }
 }
