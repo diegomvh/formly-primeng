@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnDestroy,
+  ViewChild,
+  OnInit,
+} from '@angular/core';
 import { ColorPicker } from 'primeng/colorpicker';
 import { PrimengComponentType } from '../prime.type';
 
@@ -6,8 +13,8 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-colorPicker',
   template: `
     <p-colorPicker
-      [style]="{'display': 'block', 'width': '60px'}"
-      [format]="'hex'"
+      [style]="{ display: 'block', width: '60px' }"
+      [format]="to.format || 'hex'"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -15,7 +22,10 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengColorPicker extends PrimengComponentType implements OnDestroy, AfterViewInit {
+export class FormlyPrimengColorPicker
+  extends PrimengComponentType
+  implements OnDestroy, AfterViewInit
+{
   @ViewChild(ColorPicker) picker!: ColorPicker;
   ngAfterViewInit(): void {
     this.bind(this.picker);

@@ -11,14 +11,23 @@ import { FieldWrapper } from '@ngx-formly/core';
       </label>
       <ng-container #fieldComponent></ng-container>
       <div>
-        <small class="p-mr-auto" [ngStyle]="{color: '#f44336'}" *ngIf="showError">
-          <formly-validation-message [field]="field"> </formly-validation-message>
+        <small
+          class="mr-auto"
+          [ngStyle]="{ color: '#f44336' }"
+          *ngIf="showError"
+        >
+          <formly-validation-message [field]="field">
+          </formly-validation-message>
         </small>
-        <small class="p-ml-auto" *ngIf="!showError && to.description && to.hideDescription !== true"> {{ to.description }} </small>
+        <small
+          class="ml-auto"
+          *ngIf="!showError && to.description && to.hideDescription !== true"
+        >
+          {{ to.description }}
+        </small>
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyWrapperFormField extends FieldWrapper {
-}
+export class FormlyWrapperFormField extends FieldWrapper {}
