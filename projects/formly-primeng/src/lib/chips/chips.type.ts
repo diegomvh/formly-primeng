@@ -13,6 +13,9 @@ import { PrimengComponentType } from '../prime.type';
       [separator]="to.separator || null"
       [addOnTab]="to.addOnTab || false"
       [addOnBlur]="to.addOnBlur || false"
+      (onAdd)="to.onAdd && to.onAdd(field, $event)"
+      (onRemove)="to.onRemove && to.onRemove(field, $event)"
+      (onChipClick)="to.onChipClick && to.onChipClick(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-chips>

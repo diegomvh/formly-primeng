@@ -26,6 +26,7 @@ import { PrimengComponentType } from '../prime.type';
       [forceSelection]="to.forceSelection || false"
       [autofocus]="to.autofocus || false"
       (completeMethod)="to.completeMethod && to.completeMethod(field, $event)"
+      (onSelect)="to.onSelect && to.onSelect(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

@@ -21,6 +21,8 @@ import { PrimengRadioButtonModule } from './radio/radio.module';
 import { PrimengSliderModule } from './slider/slider.module';
 import { PrimengTextAreaModule } from './textarea/textarea.module';
 import { PrimengSwitchModule } from './switch/switch.module';
+import { PrimengMaskModule } from './mask/mask.module';
+import { PrimengNumberModule } from './number/number.module';
 
 @NgModule({
   imports: [
@@ -40,6 +42,8 @@ import { PrimengSwitchModule } from './switch/switch.module';
     PrimengPasswordModule,
     PrimengListboxModule,
     PrimengSwitchModule,
+    PrimengMaskModule,
+    PrimengNumberModule,
     FormlyFormFieldModule,
     FormlyFormFieldGroupModule,
     FormlyNullModule,

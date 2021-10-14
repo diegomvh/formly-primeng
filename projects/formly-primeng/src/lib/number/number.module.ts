@@ -3,30 +3,33 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { KeyFilterModule } from 'primeng/keyfilter';
-
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { PasswordModule } from 'primeng/password';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 
-import { FormlyPrimengInput } from './input.type';
+import { FormlyPrimengNumber } from './number.type';
 
 @NgModule({
-  declarations: [FormlyPrimengInput],
+  declarations: [FormlyPrimengNumber],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     InputTextModule,
-    KeyFilterModule,
+    InputMaskModule,
+    InputNumberModule,
+    PasswordModule,
     FormlyFormFieldModule,
     FormlyModule.forChild({
       types: [
         {
-          name: 'input',
-          component: FormlyPrimengInput,
+          name: 'number',
+          component: FormlyPrimengNumber,
           wrappers: ['form-field'],
         },
-        { name: 'string', extends: 'input' },
+        { name: 'integer', extends: 'number' },
       ],
     }),
   ],
 })
-export class PrimengInputModule {}
+export class PrimengNumberModule {}

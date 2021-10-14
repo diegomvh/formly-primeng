@@ -18,7 +18,7 @@ import { PrimengComponentType } from '../prime.type';
       [tabindex]="to.tabindex || null"
       [disabled]="to.disabled || false"
       [required]="to.required || false"
-      (onChange)="to.change && to.change(field, $event)"
+      (onChange)="to.onChange && to.onChange(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-checkbox>
@@ -32,4 +32,8 @@ export class FormlyPrimengCheckbox extends PrimengComponentType {
       hideLabel: true,
     },
   };
+
+  focus() {
+    this.checkbox.focus();
+  }
 }

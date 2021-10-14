@@ -27,6 +27,9 @@ import { PrimengComponentType } from '../prime.type';
       [showTime]="to.showTime || false"
       [dateFormat]="to.dateFormat || 'mm/dd/yy'"
       [hourFormat]="to.hourFormat || 24"
+      (onSelect)="to.onSelect && to.onSelect(field, $event)"
+      (onMonthChange)="to.onMonthChange && to.onMonthChange(field, $event)"
+      (onYearChange)="to.onYearChange && to.onYearChange(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -36,4 +39,8 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengCalendar extends PrimengComponentType {
   @ViewChild(Calendar) calendar!: Calendar;
+
+  toggle() {
+    this.calendar.toggle();
+  }
 }

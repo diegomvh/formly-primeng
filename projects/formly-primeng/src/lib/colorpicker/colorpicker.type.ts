@@ -19,6 +19,7 @@ import { PrimengComponentType } from '../prime.type';
       [required]="to.required || false"
       [format]="to.format || 'hex'"
       [inline]="to.inline || false"
+      (onChange)="to.onChange && to.onChange(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
