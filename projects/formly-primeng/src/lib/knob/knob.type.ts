@@ -9,6 +9,7 @@ import { PrimengComponentType } from '../prime.type';
       [tabindex]="to.tabindex || null"
       [disabled]="to.disabled || false"
       [required]="to.required || false"
+      (onChange)="to.onChange && to.onChange(field, $event)"
       [formControl]="formControl"
     >
     </p-knob>

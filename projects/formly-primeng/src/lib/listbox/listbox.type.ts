@@ -8,6 +8,9 @@ import { PrimengComponentType } from '../prime.type';
     <p-listbox
       [options]="to.options | formlySelectOptions: field | async"
       [disabled]="to.disabled"
+      (onChange)="to.onChange && to.onChange(field, $event)"
+      (onDblClick)="to.onDblClick && to.onDblClick(field, $event)"
+      (onClick)="to.onClick && to.onClick(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

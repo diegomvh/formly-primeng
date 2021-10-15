@@ -28,6 +28,8 @@ import { PrimengComponentType } from '../prime.type';
       [type]="'text'"
       [disabled]="to.disabled || false"
       (change)="to.change && to.change(field, $event)"
+      (focus)="to.focus && to.focus(field, $event)"
+      (blur)="to.blur && to.blur(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     />

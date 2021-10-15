@@ -20,6 +20,8 @@ import { PrimengComponentType } from '../prime.type';
       [format]="to.format || 'hex'"
       [inline]="to.inline || false"
       (onChange)="to.onChange && to.onChange(field, $event)"
+      (onShow)="to.onShow && to.onShow(field, $event)"
+      (onHide)="to.onHide && to.onHide(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

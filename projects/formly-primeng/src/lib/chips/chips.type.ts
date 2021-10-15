@@ -16,6 +16,8 @@ import { PrimengComponentType } from '../prime.type';
       (onAdd)="to.onAdd && to.onAdd(field, $event)"
       (onRemove)="to.onRemove && to.onRemove(field, $event)"
       (onChipClick)="to.onChipClick && to.onChipClick(field, $event)"
+      (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-chips>

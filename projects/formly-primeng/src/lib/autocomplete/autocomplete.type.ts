@@ -26,7 +26,17 @@ import { PrimengComponentType } from '../prime.type';
       [forceSelection]="to.forceSelection || false"
       [autofocus]="to.autofocus || false"
       (completeMethod)="to.completeMethod && to.completeMethod(field, $event)"
+      (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
+      (onKeyUp)="to.onKeyUp && to.onKeyUp(field, $event)"
       (onSelect)="to.onSelect && to.onSelect(field, $event)"
+      (onUnselect)="to.onUnselect && to.onUnselect(field, $event)"
+      (onDropdownClick)="
+        to.onDropdownClick && to.onDropdownClick(field, $event)
+      "
+      (onClear)="to.onClear && to.onClear(field, $event)"
+      (onShow)="to.onShow && to.onShow(field, $event)"
+      (onHide)="to.onHide && to.onHide(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

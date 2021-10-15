@@ -1,10 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
-  OnInit,
-  AfterViewInit,
   ViewChild,
-  OnDestroy,
 } from '@angular/core';
 import { RadioButton } from 'primeng/radiobutton';
 import { PrimengComponentType } from '../prime.type';
@@ -15,9 +12,12 @@ import { PrimengComponentType } from '../prime.type';
     <p-radioButton
       *ngFor="let option of to.options | formlySelectOptions: field | async"
       [name]="field.name || id"
-      [formControl]="formControl"
       [label]="option.label"
       [value]="option.value"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
+      (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
     >
     </p-radioButton>
   `,

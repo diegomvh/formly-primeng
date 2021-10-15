@@ -24,6 +24,8 @@ import { PrimengComponentType } from '../prime.type';
       (onClick)="to.onClick && to.onClick(field, $event)"
       (onChange)="to.onChange && to.onChange(field, $event)"
       (onFilter)="to.onFilter && to.onFilter(field, $event)"
+      (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onPanelShow)="to.onPanelShow && to.onPanelShow(field, $event)"
       (onPanelHide)="to.onPanelHide && to.onPanelHide(field, $event)"
       [formControl]="formControl"

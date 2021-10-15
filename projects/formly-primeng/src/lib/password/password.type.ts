@@ -8,7 +8,10 @@ import { PrimengComponentType } from '../prime.type';
     <p-password
       [placeholder]="to.placeholder"
       [toggleMask]="to.toggleMask || false"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
+      (onFocus)="to.onFocus && to.onFocus(field, $event)"
       [formControl]="formControl"
+      [formlyAttributes]="field"
     >
     </p-password>
   `,

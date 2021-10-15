@@ -12,10 +12,21 @@ import { PrimengComponentType } from '../prime.type';
 @Component({
   selector: 'formly-primeng-editor',
   template: `
-    <p-editor [formControl]="formControl" [formlyAttributes]="field"></p-editor>
+    <p-editor
+      (onTextChange)="to.onTextChange && to.onTextChange(field, $event)"
+      (onSelectionChange)="
+        to.onSelectionChange && to.onSelectionChange(field, $event)
+      "
+      (onInit)="to.onInit && to.onInit(field, $event)"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+    ></p-editor>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyPrimengEditor extends PrimengComponentType {
-  @ViewChild(Editor, { static: true }) editor!: Editor;
+  @ViewChild(Editor) editor!: Editor;
+  getQuill() {
+    return this.editor.getQuill();
+  }
 }

@@ -23,33 +23,47 @@ import { PrimengTextAreaModule } from './textarea/textarea.module';
 import { PrimengSwitchModule } from './switch/switch.module';
 import { PrimengMaskModule } from './mask/mask.module';
 import { PrimengNumberModule } from './number/number.module';
+import { PrimengCascadeSelectModule } from './cascadeselect/cascadeselect.module';
+import { PrimengKnobModule } from './knob/knob.module';
+import { PrimengRatingModule } from './rating/rating.module';
 
 @NgModule({
   imports: [
-    PrimengInputModule,
-    PrimengTextAreaModule,
-    PrimengRadioButtonModule,
-    PrimengCheckboxModule,
-    PrimengChipsModule,
-    PrimengDropdownModule,
-    PrimengMultiSelectModule,
+    FormlyArrayModule,
     PrimengAutoCompleteModule,
     PrimengCalendarModule,
+    PrimengCascadeSelectModule,
+    PrimengCheckboxModule,
+    PrimengChipsModule,
     PrimengColorPickerModule,
-    PrimengEditorModule,
     PrimengCurrencyModule,
-    PrimengSliderModule,
-    PrimengPasswordModule,
-    PrimengListboxModule,
-    PrimengSwitchModule,
-    PrimengMaskModule,
-    PrimengNumberModule,
+    PrimengDropdownModule,
+    PrimengEditorModule,
+
     FormlyFormFieldModule,
     FormlyFormFieldGroupModule,
-    FormlyNullModule,
-    FormlyArrayModule,
-    FormlyObjectModule,
+
+    PrimengInputModule,
+    PrimengKnobModule,
+    PrimengListboxModule,
+    PrimengMaskModule,
+
     FormlyMultiSchemaModule,
+
+    PrimengMultiSelectModule,
+
+    FormlyNullModule,
+
+    PrimengNumberModule,
+
+    FormlyObjectModule,
+
+    PrimengPasswordModule,
+    PrimengRadioButtonModule,
+    PrimengRatingModule,
+    PrimengSliderModule,
+    PrimengSwitchModule,
+    PrimengTextAreaModule,
   ],
 })
 export class FormlyPrimeNGModule {}
