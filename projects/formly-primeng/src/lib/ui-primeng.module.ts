@@ -26,6 +26,7 @@ import { PrimengNumberModule } from './number/number.module';
 import { PrimengCascadeSelectModule } from './cascadeselect/cascadeselect.module';
 import { PrimengKnobModule } from './knob/knob.module';
 import { PrimengRatingModule } from './rating/rating.module';
+import { PrimengTreeSelectModule } from './treeselect/treeselect.module';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { PrimengRatingModule } from './rating/rating.module';
     PrimengColorPickerModule,
     PrimengCurrencyModule,
     PrimengDropdownModule,
+    PrimengTreeSelectModule,
     PrimengEditorModule,
 
     FormlyFormFieldModule,

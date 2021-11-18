@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
-import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
+import { FieldArrayType } from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-array-type',
   template: `
     <div class="grid">
-      <div class="col-12">
-        <h5 *ngIf="to.label">
+      <div class="col-12" *ngIf="to.label && to.hideLabel !== true">
+        <h5>
           {{ to.label }}
           <small *ngIf="to.description">({{ to.description }})</small>
         </h5>
       </div>
-      <div class="col-12" *ngFor="let subField of fields(); let i = index">
+      <div
+        [class]="to.className"
+        *ngFor="let subField of fields(); let i = index"
+      >
         <div class="grid">
-          <formly-field [field]="subField" class="col-9"></formly-field>
-          <div class="col-3">
+          <div class="col-11">
+            <formly-field [field]="subField"></formly-field>
+          </div>
+          <div class="col">
             <button
               pButton
               pRipple

@@ -32,8 +32,4 @@ export class FormlyPrimengCheckbox extends PrimengComponentType {
       hideLabel: true,
     },
   };
-
-  focus() {
-    this.checkbox.focus();
-  }
 }

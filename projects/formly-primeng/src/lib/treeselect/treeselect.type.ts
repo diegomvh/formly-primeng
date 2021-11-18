@@ -6,39 +6,34 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { MultiSelect } from 'primeng/multiselect';
+import { TreeSelect } from 'primeng/treeselect';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-primeng-multiSelect',
+  selector: 'formly-primeng-treeselect',
   template: `
-    <p-multiSelect
+    <p-treeSelect
+      appendTo="body"
       [placeholder]="to.placeholder"
       [options]="to.options | formlySelectOptions: field | async"
       [disabled]="to.disabled"
-      [defaultLabel]="to.defaultLabel"
-      [optionLabel]="to.optionLabel || 'label'"
-      [optionValue]="to.optionValue || 'value'"
-      [emptyFilterMessage]="to.emptyFilterMessage"
-      [emptyMessage]="to.emptyMessage"
-      [display]="to.display || null"
       (onClick)="to.onClick && to.onClick(field, $event)"
       (onChange)="to.onChange && to.onChange(field, $event)"
       (onFilter)="to.onFilter && to.onFilter(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
-      (onPanelShow)="to.onPanelShow && to.onPanelShow(field, $event)"
-      (onPanelHide)="to.onPanelHide && to.onPanelHide(field, $event)"
+      (onShow)="to.onShow && to.onShow(field, $event)"
+      (onHide)="to.onHide && to.onHide(field, $event)"
+      (onClear)="to.onClear && to.onClear(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      appendTo="body"
     >
-    </p-multiSelect>
+    </p-treeSelect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengMultiSelect extends PrimengComponentType {
-  @ViewChild(MultiSelect) multiselect!: MultiSelect;
+export class FormlyPrimengTreeSelect extends PrimengComponentType {
+  @ViewChild(TreeSelect) treeselect!: TreeSelect;
   defaultOptions = {
     templateOptions: {
       options: [],

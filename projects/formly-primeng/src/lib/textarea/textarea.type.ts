@@ -8,6 +8,8 @@ import { FieldType } from '@ngx-formly/core';
     [placeholder]="to.placeholder"
     [autoResize]="to.autoResize || false"
     [disabled]="to.disabled || false"
+    [rows]="to.rows || 5"
+    [cols]="to.cols || 20"
     (onResize)="to.onResize && to.onResize(field, $event)"
     [formControl]="formControl"
     [formlyAttributes]="field"

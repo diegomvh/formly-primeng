@@ -13,7 +13,7 @@ import { PrimengComponentType } from '../prime.type';
       [suffix]="to.suffix || null"
       [prefix]="to.prefix || null"
       [min]="to.min || null"
-      [max]="to.min || null"
+      [max]="to.max || null"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onInput)="to.onInput && to.onInput(field, $event)"

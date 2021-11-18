@@ -8,11 +8,12 @@ import { PrimengComponentType } from '../prime.type';
     <p-inputNumber
       [mode]="'decimal'"
       [style]="{ width: '100%' }"
-      [suffix]="to.suffix"
-      [prefix]="to.prefix"
+      [inputStyle]="{ width: '100%' }"
+      [suffix]="to.suffix || null"
+      [prefix]="to.prefix || null"
       [locale]="to.locale || 'en-US'"
-      [min]="to.min"
-      [max]="to.max"
+      [min]="to.min || null"
+      [max]="to.max || null"
       [useGrouping]="to.useGrouping || true"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
@@ -21,6 +22,13 @@ import { PrimengComponentType } from '../prime.type';
       [formlyAttributes]="field"
     ></p-inputNumber>
   `,
+  styles: [
+    `
+      :host ::ng-deep p-inputNumber {
+        width: 100% !important;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyPrimengNumber extends PrimengComponentType {
