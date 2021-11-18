@@ -2,9 +2,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  AfterViewInit,
-  OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { TreeSelect } from 'primeng/treeselect';
 import { PrimengComponentType } from '../prime.type';
