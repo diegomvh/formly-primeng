@@ -19,7 +19,7 @@ import { PrimengComponentType } from '../prime.type';
       [required]="to.required || false"
       [showEmptyMessage]="to.showEmptyMessage || false"
       [emptyMessage]="to.emptyMessage"
-      [suggestions]="to.suggestions"
+      [suggestions]="to.options | async"
       [multiple]="to.multiple || false"
       [dropdown]="to.dropdown || false"
       [field]="to.field"
@@ -48,7 +48,7 @@ export class FormlyPrimengAutoComplete extends PrimengComponentType {
   @ViewChild(AutoComplete) autoComplete!: AutoComplete;
   defaultOptions = {
     templateOptions: {
-      suggestions: [],
+      options: [],
     },
   };
 }

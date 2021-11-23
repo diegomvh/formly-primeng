@@ -6,7 +6,7 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
 
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 import { FormlyPrimengTreeSelect } from './treeselect.type';
-import { TreeSelectModule } from 'primeng/treeselect';
+import { TreeSelectModule } from './treeselect';
 
 @NgModule({
   declarations: [FormlyPrimengTreeSelect],

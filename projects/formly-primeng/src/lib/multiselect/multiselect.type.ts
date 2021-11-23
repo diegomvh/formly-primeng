@@ -2,9 +2,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  AfterViewInit,
-  OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { MultiSelect } from 'primeng/multiselect';
 import { PrimengComponentType } from '../prime.type';
