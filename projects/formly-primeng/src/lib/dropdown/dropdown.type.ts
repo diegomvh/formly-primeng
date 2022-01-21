@@ -15,6 +15,7 @@ import { PrimengComponentType } from '../prime.type';
     <p-dropdown
       appendTo="body"
       [placeholder]="to.placeholder"
+      [style]="{ width: '100%' }"
       [options]="to.options | formlySelectOptions: field | async"
       [disabled]="to.disabled"
       [showClear]="to.showClear || false"

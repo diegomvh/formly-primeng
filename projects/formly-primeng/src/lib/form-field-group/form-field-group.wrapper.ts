@@ -17,7 +17,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       </span>
       <p-button
         *ngFor="let button of to.prefix_buttons"
-        [disabled]="to.disabled"
+        [disabled]="to.disabled || button.disabled"
         (onClick)="buttonClick($event, button)"
         icon="{{ button.icon }}"
       ></p-button>
@@ -26,7 +26,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       </div>
       <p-button
         *ngFor="let button of to.suffix_buttons"
-        [disabled]="to.disabled"
+        [disabled]="to.disabled || button.disabled"
         (onClick)="buttonClick($event, button)"
         icon="{{ button.icon }}"
       ></p-button>

@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { TreeSelect } from './treeselect';
 import { PrimengComponentType } from '../prime.type';
 
@@ -21,11 +15,6 @@ import { PrimengComponentType } from '../prime.type';
       [propagateSelectionDown]="to.propagateSelectionDown ?? true"
       [propagateSelectionUp]="to.propagateSelectionUp ?? true"
       [disabled]="to.disabled"
-      (onClick)="to.onClick && to.onClick(field, $event)"
-      (onChange)="to.onChange && to.onChange(field, $event)"
-      (onFilter)="to.onFilter && to.onFilter(field, $event)"
-      (onFocus)="to.onFocus && to.onFocus(field, $event)"
-      (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onShow)="to.onShow && to.onShow(field, $event)"
       (onHide)="to.onHide && to.onHide(field, $event)"
       (onNodeSelect)="to.onNodeSelect && to.onNodeSelect(field, $event)"
