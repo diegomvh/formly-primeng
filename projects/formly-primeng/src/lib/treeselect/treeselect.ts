@@ -132,7 +132,7 @@ export const TREESELECT_VALUE_ACCESSOR: any = {
             (onNodeUnselect)="onUnselect($event)"
           ></p-tree>
           <div *ngIf="emptyOptions" class="p-treeselect-empty-message">
-            <ng-container *ngIf="!emptyTemplate">
+            <ng-container *ngIf="!emptyTemplate; else empty">
               {{ emptyMessageText }}
             </ng-container>
             <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
@@ -243,7 +243,7 @@ export class TreeSelect implements AfterContentInit {
 
   selfChange!: boolean;
 
-  value!: any;
+  value: any;
 
   expandedNodes: any[] = [];
 

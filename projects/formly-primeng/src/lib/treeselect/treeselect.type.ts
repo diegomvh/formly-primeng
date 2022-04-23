@@ -12,6 +12,7 @@ import { PrimengComponentType } from '../prime.type';
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [metaKeySelection]="to.metaKeySelection ?? true"
+      [emptyMessage]="to.emptyMessage || 'No results found'"
       [propagateSelectionDown]="to.propagateSelectionDown ?? true"
       [propagateSelectionUp]="to.propagateSelectionUp ?? true"
       [disabled]="to.disabled"
