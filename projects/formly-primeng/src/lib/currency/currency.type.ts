@@ -12,6 +12,8 @@ import { PrimengComponentType } from '../prime.type';
       [currencyDisplay]="to.currencyDisplay || 'symbol'"
       [suffix]="to.suffix || null"
       [prefix]="to.prefix || null"
+      [minFractionDigits]="to.minFractionDigits || null"
+      [maxFractionDigits]="to.maxFractionDigits || null"
       [min]="to.min || null"
       [max]="to.max || null"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"

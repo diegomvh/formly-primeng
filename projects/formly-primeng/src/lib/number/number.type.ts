@@ -12,6 +12,8 @@ import { PrimengComponentType } from '../prime.type';
       [suffix]="to.suffix || null"
       [prefix]="to.prefix || null"
       [locale]="to.locale || 'en-US'"
+      [minFractionDigits]="to.minFractionDigits || null"
+      [maxFractionDigits]="to.maxFractionDigits || null"
       [min]="to.min || null"
       [max]="to.max || null"
       [useGrouping]="to.useGrouping || true"

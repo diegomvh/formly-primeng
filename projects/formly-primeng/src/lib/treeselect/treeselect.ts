@@ -736,6 +736,7 @@ export class TreeSelect implements AfterContentInit {
 
   get label() {
     let value = this.value || [];
+    if (!Array.isArray(value)) value = [value];
     return value.length
       ? value.map((node: any) => node.label).join(', ')
       : this.selectionMode === 'single' && this.value
