@@ -6,10 +6,16 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-rating',
   template: `
     <p-rating
-      [stars]="to.stars || 5"
-      [cancel]="to.cancel"
-      [disabled]="to.disabled"
-      [readonly]="to.readonly"
+      [stars]="to.stars ?? 5"
+      [cancel]="to.cancel ?? true"
+      [disabled]="to.disabled ?? false"
+      [readonly]="to.readonly ?? false"
+      [iconOnClass]="to.iconOnClass ?? 'pi pi-star-fill'"
+      [iconOffClass]="to.iconOffClass ?? 'pi pi-star'"
+      [iconCancelClass]="to.iconCancelClass ?? 'pi pi-ban'"
+      [iconOnStyle]="to.iconOnStyle ?? null"
+      [iconOffStyle]="to.iconOffStyle ?? null"
+      [iconCancelStyle]="to.iconCancelStyle ?? null"
       (onRate)="to.onRate && to.onRate(field, $event)"
       (onCancel)="to.onCancel && to.onCancel(field, $event)"
       [formControl]="formControl"

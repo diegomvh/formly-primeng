@@ -6,10 +6,20 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-switch',
   template: `
     <p-inputSwitch
-      [tabindex]="to.tabindex || null"
-      [disabled]="to.disabled || false"
-      [required]="to.required || false"
+      [style]="to.style ?? null"
+      [styleClass]="to.styleClass ?? null"
+      [tabindex]="to.tabindex ?? null"
+      [inputId]="to.inputId ?? null"
+      [name]="to.name ?? null"
+      [ariaLabelledBy]="to.ariaLabelledBy ?? null"
+      [disabled]="to.disabled ?? false"
+      [readonly]="to.readonly ?? false"
+      [trueValue]="to.trueValue ?? null"
+      [falseValue]="to.falseValue ?? null"
+      [ariaLabel]="to.ariaLabel ?? null"
+      (onChange)="to.onChange && to.onChange(field, $event)"
       [formControl]="formControl"
+      [formlyAttributes]="field"
     >
     </p-inputSwitch>
   `,
