@@ -3,36 +3,28 @@ import { InputNumber } from 'primeng/inputnumber';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
-  selector: 'formly-primeng-number',
+  selector: 'formly-primeng-currency',
   template: `
     <p-inputNumber
-      [mode]="'decimal'"
-      [style]="{ width: '100%' }"
-      [inputStyle]="{ width: '100%' }"
+      [mode]="'currency'"
+      [currency]="to.currency || 'USD'"
+      [locale]="to.locale || 'en-US'"
+      [currencyDisplay]="to.currencyDisplay || 'symbol'"
       [suffix]="to.suffix || null"
       [prefix]="to.prefix || null"
-      [locale]="to.locale || 'en-US'"
       [minFractionDigits]="to.minFractionDigits || null"
       [maxFractionDigits]="to.maxFractionDigits || null"
       [min]="to.min || null"
       [max]="to.max || null"
-      [useGrouping]="to.useGrouping || true"
-      (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onInput)="to.onInput && to.onInput(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     ></p-inputNumber>
   `,
-  styles: [
-    `
-      :host ::ng-deep p-inputNumber {
-        width: 100% !important;
-      }
-    `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengNumber extends PrimengComponentType {
-  @ViewChild(InputNumber) number!: InputNumber;
+export class FormlyPrimengCurrency extends PrimengComponentType {
+  @ViewChild(InputNumber) input!: InputNumber;
 }

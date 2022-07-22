@@ -28,15 +28,6 @@ import { FormlyPrimengNumber } from './number.type';
           wrappers: ['form-field'],
         },
         { name: 'integer', extends: 'number' },
-        {
-          name: 'currency',
-          extends: 'number',
-          defaultOptions: {
-            templateOptions: {
-              mode: 'currency',
-            },
-          },
-        },
       ],
     }),
   ],

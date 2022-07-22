@@ -10,6 +10,7 @@ import { PrimengCalendarModule } from './calendar/calendar.module';
 import { PrimengCheckboxModule } from './checkbox/checkbox.module';
 import { PrimengChipsModule } from './chips/chips.module';
 import { PrimengColorPickerModule } from './colorpicker/colorpicker.module';
+import { PrimengCurrencyModule } from './currency/currency.module';
 import { PrimengDropdownModule } from './dropdown/dropdown.module';
 import { PrimengEditorModule } from './editor/editor.module';
 import { PrimengInputModule } from './input/input.module';
@@ -36,6 +37,7 @@ import { PrimengTreeSelectModule } from './treeselect/treeselect.module';
     PrimengCheckboxModule,
     PrimengChipsModule,
     PrimengColorPickerModule,
+    PrimengCurrencyModule,
     PrimengDropdownModule,
     PrimengTreeSelectModule,
     PrimengEditorModule,
