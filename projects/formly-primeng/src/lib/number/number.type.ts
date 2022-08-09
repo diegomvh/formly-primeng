@@ -16,7 +16,7 @@ import { PrimengComponentType } from '../prime.type';
       [maxFractionDigits]="to.maxFractionDigits || null"
       [min]="to.min || null"
       [max]="to.max || null"
-      [useGrouping]="to.useGrouping || true"
+      [useGrouping]="to.useGrouping ?? true"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
       (onInput)="to.onInput && to.onInput(field, $event)"

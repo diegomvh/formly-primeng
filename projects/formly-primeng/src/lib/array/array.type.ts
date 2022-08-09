@@ -11,17 +11,16 @@ import { FieldArrayType } from '@ngx-formly/core';
         </p>
       </div>
       <div
-        [class]="to.className"
+        [class]="subFieldClass()"
         *ngFor="let subField of fields(); let i = index"
       >
         <div class="grid">
-          <div class="col-11">
-            <formly-field [field]="subField"></formly-field>
-          </div>
-          <div class="col">
+          <formly-field class="col-11" [field]="subField"></formly-field>
+          <div class="col-1">
             <button
               pButton
               pRipple
+              *ngIf="i > (to.min ?? 0) - 1"
               icon="pi pi-minus-circle"
               class="p-button-rounded p-button-text p-button-danger"
               (click)="remove(i)"
@@ -70,5 +69,9 @@ export class FormlyFieldArray extends FieldArrayType {
   }
   fields() {
     return this.field.fieldGroup || [];
+  }
+
+  subFieldClass() {
+    return `col-${12 / (this.to.cols ?? 1)}`;
   }
 }
