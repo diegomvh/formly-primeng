@@ -6,10 +6,11 @@ import { FieldArrayType } from '@ngx-formly/core';
   template: `
     <div class="grid">
       <div class="col-12" *ngIf="to.label && to.hideLabel !== true">
-        <h5>
-          {{ to.label }}
+        <legend>
+          <strong>{{ to.label }}</strong>
+          &nbsp;
           <small *ngIf="to.description">({{ to.description }})</small>
-        </h5>
+        </legend>
       </div>
       <div
         [class]="subFieldClass()"
@@ -17,7 +18,10 @@ import { FieldArrayType } from '@ngx-formly/core';
       >
         <div class="grid">
           <formly-field class="col-11" [field]="subField"></formly-field>
-          <div class="col-1 flex align-content-end flex-wrap">
+          <div
+            class="col-1 flex align-content-end flex-wrap"
+            style="padding-right: 0; padding-left: 0"
+          >
             <button
               pButton
               pRipple
@@ -37,15 +41,15 @@ import { FieldArrayType } from '@ngx-formly/core';
           </div>
         </div>
       </div>
-      <button
-        pButton
-        pRipple
-        *ngIf="groupLength() === 0"
-        icon="pi pi-plus-circle"
-        class="p-button-rounded p-button-text p-button-success"
-        (click)="add()"
-      ></button>
       <div>
+        <button
+          pButton
+          pRipple
+          *ngIf="groupLength() === 0"
+          icon="pi pi-plus-circle"
+          class="p-button-rounded p-button-text p-button-success"
+          (click)="add()"
+        ></button>
         <small
           class="mr-auto"
           [ngStyle]="{ color: '#f44336' }"

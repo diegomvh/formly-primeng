@@ -6,10 +6,11 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <div class="grid">
       <div class="col-12" *ngIf="to.label && to.hideLabel !== true">
-        <h5>
-          {{ to.label }}
+        <legend>
+          <strong>{{ to.label }}</strong>
+          &nbsp;
           <small *ngIf="to.description">({{ to.description }})</small>
-        </h5>
+        </legend>
       </div>
       <formly-field
         *ngFor="let subField of fields()"

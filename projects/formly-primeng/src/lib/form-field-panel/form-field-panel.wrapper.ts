@@ -5,11 +5,19 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'formly-wrapper-primeng-form-field-fieldset',
   template: `
     <p-panel>
-      <ng-template pTemplate="header">Custom Legend Content</ng-template>
+      <ng-template pTemplate="header">
+        <label [for]="id" *ngIf="to.label && to.hideLabel !== true">
+          {{ to.label }}
+          <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
+        </label>
+      </ng-template>
+      <ng-container #fieldComponent></ng-container>
+      <ng-template pTemplate="footer">
+        <formly-validation-message [field]="field"> </formly-validation-message>
+      </ng-template>
       <ng-container #fieldComponent></ng-container>
     </p-panel>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyWrapperFormFieldPanel extends FieldWrapper {
-}
+export class FormlyWrapperFormFieldPanel extends FieldWrapper {}
