@@ -18,9 +18,9 @@ import { FormlyWrapperFormFieldPanel } from './form-field-panel.wrapper';
         {
           name: 'form-field-panel',
           component: FormlyWrapperFormFieldPanel,
-        }
-      ]
+        },
+      ],
     }),
   ],
 })
-export class FormlyFormFieldGroupModule {}
+export class FormlyFormFieldPanelModule {}

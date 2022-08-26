@@ -1,5 +1,7 @@
 import { FormlyArrayModule } from './array/array.module';
 import { FormlyFormFieldGroupModule } from './form-field-group/form-field-group.module';
+import { FormlyFormFieldPanelModule } from './form-field-panel/form-field-panel.module';
+import { FormlyFormFieldFieldsetModule } from './form-field-fieldset/form-field-fieldset.module';
 import { FormlyFormFieldModule } from './form-field/form-field.module';
 import { FormlyMultiSchemaModule } from './multischema/multischema.module';
 import { FormlyNullModule } from './null/null.module';
@@ -44,6 +46,8 @@ import { PrimengTreeSelectModule } from './treeselect/treeselect.module';
 
     FormlyFormFieldModule,
     FormlyFormFieldGroupModule,
+    FormlyFormFieldPanelModule,
+    FormlyFormFieldFieldsetModule,
 
     PrimengInputModule,
     PrimengKnobModule,

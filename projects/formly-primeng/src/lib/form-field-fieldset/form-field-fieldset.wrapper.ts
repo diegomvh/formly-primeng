@@ -5,16 +5,11 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'formly-wrapper-primeng-form-field-fieldset',
   template: `
     <p-fieldset>
-      <ng-template *ngIf="to.type !== 'hidden'" pTemplate="header">
-        <label [for]="id" *ngIf="to.label && to.hideLabel !== true">
-          {{ to.label }}
-          <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
-        </label>
+      <ng-template pTemplate="header">
+        <strong>{{ to.label }}</strong> &nbsp;
+        <small *ngIf="to.description">({{ to.description }})</small>
       </ng-template>
       <ng-container #fieldComponent></ng-container>
-      <ng-template *ngIf="showError" pTemplate="footer">
-        <formly-validation-message [field]="field"> </formly-validation-message>
-      </ng-template>
     </p-fieldset>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -18,9 +18,9 @@ import { FormlyWrapperFormFieldFieldset } from './form-field-fieldset.wrapper';
         {
           name: 'form-field-fieldset',
           component: FormlyWrapperFormFieldFieldset,
-        }
-      ]
+        },
+      ],
     }),
   ],
 })
-export class FormlyFormFieldGroupModule {}
+export class FormlyFormFieldFieldsetModule {}
