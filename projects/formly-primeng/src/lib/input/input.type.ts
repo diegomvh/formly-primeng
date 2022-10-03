@@ -26,6 +26,7 @@ import { PrimengComponentType } from '../prime.type';
       pInputText
       [style]="{ width: '100%' }"
       [type]="'text'"
+      [pTooltip]="to.tooltip"
       (change)="to.change && to.change(field, $event)"
       (focus)="to.focus && to.focus(field, $event)"
       (blur)="to.blur && to.blur(field, $event)"

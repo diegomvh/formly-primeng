@@ -18,7 +18,10 @@ import { FieldArrayType } from '@ngx-formly/core';
         style="padding-top: 0; padding-bottom: 0;"
       >
         <div class="grid">
-          <formly-field [class]="fieldClass()" [field]="subField"></formly-field>
+          <formly-field
+            [class]="fieldClass()"
+            [field]="subField"
+          ></formly-field>
           <div
             *ngIf="hasActions()"
             class="col-1 flex align-content-end flex-wrap"
@@ -69,8 +72,9 @@ export class FormlyFieldArray extends FieldArrayType {
     templateOptions: {
       min: 0,
       max: Infinity,
+      editable: true,
     },
-  }
+  };
 
   fields() {
     return this.field.fieldGroup || [];
@@ -80,23 +84,27 @@ export class FormlyFieldArray extends FieldArrayType {
     return `col-${12 / (this.to.cols ?? 1)}`;
   }
 
-  fieldClass() {
-    return this.to.min === this.to.max ? `col-12` : `col-11` ;
-  }
-
-  hasActions() {
-    return this.to.min !== this.to.max;
-  }
-
   groupLength() {
     return this.field.fieldGroup?.length || 0;
   }
 
+  fieldClass() {
+    return this.hasActions() ? `col-11` : `col-12`;
+  }
+
+  hasActions() {
+    return this.to.editable && this.to.min !== this.to.max;
+  }
+
   canRemove(index: number) {
-    return index > this.to!.min!;
+    return this.to.editable && this.groupLength() > this.to!.min!;
   }
 
   canAdd(index: number) {
-    return index < this.to!.max! && index === this.groupLength();
+    return (
+      this.to.editable &&
+      this.groupLength() < this.to!.max! &&
+      index === this.groupLength()
+    );
   }
 }

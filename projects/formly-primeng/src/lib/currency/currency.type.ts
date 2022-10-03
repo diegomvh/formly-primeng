@@ -7,6 +7,8 @@ import { PrimengComponentType } from '../prime.type';
   template: `
     <p-inputNumber
       [mode]="'currency'"
+      [style]="{ width: '100%' }"
+      [inputStyle]="{ width: '100%' }"
       [currency]="to.currency || 'USD'"
       [locale]="to.locale || 'en-US'"
       [currencyDisplay]="to.currencyDisplay || 'symbol'"
