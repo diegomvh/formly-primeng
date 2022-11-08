@@ -30,6 +30,7 @@ import { PrimengCascadeSelectModule } from './cascadeselect/cascadeselect.module
 import { PrimengKnobModule } from './knob/knob.module';
 import { PrimengRatingModule } from './rating/rating.module';
 import { PrimengTreeSelectModule } from './treeselect/treeselect.module';
+import { PrimengFileUploadModule } from './fileupload/fileupload.module';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { PrimengTreeSelectModule } from './treeselect/treeselect.module';
     PrimengDropdownModule,
     PrimengTreeSelectModule,
     PrimengEditorModule,
+    PrimengFileUploadModule,
 
     FormlyFormFieldModule,
     FormlyFormFieldGroupModule,
