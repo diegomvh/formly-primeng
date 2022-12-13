@@ -9,7 +9,11 @@ import { PrimengComponentType } from '../prime.type';
       appendTo="body"
       [placeholder]="to.placeholder"
       [style]="{ width: '100%' }"
-      [options]="to.group ? to.options : (to.options | formlySelectOptions: field | async)"
+      [options]="
+        to.group
+          ? to.options
+          : (to.options | formlySelectOptions: field | async)
+      "
       [disabled]="to.disabled"
       [editable]="to.editable ?? false"
       [showClear]="to.showClear ?? false"
