@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { AutoComplete } from 'primeng/autocomplete';
 import { FileUpload } from 'primeng/fileupload';
 import { PrimengComponentType } from '../prime.type';
 
@@ -18,7 +17,6 @@ import { PrimengComponentType } from '../prime.type';
       [maxFileSize]="to.maxFileSize ?? null"
       [fileLimit]="to.fileLimit ?? null"
       [tabindex]="to.tabindex ?? null"
-      [required]="to.required ?? false"
       [withCredentials]="to.withCredentials ?? false" 
       [mode]="to.mode ?? 'advanced'" 
       (onBeforeUpload)="to.onBeforeUpload && to.onBeforeUpload(field, $event)"
@@ -29,9 +27,7 @@ import { PrimengComponentType } from '../prime.type';
       (onRemove)="to.onRemove && to.onRemove(field, $event)"
       (onSelect)="to.onSelect && to.onSelect(field, $event)"
       (onProgress)="to.onProgress && to.onProgress(field, $event)"
-      (uploadHandler)="to.uploadHandler && to.uploadHandler(field, $event)"
-      [formControl]="formControl"
-      [formlyAttributes]="field"
+      (uploadHandler)="uploadFiles(field, $event)"
     >
     </p-fileUpload>
   `,
@@ -39,9 +35,15 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengFileUpload extends PrimengComponentType {
   @ViewChild(FileUpload) fileUpload!: FileUpload;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
-    },
-  };
+
+  uploadFiles(field: any, event: {files: File[]}) {
+    if (this.to.uploadHandler !== undefined) {
+      this.to.uploadHandler(field, event);
+    }
+    this.formControl.patchValue([
+      ...(this.formControl.value || []),
+      ...event.files
+    ]);
+    this.fileUpload.clear();
+  }
 }
