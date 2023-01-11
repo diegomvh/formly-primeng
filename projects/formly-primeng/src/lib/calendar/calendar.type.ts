@@ -32,6 +32,7 @@ import { PrimengComponentType } from '../prime.type';
       [dateFormat]="to.dateFormat ?? 'mm/dd/yy'"
       [hourFormat]="to.hourFormat ?? 24"
       [showButtonBar]="to.showButtonBar || false"
+      [inline]="to.inline ?? false"
       (onSelect)="to.onSelect && to.onSelect(field, $event)"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
