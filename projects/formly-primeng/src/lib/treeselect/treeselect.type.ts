@@ -8,7 +8,7 @@ import { PrimengComponentType } from '../prime.type';
     <p-treeSelect
       appendTo="body"
       [placeholder]="to.placeholder"
-      [options]="to.options | async"
+      [options]="to.options | formlyTreeSelectOptions: field | async"
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [showClear]="to.showClear ?? false"

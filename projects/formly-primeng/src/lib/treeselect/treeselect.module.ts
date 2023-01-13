@@ -7,9 +7,13 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 import { FormlyPrimengTreeSelect } from './treeselect.type';
 import { TreeSelectModule } from 'primeng/treeselect';
+import { FormlyTreeSelectOptionsPipe } from './treeselect-options.pipe';
 
 @NgModule({
-  declarations: [FormlyPrimengTreeSelect],
+  declarations: [
+    FormlyPrimengTreeSelect,
+    FormlyTreeSelectOptionsPipe,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

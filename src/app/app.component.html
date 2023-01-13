@@ -1,0 +1,18 @@
+<div class="header">
+  <h4 class="mat-h2">Angular Formly PrimeNg</h4>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <formly-form class="p-fluid p-formgrid grid" 
+    [form]="form"
+    [model]="model"
+    [fields]="fields">
+  </formly-form>
+
+  <div>
+    <button pButton type="submit" label="Submit"></button>
+    <button pButton type="reset" label="Reset" class="ui-button-danger"></button>
+  </div>
+</form>
+
+<p>{{ model | json }}</p>
