@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { TreeSelect } from './treeselect';
+import { TreeSelect } from 'primeng/treeselect';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
@@ -11,6 +11,7 @@ import { PrimengComponentType } from '../prime.type';
       [options]="to.options | async"
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
+      [showClear]="to.showClear ?? false"
       [metaKeySelection]="to.metaKeySelection ?? true"
       [emptyMessage]="to.emptyMessage || 'No results found'"
       [propagateSelectionDown]="to.propagateSelectionDown ?? true"
