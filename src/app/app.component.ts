@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { of } from 'rxjs';
@@ -9,6 +9,7 @@ import { of } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  autoComplete$ = new EventEmitter<any>();
   form = new FormGroup({});
   model = {};
   fields: FormlyFieldConfig[] = [
@@ -47,16 +48,40 @@ export class AppComponent {
       },
     },
     {
+      key: 'autoComplete',
+      type: 'autoComplete',
+      className: 'col-2',
+      templateOptions: {
+        label: 'Auto Complete',
+        valueProp: 'data',
+        dropdown: true,
+        options: this.autoComplete$,
+        completeMethod: () => {
+          this.autoComplete$.emit([
+            {
+              label: 'Scarface',
+              icon: 'pi pi-video',
+              data: 'Scarface Movie',
+            },
+            {
+              label: 'Serpico',
+              icon: 'pi pi-file-video',
+              data: 'Serpico Movie',
+            },
+          ]);
+        },
+      }
+    },
+    {
       key: 'treeSelect',
       type: 'treeSelect',
       className: 'col-2',
-      parsers: [(value: any) => value.value],
       templateOptions: {
         label: 'Tree Select',
         placeholder: 'Select placeholder',
         required: true,
         valueProp: 'data',
-        options: [
+        options: of([
           {
             label: 'Documents',
             data: 'Documents Folder',
@@ -159,7 +184,7 @@ export class AppComponent {
               },
             ],
           },
-        ],
+        ]),
       },
     },
     {
@@ -201,5 +226,9 @@ export class AppComponent {
     if (this.form.valid) {
       alert(JSON.stringify(this.model, null, 2));
     }
+  }
+
+  setValue(): void {
+    this.model = {...this.model, treeSelect: "Scarface Movie"}
   }
 }

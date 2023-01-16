@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TreeSelect } from 'primeng/treeselect';
 import { PrimengComponentType } from '../prime.type';
 
@@ -8,7 +9,7 @@ import { PrimengComponentType } from '../prime.type';
     <p-treeSelect
       appendTo="body"
       [placeholder]="to.placeholder"
-      [options]="to.options | async"
+      [options]="to.options | formlyTreeSelectOptions: field | async"
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [showClear]="to.showClear ?? false"
@@ -23,7 +24,7 @@ import { PrimengComponentType } from '../prime.type';
       (onNodeUnselect)="to.onNodeUnselect && to.onNodeUnselect(field, $event)"
       (onNodeExpand)="to.onNodeExpand && to.onNodeExpand(field, $event)"
       (onNodeCollapse)="to.onNodeCollapse && to.onNodeCollapse(field, $event)"
-      [formControl]="formControl"
+      [formControl]="treeSelectControl"
       [formlyAttributes]="field"
       treeSelect
     >
@@ -31,11 +32,37 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengTreeSelect extends PrimengComponentType {
+export class FormlyPrimengTreeSelect extends PrimengComponentType implements OnInit {
+  treeSelectControl = new FormControl();
   @ViewChild(TreeSelect) treeSelect!: TreeSelect;
   defaultOptions = {
     templateOptions: {
       options: [],
     },
   };
+
+  ngOnInit(): void {
+    this.treeSelectControl.valueChanges.subscribe((node) => { 
+      if (node?.value !== this.formControl.value) {
+        this.formControl.setValue(node?.value);
+      }
+    });
+    this.formControl.valueChanges.subscribe((value) => { 
+      if (value !== this.treeSelectControl.value?.value) {
+        let node = this.findNode(value, this.treeSelect.options);
+        this.treeSelectControl.setValue(node);
+      }
+    });
+  }
+
+  findNode(value: any, options?: any[]): any {
+    if (!options || options.length === 0) return undefined;
+    let n = options.find(o => o.value === value);
+    if (n) return n;
+    for (let ch of options) {
+      let cn = this.findNode(value, ch.children);
+      if (cn) return cn;
+    }
+    return undefined;
+  }
 }
