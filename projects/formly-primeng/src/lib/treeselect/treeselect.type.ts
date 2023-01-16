@@ -8,7 +8,7 @@ import { PrimengComponentType } from '../prime.type';
     <p-treeSelect
       appendTo="body"
       [placeholder]="to.placeholder"
-      [options]="to.options | formlyTreeSelectOptions: field | async"
+      [options]="to.options | async"
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [showClear]="to.showClear ?? false"
@@ -32,7 +32,7 @@ import { PrimengComponentType } from '../prime.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyPrimengTreeSelect extends PrimengComponentType {
-  @ViewChild(TreeSelect) treeselect!: TreeSelect;
+  @ViewChild(TreeSelect) treeSelect!: TreeSelect;
   defaultOptions = {
     templateOptions: {
       options: [],

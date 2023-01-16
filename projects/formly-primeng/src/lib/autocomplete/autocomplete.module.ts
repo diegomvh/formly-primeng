@@ -6,9 +6,10 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFormFieldModule } from '../form-field/form-field.module';
 import { FormlyPrimengAutoComplete } from './autocomplete.type';
+import { FormlyAutoCompleteOptionsPipe } from './autocomplete-options.pipe';
 
 @NgModule({
-  declarations: [FormlyPrimengAutoComplete],
+  declarations: [FormlyPrimengAutoComplete, FormlyAutoCompleteOptionsPipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
