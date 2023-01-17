@@ -73,6 +73,8 @@ export class FormlyFieldArray extends FieldArrayType {
       min: 0,
       max: Infinity,
       editable: true,
+      add: true,
+      remove: true,
     },
   };
 
@@ -93,16 +95,23 @@ export class FormlyFieldArray extends FieldArrayType {
   }
 
   hasActions() {
-    return this.to.editable && this.to.min !== this.to.max;
+    return (
+      this.to.editable &&
+      (this.to.add || this.to.remove) &&
+      this.to.min !== this.to.max
+    );
   }
 
   canRemove(index: number) {
-    return this.to.editable && this.groupLength() > this.to!.min!;
+    return (
+      this.to.editable && this.to.remove && this.groupLength() > this.to!.min!
+    );
   }
 
   canAdd(index: number) {
     return (
       this.to.editable &&
+      this.to.add &&
       this.groupLength() < this.to!.max! &&
       index === this.groupLength()
     );

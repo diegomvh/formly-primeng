@@ -15,9 +15,11 @@ export class FormlyAutoCompleteOptionsPipe implements PipeTransform, OnDestroy {
       this.dispose();
     }
 
-    return (options as Observable<any>).pipe(
+    const to = field?.templateOptions || {};
+    const autoCompleteOptions$ = (options as Observable<any>).pipe(
       map((value) => this.toOptions(value, field || {}))
     );
+    return (to._autoCompleteOptions$ = autoCompleteOptions$);
   }
 
   ngOnDestroy(): void {
@@ -51,44 +53,28 @@ export class FormlyAutoCompleteOptionsPipe implements PipeTransform, OnDestroy {
 
   private toOption(item: any, to: any) {
     return {
+      item,
       label: this.getLabelProp(item, to),
       value: this.getValueProp(item, to),
-      disabled: this.getDisabledProp(item, to) || false,
     };
   }
 
   private getLabelProp(item: any, to: any): string {
+    if (typeof item !== 'object') return item.toString();
     if (typeof to.labelProp === 'function') {
       return to.labelProp(item);
-    }
-
-    if (this.shouldUseLegacyOption(item, to)) {
-      console.warn(
-        `NgxFormly: legacy select option '{key, value}' is deprecated since v5.5, use '{value, label}' instead.`
-      );
-      return item.value;
     }
 
     return item[to.labelProp || 'label'];
   }
 
   private getValueProp(item: any, to: any): string {
+    if (typeof item !== 'object') return item;
     if (typeof to.valueProp === 'function') {
       return to.valueProp(item);
     }
 
-    if (this.shouldUseLegacyOption(item, to)) {
-      return item.key;
-    }
-
     return item[to.valueProp || 'value'];
-  }
-
-  private getDisabledProp(item: any, to: any): string {
-    if (typeof to.disabledProp === 'function') {
-      return to.disabledProp(item);
-    }
-    return item[to.disabledProp || 'disabled'];
   }
 
   private getGroupProp(item: any, to: any): string {
@@ -97,17 +83,6 @@ export class FormlyAutoCompleteOptionsPipe implements PipeTransform, OnDestroy {
     }
 
     return item[to.groupProp || 'group'];
-  }
-
-  private shouldUseLegacyOption(item: any, to: any) {
-    return (
-      !to.valueProp &&
-      !to.labelProp &&
-      item != null &&
-      typeof item === 'object' &&
-      'key' in item &&
-      'value' in item
-    );
   }
 
   private dispose() {

@@ -1,6 +1,17 @@
-import { Component, ChangeDetectionStrategy, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewChild,
+  OnInit,
+  AfterViewInit,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterContentChecked,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TreeSelect } from 'primeng/treeselect';
+import { filter, Observable, tap } from 'rxjs';
 import { PrimengComponentType } from '../prime.type';
 
 @Component({
@@ -9,7 +20,7 @@ import { PrimengComponentType } from '../prime.type';
     <p-treeSelect
       appendTo="body"
       [placeholder]="to.placeholder"
-      [options]="to.options | formlyTreeSelectOptions: field | async"
+      [options]="to.options | formlyTreeSelectOptions : field | async"
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [showClear]="to.showClear ?? false"
@@ -32,7 +43,10 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengTreeSelect extends PrimengComponentType implements OnInit {
+export class FormlyPrimengTreeSelect
+  extends PrimengComponentType
+  implements OnInit, AfterViewInit
+{
   treeSelectControl = new FormControl();
   @ViewChild(TreeSelect) treeSelect!: TreeSelect;
   defaultOptions = {
@@ -42,22 +56,38 @@ export class FormlyPrimengTreeSelect extends PrimengComponentType implements OnI
   };
 
   ngOnInit(): void {
-    this.treeSelectControl.valueChanges.subscribe((node) => { 
+    this.treeSelectControl.valueChanges.subscribe((node) => {
       if (node?.value !== this.formControl.value) {
         this.formControl.setValue(node?.value);
       }
     });
-    this.formControl.valueChanges.subscribe((value) => { 
+    this.formControl.valueChanges.subscribe((value) => {
       if (value !== this.treeSelectControl.value?.value) {
         let node = this.findNode(value, this.treeSelect.options);
         this.treeSelectControl.setValue(node);
       }
     });
+    if (this.formControl.validator)
+      this.treeSelectControl.addValidators([this.formControl.validator]);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.to._treeOptions$ instanceof Observable) {
+      this.to._treeOptions$.subscribe(() => {
+        const value = this.formControl.value;
+        if (value && value !== this.treeSelectControl.value?.value) {
+          let node = this.findNode(value, this.treeSelect.options);
+          setTimeout(() => {
+            this.treeSelectControl.setValue(node);
+          });
+        }
+      });
+    }
   }
 
   findNode(value: any, options?: any[]): any {
     if (!options || options.length === 0) return undefined;
-    let n = options.find(o => o.value === value);
+    let n = options.find((o) => o.value === value);
     if (n) return n;
     for (let ch of options) {
       let cn = this.findNode(value, ch.children);

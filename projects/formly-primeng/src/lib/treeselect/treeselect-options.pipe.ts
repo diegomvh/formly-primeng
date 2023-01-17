@@ -15,9 +15,11 @@ export class FormlyTreeSelectOptionsPipe implements PipeTransform, OnDestroy {
       this.dispose();
     }
 
-    return (options as Observable<any>).pipe(
-      map(value => this.toOptions(value, field || {})),
+    const to = field?.templateOptions || {};
+    const treeOptions$ = (options as Observable<any>).pipe(
+      map((value) => this.toOptions(value, field || {}))
     );
+    return (to._treeOptions$ = treeOptions$);
   }
 
   ngOnDestroy(): void {
@@ -37,9 +39,9 @@ export class FormlyTreeSelectOptionsPipe implements PipeTransform, OnDestroy {
 
   private toOption(item: any, to: any) {
     return {
+      item,
       label: this.getLabelProp(item, to),
       value: this.getValueProp(item, to),
-      disabled: this.getDisabledProp(item, to) || false,
       expandedIcon: this.getExpandedIconProp(item, to),
       collapsedIcon: this.getCollapsedIconProp(item, to),
       children: this.getChildrenProp(item, to),
@@ -62,13 +64,6 @@ export class FormlyTreeSelectOptionsPipe implements PipeTransform, OnDestroy {
     return item[to.valueProp || 'value'];
   }
 
-  private getDisabledProp(item: any, to: any): string {
-    if (typeof to.disabledProp === 'function') {
-      return to.disabledProp(item);
-    }
-    return item[to.disabledProp || 'disabled'];
-  }
-
   private getChildrenProp(item: any, to: any): any[] {
     let children;
     if (typeof to.childrenProp === 'function') {
@@ -77,7 +72,7 @@ export class FormlyTreeSelectOptionsPipe implements PipeTransform, OnDestroy {
 
     children = item[to.childrenProp || 'children'];
     if (Array.isArray(children))
-      return children.map(ch => this.toOption(ch, to));
+      return children.map((ch) => this.toOption(ch, to));
     return [];
   }
 
@@ -112,16 +107,20 @@ export class FormlyTreeSelectOptionsPipe implements PipeTransform, OnDestroy {
   private observableOf(options: any, f?: FormlyFieldConfig) {
     this.dispose();
     if (f && f.options && f.options.fieldChanges) {
-      this._subscription = f.options.fieldChanges.pipe(
-        filter(({ property, type, field }) => {
-          return type === 'expressionChanges'
-            && property.indexOf('templateOptions.options') === 0
-            && field === f
-            && Array.isArray(field.templateOptions?.options)
-            && !!this._options;
-        }),
-        tap(() => this._options?.next(f.templateOptions?.options as any)),
-      ).subscribe();
+      this._subscription = f.options.fieldChanges
+        .pipe(
+          filter(({ property, type, field }) => {
+            return (
+              type === 'expressionChanges' &&
+              property.indexOf('templateOptions.options') === 0 &&
+              field === f &&
+              Array.isArray(field.templateOptions?.options) &&
+              !!this._options
+            );
+          }),
+          tap(() => this._options?.next(f.templateOptions?.options as any))
+        )
+        .subscribe();
     }
 
     this._options = new BehaviorSubject(options);
