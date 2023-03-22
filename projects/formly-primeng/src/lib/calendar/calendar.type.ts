@@ -34,6 +34,7 @@ import { PrimengComponentType } from '../prime.type';
       [showButtonBar]="to.showButtonBar || false"
       [inline]="to.inline ?? false"
       (onSelect)="to.onSelect && to.onSelect(field, $event)"
+      (onClear)="to.onClear && to.onClear(field, $event)"
       (onBlur)="to.onBlur && to.onBlur(field, $event)"
       (onFocus)="to.onFocus && to.onFocus(field, $event)"
       (onClose)="to.onClose && to.onClose(field, $event)"
