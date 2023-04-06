@@ -17,16 +17,14 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TreeSelectModule } from 'primeng/treeselect';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     FormlyPrimeNGModule,
-    FormlyModule.forRoot({}),
+    FormlyModule.forRoot(),
     InputTextModule,
     TooltipModule,
     KeyFilterModule,
@@ -34,9 +32,9 @@ import { TreeSelectModule } from 'primeng/treeselect';
     RadioButtonModule,
     DropdownModule,
     CheckboxModule,
-    TreeSelectModule
+    TreeSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
