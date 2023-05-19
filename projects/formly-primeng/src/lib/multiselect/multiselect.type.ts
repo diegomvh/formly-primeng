@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { MultiSelect } from 'primeng/multiselect';
 import { PrimengComponentType } from '../prime.type';
 
@@ -10,9 +6,15 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-multiSelect',
   template: `
     <p-multiSelect
+      [style]="{ width: '100%' }"
       [placeholder]="to.placeholder"
-      [options]="to.options | formlySelectOptions: field | async"
+      [options]="
+        to.group
+          ? to.options || []
+          : (to.options | formlySelectOptions : field | async) || []
+      "
       [disabled]="to.disabled"
+      [group]="to.group ?? false"
       [defaultLabel]="to.defaultLabel"
       [optionLabel]="to.optionLabel || 'label'"
       [optionValue]="to.optionValue || 'value'"
