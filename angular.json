@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "formly-primeng-workspace:build:production"
+              "buildTarget": "formly-primeng-workspace:build:production"
             },
             "development": {
-              "browserTarget": "formly-primeng-workspace:build:development"
+              "buildTarget": "formly-primeng-workspace:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "formly-primeng-workspace:build"
+            "buildTarget": "formly-primeng-workspace:build"
           }
         },
         "test": {
