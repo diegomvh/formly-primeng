@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { RadioButton } from 'primeng/radiobutton';
 import { PrimengComponentType } from '../prime.type';
 
@@ -10,7 +6,7 @@ import { PrimengComponentType } from '../prime.type';
   selector: 'formly-primeng-radioButton',
   template: `
     <p-radioButton
-      *ngFor="let option of to.options | formlySelectOptions: field | async"
+      *ngFor="let option of to.options | formlySelectOptions : field | async"
       [name]="field.name || id"
       [label]="option.label"
       [value]="option.value"

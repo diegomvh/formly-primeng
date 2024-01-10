@@ -28,7 +28,7 @@ export class FormlyAutoCompleteOptionsPipe implements PipeTransform, OnDestroy {
 
   private toOptions(options: any, field: FormlyFieldConfig) {
     const gOptions: any[] = [],
-      groups: { [key: string]: any[] } = {},
+      groups: { [name: string]: any[] } = {},
       to = field.templateOptions || {};
 
     to._flatOptions = true;

@@ -1,11 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  OnDestroy,
-  ViewChild,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { Checkbox } from 'primeng/checkbox';
 import { PrimengComponentType } from '../prime.type';
 
