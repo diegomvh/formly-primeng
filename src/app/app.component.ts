@@ -229,6 +229,6 @@ export class AppComponent {
   }
 
   setValue(): void {
-    this.model = {...this.model, treeSelect: "Scarface Movie"}
+    this.model = { ...this.model, treeSelect: "Scarface Movie" }
   }
 }

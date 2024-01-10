@@ -1,11 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  OnDestroy,
-  AfterViewInit,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { Editor } from 'primeng/editor';
 import { PrimengComponentType } from '../prime.type';
 

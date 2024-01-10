@@ -54,7 +54,7 @@ export class FormlyWrapperFormFieldGroup extends FieldWrapper {
   };
   buttonClick(event: any, button: any) {
     if (button.click) {
-      button.click(event);
+      button.click(this.field, event);
     }
   }
 }
