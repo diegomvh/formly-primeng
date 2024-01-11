@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { of } from 'rxjs';
@@ -70,7 +70,7 @@ export class AppComponent {
             },
           ]);
         },
-      }
+      },
     },
     {
       key: 'treeSelect',
@@ -229,6 +229,6 @@ export class AppComponent {
   }
 
   setValue(): void {
-    this.model = { ...this.model, treeSelect: "Scarface Movie" }
+    this.model = { ...this.model, treeSelect: 'Scarface Movie' };
   }
 }
