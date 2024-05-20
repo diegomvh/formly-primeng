@@ -24,6 +24,8 @@ import { PrimengComponentType } from '../prime.type';
       [display]="to.display || 'comma'"
       [selectionMode]="to.selectionMode || 'single'"
       [showClear]="to.showClear ?? false"
+      [filter]="to.filter ?? false"
+      [filterInputAutoFocus]="to.filterInputAutoFocus ?? false"
       [metaKeySelection]="to.metaKeySelection ?? true"
       [emptyMessage]="to.emptyMessage || 'No results found'"
       [propagateSelectionDown]="to.propagateSelectionDown ?? true"
@@ -45,8 +47,7 @@ import { PrimengComponentType } from '../prime.type';
 })
 export class FormlyPrimengTreeSelect
   extends PrimengComponentType
-  implements OnInit, AfterViewInit
-{
+  implements OnInit, AfterViewInit {
   treeSelectControl = new FormControl();
   @ViewChild(TreeSelect) treeSelect!: TreeSelect;
   defaultOptions = {
