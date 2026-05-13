@@ -1,21 +1,34 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { Knob } from 'primeng/knob';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { KnobModule } from 'primeng/knob';
+
+interface KnobProps extends FormlyFieldProps {
+}
+
+export interface FormlyKnobFieldConfig extends FormlyFieldConfig<KnobProps> {
+  type: 'knob' | Type<FormlyFieldKnob>;
+}
 
 @Component({
-  selector: 'formly-primeng-knob',
+  selector: 'formly-field-primeng-knob',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, KnobModule],
   template: `
     <p-knob
-      [tabindex]="to.tabindex || null"
-      [disabled]="to.disabled || false"
-      [required]="to.required || false"
-      (onChange)="to.onChange && to.onChange(field, $event)"
+      (onBlur)="props.blur && props.blur(field, $event)"
+      (onFocus)="props.focus && props.focus(field, $event)"
       [formControl]="formControl"
+      [formlyAttributes]="field"
     >
     </p-knob>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengKnob extends PrimengComponentType {
-  @ViewChild(Knob) knob!: Knob;
+export class FormlyFieldKnob extends FieldType<FieldTypeConfig<KnobProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<KnobProps>> = {
+    props: {
+    },
+  };
 }

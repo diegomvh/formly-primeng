@@ -1,32 +1,35 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { Editor } from 'primeng/editor';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditorModule } from 'primeng/editor';
+
+interface EditorProps extends FormlyFieldProps {
+}
+
+export interface FormlyInputEditorConfig extends FormlyFieldConfig<EditorProps> {
+  type: 'editor' | Type<FormlyFieldEditor>;
+}
 
 @Component({
-  selector: 'formly-primeng-editor',
+  selector: 'formly-field-primeng-editor',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, EditorModule],
   template: `
     <p-editor
-      [placeholder]="to.placeholder"
-      [style]="to.style ?? null"
-      [styleClass]="to.styleClass ?? null"
-      [readonly]="to.readonly ?? false"
-      [formats]="to.formats ?? null"
-      [modules]="to.modules ?? null"
-      [debug]="to.debug ?? null"
-      (onTextChange)="to.onTextChange && to.onTextChange(field, $event)"
-      (onSelectionChange)="
-        to.onSelectionChange && to.onSelectionChange(field, $event)
-      "
-      (onInit)="to.onInit && to.onInit(field, $event)"
+      [placeholder]="props.placeholder"
+      (onBlur)="props.blur && props.blur(field, $event)"
+      (onFocus)="props.focus && props.focus(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
-    ></p-editor>
+    >
+    </p-editor>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengEditor extends PrimengComponentType {
-  @ViewChild(Editor) editor!: Editor;
-  getQuill() {
-    return this.editor.getQuill();
-  }
+export class FormlyFieldEditor extends FieldType<FieldTypeConfig<EditorProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<EditorProps>> = {
+    props: {
+    },
+  };
 }

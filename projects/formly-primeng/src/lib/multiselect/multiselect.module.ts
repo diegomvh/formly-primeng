@@ -2,29 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { FormlySelectModule } from '@ngx-formly/core/select';
+import { SelectModule } from 'primeng/select';
+import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
 
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyPrimengMultiSelect } from './multiselect.type';
+import { FormlyFormFieldModule } from '../field';
+import { withFormlyFieldMultiSelect } from './multiselect.config';
 
 @NgModule({
-  declarations: [FormlyPrimengMultiSelect],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MultiSelectModule,
+    SelectModule,
+
     FormlyFormFieldModule,
-    FormlySelectModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'multiSelect',
-          component: FormlyPrimengMultiSelect,
-          wrappers: ['form-field'],
-        }
-      ],
-    }),
+    FormlyCoreSelectModule,
+    FormlyModule.forChild(withFormlyFieldMultiSelect()),
   ],
 })
-export class PrimengMultiSelectModule {}
+export class FormlyMultiSelectModule {}

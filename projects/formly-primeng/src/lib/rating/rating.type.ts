@@ -1,23 +1,24 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { Rating } from 'primeng/rating';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RatingModule } from 'primeng/rating';
+
+interface RatingProps extends FormlyFieldProps {
+}
+
+export interface FormlyRatingFieldConfig extends FormlyFieldConfig<RatingProps> {
+  type: 'rating' | Type<FormlyFieldRating>;
+}
 
 @Component({
-  selector: 'formly-primeng-rating',
+  selector: 'formly-field-primeng-rating',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, RatingModule],
   template: `
     <p-rating
-      [stars]="to.stars ?? 5"
-      [cancel]="to.cancel ?? true"
-      [disabled]="to.disabled ?? false"
-      [readonly]="to.readonly ?? false"
-      [iconOnClass]="to.iconOnClass ?? 'pi pi-star-fill'"
-      [iconOffClass]="to.iconOffClass ?? 'pi pi-star'"
-      [iconCancelClass]="to.iconCancelClass ?? 'pi pi-ban'"
-      [iconOnStyle]="to.iconOnStyle ?? null"
-      [iconOffStyle]="to.iconOffStyle ?? null"
-      [iconCancelStyle]="to.iconCancelStyle ?? null"
-      (onRate)="to.onRate && to.onRate(field, $event)"
-      (onCancel)="to.onCancel && to.onCancel(field, $event)"
+      (onBlur)="props.blur && props.blur(field, $event)"
+      (onFocus)="props.focus && props.focus(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -25,6 +26,9 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengRating extends PrimengComponentType {
-  @ViewChild(Rating) rating!: Rating;
+export class FormlyFieldRating extends FieldType<FieldTypeConfig<RatingProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<RatingProps>> = {
+    props: {
+    },
+  };
 }

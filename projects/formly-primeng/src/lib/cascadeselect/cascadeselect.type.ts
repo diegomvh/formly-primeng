@@ -1,33 +1,43 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { CascadeSelect } from 'primeng/cascadeselect';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldProps } from '../field';
+import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CascadeSelect, CascadeSelectModule } from 'primeng/cascadeselect';
+
+interface CascadeSelectProps extends FormlyFieldProps, FormlyFieldSelectProps {
+  appendTo?: CascadeSelect['appendTo'];
+  filter?: boolean;
+  filterBy?: string;
+}
+
+export interface FormlyCascadeSelectFieldConfig extends FormlyFieldConfig<CascadeSelectProps> {
+  type: 'cascadeselect' | Type<FormlyFieldCascadeSelect>;
+}
 
 @Component({
-  selector: 'formly-primeng-cascadeSelect',
+  selector: 'formly-field-cascadeselect',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, CascadeSelectModule],
   template: `
-    <p-cascadeSelect
-      appendTo="body"
-      [placeholder]="to.placeholder"
-      [options]="to.options | formlySelectOptions: field | async"
-      [disabled]="to.disabled"
-      (onChange)="to.onChange && to.onChange(field, $event)"
-      (onGroupChange)="to.onGroupChange && to.onGroupChange(field, $event)"
-      (onBeforeShow)="to.onBeforeShow && to.onBeforeShow(field, $event)"
-      (onBeforeHide)="to.onBeforeHide && to.onBeforeHide(field, $event)"
-      (onShow)="to.onShow && to.onShow(field, $event)"
-      (onHide)="to.onHide && to.onHide(field, $event)"
+    <p-cascadeselect
+      [placeholder]="props.placeholder"
+      [options]="$any(props.options | formlySelectOptions: field | async)"
       [formControl]="formControl"
       [formlyAttributes]="field"
+      [showClear]="!props.required"
+      [appendTo]="props.appendTo"
+      [optionLabel]="'label'"
+      [optionValue]="'value'"
+      (onChange)="props.change && props.change(field, $event)"
     >
-    </p-cascadeSelect>
+    </p-cascadeselect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengCascadeSelect extends PrimengComponentType {
-  @ViewChild(CascadeSelect) cascadeSelect!: CascadeSelect;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
+export class FormlyFieldCascadeSelect extends FieldType<FieldTypeConfig<CascadeSelectProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<CascadeSelectProps>> = {
+    props: {
     },
   };
 }

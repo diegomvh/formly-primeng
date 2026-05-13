@@ -1,99 +1,43 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  OnInit,
-  AfterViewInit,
-  AfterContentInit,
-  AfterViewChecked,
-  AfterContentChecked,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { TreeSelect } from 'primeng/treeselect';
-import { filter, Observable, tap } from 'rxjs';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldProps } from '../field';
+import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TreeSelect, TreeSelectModule } from 'primeng/treeselect';
+
+interface TreeSelectProps extends FormlyFieldProps, FormlyFieldSelectProps {
+  appendTo?: TreeSelect['appendTo'];
+  filter?: boolean;
+  filterBy?: string;
+}
+
+export interface FormlyTreeSelectFieldConfig extends FormlyFieldConfig<TreeSelectProps> {
+  type: 'treeselect' | Type<FormlyFieldTreeSelect>;
+}
 
 @Component({
-  selector: 'formly-primeng-treeselect',
+  selector: 'formly-field-treeselect',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, TreeSelectModule],
   template: `
-    <p-treeSelect
-      appendTo="body"
-      [placeholder]="to.placeholder"
-      [options]="to.options | formlyTreeSelectOptions : field | async"
-      [display]="to.display || 'comma'"
-      [selectionMode]="to.selectionMode || 'single'"
-      [showClear]="to.showClear ?? false"
-      [filter]="to.filter ?? false"
-      [filterInputAutoFocus]="to.filterInputAutoFocus ?? false"
-      [metaKeySelection]="to.metaKeySelection ?? true"
-      [emptyMessage]="to.emptyMessage || 'No results found'"
-      [propagateSelectionDown]="to.propagateSelectionDown ?? true"
-      [propagateSelectionUp]="to.propagateSelectionUp ?? true"
-      [disabled]="to.disabled"
-      (onShow)="to.onShow && to.onShow(field, $event)"
-      (onHide)="to.onHide && to.onHide(field, $event)"
-      (onNodeSelect)="to.onNodeSelect && to.onNodeSelect(field, $event)"
-      (onNodeUnselect)="to.onNodeUnselect && to.onNodeUnselect(field, $event)"
-      (onNodeExpand)="to.onNodeExpand && to.onNodeExpand(field, $event)"
-      (onNodeCollapse)="to.onNodeCollapse && to.onNodeCollapse(field, $event)"
-      [formControl]="treeSelectControl"
+    <p-treeselect
+      [placeholder]="props.placeholder"
+      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [formControl]="formControl"
       [formlyAttributes]="field"
-      treeSelect
+      [showClear]="!props.required"
+      [appendTo]="props.appendTo"
+      [filter]="props.filter"
+      [filterBy]="props.filterBy ?? 'label'"
+      (onChange)="props.change && props.change(field, $event)"
     >
-    </p-treeSelect>
+    </p-treeselect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengTreeSelect
-  extends PrimengComponentType
-  implements OnInit, AfterViewInit {
-  treeSelectControl = new FormControl();
-  @ViewChild(TreeSelect) treeSelect!: TreeSelect;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
+export class FormlyFieldTreeSelect extends FieldType<FieldTypeConfig<TreeSelectProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<TreeSelectProps>> = {
+    props: {
     },
   };
-
-  ngOnInit(): void {
-    this.treeSelectControl.valueChanges.subscribe((node) => {
-      if (node?.value !== this.formControl.value) {
-        this.formControl.setValue(node?.value);
-      }
-    });
-    this.formControl.valueChanges.subscribe((value) => {
-      if (value !== this.treeSelectControl.value?.value) {
-        let node = this.findNode(value, this.treeSelect.options);
-        this.treeSelectControl.setValue(node);
-      }
-    });
-    if (this.formControl.validator)
-      this.treeSelectControl.addValidators([this.formControl.validator]);
-  }
-
-  ngAfterViewInit(): void {
-    if (this.to._treeOptions$ instanceof Observable) {
-      this.to._treeOptions$.subscribe(() => {
-        const value = this.formControl.value;
-        if (value && value !== this.treeSelectControl.value?.value) {
-          let node = this.findNode(value, this.treeSelect.options);
-          setTimeout(() => {
-            this.treeSelectControl.setValue(node);
-          });
-        }
-      });
-    }
-  }
-
-  findNode(value: any, options?: any[]): any {
-    if (!options || options.length === 0) return undefined;
-    let n = options.find((o) => o.value === value);
-    if (n) return n;
-    for (let ch of options) {
-      let cn = this.findNode(value, ch.children);
-      if (cn) return cn;
-    }
-    return undefined;
-  }
 }

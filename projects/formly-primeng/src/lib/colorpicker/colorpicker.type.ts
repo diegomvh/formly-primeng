@@ -1,34 +1,32 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  OnDestroy,
-  ViewChild,
-  OnInit,
-} from '@angular/core';
-import { ColorPicker } from 'primeng/colorpicker';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldProps } from '../field';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'primeng/colorpicker';
+
+interface ColorPickerProps extends FormlyFieldProps {
+}
+
+export interface FormlyColorPickerFieldConfig extends FormlyFieldConfig<ColorPickerProps> {
+  type: 'colorpicker' | Type<FormlyFieldColorPicker>;
+}
 
 @Component({
-  selector: 'formly-primeng-colorPicker',
+  selector: 'formly-field-primeng-checkbox',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, ColorPickerModule],
   template: `
-    <p-colorPicker
-      [style]="{ display: 'block', width: '60px' }"
-      [tabindex]="to.tabindex || null"
-      [disabled]="to.disabled || false"
-      [required]="to.required || false"
-      [format]="to.format || 'hex'"
-      [inline]="to.inline || false"
-      (onChange)="to.onChange && to.onChange(field, $event)"
-      (onShow)="to.onShow && to.onShow(field, $event)"
-      (onHide)="to.onHide && to.onHide(field, $event)"
+    <p-colorpicker
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
-    </p-colorPicker>
+    </p-colorpicker>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengColorPicker extends PrimengComponentType {
-  @ViewChild(ColorPicker) picker!: ColorPicker;
+export class FormlyFieldColorPicker extends FieldType<FieldTypeConfig<ColorPickerProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<ColorPickerProps>> = {
+    props: {
+    },
+  };
 }

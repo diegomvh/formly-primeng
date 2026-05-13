@@ -3,25 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
-
-import { FormlyFieldObject } from './object.type';
+import { FormlyFormFieldModule } from '../field';
+import { withFormlyFieldWrapperObject } from './object.config';
 
 @NgModule({
-  declarations: [FormlyFieldObject],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     InputTextModule,
     FormlyFormFieldModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'object',
-          component: FormlyFieldObject,
-        },
-      ]
-    }),
+    FormlyModule.forChild(withFormlyFieldWrapperObject())
   ]
 })
-export class FormlyObjectModule {}
+export class FormlyFieldObjectModule {}

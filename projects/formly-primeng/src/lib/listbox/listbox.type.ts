@@ -1,28 +1,41 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { Dropdown } from 'primeng/dropdown';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldProps } from '../field';
+import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ListboxModule } from 'primeng/listbox';
+
+interface ListboxProps extends FormlyFieldProps, FormlyFieldSelectProps {
+  filter?: boolean;
+  filterBy?: string;
+}
+
+export interface FormlySelectFieldConfig extends FormlyFieldConfig<ListboxProps> {
+  type: 'listbox' | Type<FormlyFieldListbox>;
+}
 
 @Component({
-  selector: 'formly-primeng-listbox',
+  selector: 'formly-field-listbox',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, ListboxModule],
   template: `
     <p-listbox
-      [options]="to.options | formlySelectOptions: field | async"
-      [disabled]="to.disabled"
-      (onChange)="to.onChange && to.onChange(field, $event)"
-      (onDblClick)="to.onDblClick && to.onDblClick(field, $event)"
-      (onClick)="to.onClick && to.onClick(field, $event)"
+      [options]="$any(props.options | formlySelectOptions: field | async)"
       [formControl]="formControl"
       [formlyAttributes]="field"
+      [filter]="props.filter"
+      [filterBy]="props.filterBy ?? 'label'"
+      [optionLabel]="'label'"
+      [optionValue]="'value'"
+      (onChange)="props.change && props.change(field, $event)"
     >
     </p-listbox>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengListbox extends PrimengComponentType {
-  @ViewChild(Dropdown) dropdown!: Dropdown;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
+export class FormlyFieldListbox extends FieldType<FieldTypeConfig<ListboxProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<ListboxProps>> = {
+    props: {
     },
   };
 }

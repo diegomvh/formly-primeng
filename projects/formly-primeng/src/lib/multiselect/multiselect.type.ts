@@ -1,46 +1,45 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { MultiSelect } from 'primeng/multiselect';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldProps } from '../field';
+import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
+
+interface MultiSelectProps extends FormlyFieldProps, FormlyFieldSelectProps {
+  appendTo?: MultiSelect['appendTo'];
+  filter?: boolean;
+  filterBy?: string;
+}
+
+export interface FormlyMultiSelectFieldConfig extends FormlyFieldConfig<MultiSelectProps> {
+  type: 'multiselect' | Type<FormlyFieldMultiSelect>;
+}
 
 @Component({
-  selector: 'formly-primeng-multiSelect',
+  selector: 'formly-field-multiselect',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, MultiSelectModule],
   template: `
-    <p-multiSelect
-      [style]="{ width: '100%' }"
-      [placeholder]="to.placeholder"
-      [options]="
-        to.group
-          ? to.options || []
-          : (to.options | formlySelectOptions : field | async) || []
-      "
-      [disabled]="to.disabled"
-      [group]="to.group ?? false"
-      [defaultLabel]="to.defaultLabel"
-      [optionLabel]="to.optionLabel ?? 'label'"
-      [optionValue]="to.optionValue ?? 'value'"
-      [emptyFilterMessage]="to.emptyFilterMessage"
-      [emptyMessage]="to.emptyMessage"
-      [display]="to.display || null"
-      (onClick)="to.onClick && to.onClick(field, $event)"
-      (onChange)="to.onChange && to.onChange(field, $event)"
-      (onFilter)="to.onFilter && to.onFilter(field, $event)"
-      (onFocus)="to.onFocus && to.onFocus(field, $event)"
-      (onBlur)="to.onBlur && to.onBlur(field, $event)"
-      (onPanelShow)="to.onPanelShow && to.onPanelShow(field, $event)"
-      (onPanelHide)="to.onPanelHide && to.onPanelHide(field, $event)"
+    <p-multiselect
+      [placeholder]="props.placeholder"
+      [options]="$any(props.options | formlySelectOptions: field | async)"
       [formControl]="formControl"
       [formlyAttributes]="field"
-      appendTo="body"
+      [showClear]="!props.required"
+      [appendTo]="props.appendTo"
+      [filter]="props.filter"
+      [filterBy]="props.filterBy ?? 'label'"
+      [optionLabel]="'label'"
+      [optionValue]="'value'"
+      (onChange)="props.change && props.change(field, $event)"
     >
-    </p-multiSelect>
+    </p-multiselect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengMultiSelect extends PrimengComponentType {
-  @ViewChild(MultiSelect) multiselect!: MultiSelect;
-  defaultOptions = {
-    templateOptions: {
-      options: [],
+export class FormlyFieldMultiSelect extends FieldType<FieldTypeConfig<MultiSelectProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<MultiSelectProps>> = {
+    props: {
     },
   };
 }

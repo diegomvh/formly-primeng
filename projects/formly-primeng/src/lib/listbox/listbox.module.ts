@@ -2,29 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { ListboxModule } from 'primeng/listbox';
-import { FormlySelectModule } from '@ngx-formly/core/select';
+import { SelectModule } from 'primeng/select';
+import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
 
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyPrimengListbox } from './listbox.type';
+import { FormlyFormFieldModule } from '../field';
+import { withFormlyFieldListbox } from './listbox.config';
 
 @NgModule({
-  declarations: [FormlyPrimengListbox],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ListboxModule,
+    SelectModule,
+
     FormlyFormFieldModule,
-    FormlySelectModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'listbox',
-          component: FormlyPrimengListbox,
-          wrappers: ['form-field'],
-        },
-      ],
-    }),
+    FormlyCoreSelectModule,
+    FormlyModule.forChild(withFormlyFieldListbox()),
   ],
 })
-export class PrimengListboxModule {}
+export class FormlyListboxModule {}

@@ -1,15 +1,27 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { Password } from 'primeng/password';
-import { PrimengComponentType } from '../prime.type';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
+import { PasswordModule } from 'primeng/password';
+import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+interface PasswordProps extends FormlyFieldProps {
+  toggleMask?: boolean;
+}
+
+export interface FormlyInputTextFieldConfig extends FormlyFieldConfig<PasswordProps> {
+  type: 'password' | Type<FormlyFieldPassword>;
+}
 
 @Component({
-  selector: 'formly-primeng-password',
+  selector: 'formly-field-primeng-password',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, PasswordModule],
   template: `
     <p-password
-      [placeholder]="to.placeholder"
-      [toggleMask]="to.toggleMask || false"
-      (onBlur)="to.onBlur && to.onBlur(field, $event)"
-      (onFocus)="to.onFocus && to.onFocus(field, $event)"
+      [placeholder]="props.placeholder"
+      [toggleMask]="props.toggleMask"
+      (onBlur)="props.blur && props.blur(field, $event)"
+      (onFocus)="props.focus && props.focus(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -17,6 +29,10 @@ import { PrimengComponentType } from '../prime.type';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyPrimengPassword extends PrimengComponentType {
-  @ViewChild(Password) password!: Password;
+export class FormlyFieldPassword extends FieldType<FieldTypeConfig<PasswordProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<PasswordProps>> = {
+    props: {
+      toggleMask: false,
+    },
+  };
 }

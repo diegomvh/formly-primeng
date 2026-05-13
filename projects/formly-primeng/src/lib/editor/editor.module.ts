@@ -2,27 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditorModule } from 'primeng/editor';
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyPrimengEditor } from './editor.type';
 
+import { PasswordModule } from 'primeng/password';
+
+import { FormlyFieldModule } from '../field/field.module';
+import { withFormlyFieldEditor } from './editor.config';
 
 @NgModule({
-  declarations: [FormlyPrimengEditor],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EditorModule,
-    FormlyFormFieldModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'editor',
-          component: FormlyPrimengEditor,
-          wrappers: ['form-field'],
-        },
-      ],
-    }),
+    PasswordModule,
+
+    FormlyFieldModule,
+    FormlyModule.forChild(withFormlyFieldEditor()),
   ],
 })
-export class PrimengEditorModule {}
+export class FormlyEditorModule {}

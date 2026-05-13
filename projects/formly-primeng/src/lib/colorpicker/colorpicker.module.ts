@@ -2,26 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ColorPickerModule } from 'primeng/colorpicker';
-import { FormlyFormFieldModule } from '../form-field/form-field.module';
-import { FormlyPrimengColorPicker } from './colorpicker.type';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormlyFormFieldModule } from '../field';
+
+import { withFormlyFieldColorPicker } from './colorpicker.config';
 
 @NgModule({
-  declarations: [FormlyPrimengColorPicker],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ColorPickerModule,
+    CheckboxModule,
     FormlyFormFieldModule,
-    FormlyModule.forChild({
-      types: [
-        {
-          name: 'colorPicker',
-          component: FormlyPrimengColorPicker,
-          wrappers: ['form-field'],
-        },
-      ],
-    }),
+    FormlyModule.forChild(withFormlyFieldColorPicker()),
   ],
 })
-export class PrimengColorPickerModule {}
+export class FormlyColorPickerModule {}
