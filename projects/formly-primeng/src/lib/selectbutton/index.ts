@@ -1,4 +1,4 @@
-export { withFormlyFieldSelectButton } from './selectbutton.config';
-export { FormlySelectButtonModule } from './selectbutton.module';
-export { FormlyFieldSelectButton } from './selectbutton.type';
-export type { FormlySelectButtonFieldConfig } from './selectbutton.type';
+export { withFormlyPrimengSelectbutton } from './selectbutton.config';
+export { FormlyPrimengSelectbuttonModule } from './selectbutton.module';
+export { FormlyPrimengSelectbutton } from './selectbutton.type';
+export type { FormlyPrimengSelectbuttonConfig } from './selectbutton.type';

@@ -10,7 +10,7 @@ export interface FormlyObjectProps extends CoreFormlyFieldProps {
 }
 
 @Component({
-  selector: 'formly-wrapper-primeng-object',
+  selector: 'formly-primengwrapper-primeng-object',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule],
   template: `
     @if (props.label && !props.hideLabel) {

@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldMultiSelect } from './multiselect.type';
+import { FormlyPrimengMultiselect } from './multiselect.type';
 
-export function withFormlyFieldMultiSelect(): ConfigOption {
+export function withFormlyPrimengMultiselect(): ConfigOption {
   return {
     types: [
       {
         name: 'multiselect',
-        component: FormlyFieldMultiSelect,
+        component: FormlyPrimengMultiselect,
         wrappers: ['field'],
       }
     ],

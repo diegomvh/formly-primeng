@@ -1,4 +1,4 @@
-export { withFormlyFieldPassword } from './password.config';
-export { FormlyPasswordModule } from './password.module';
-export { FormlyFieldPassword } from './password.type';
-export type { FormlyInputTextFieldConfig } from './password.type';
+export { withFormlyPrimengPassword } from './password.config';
+export { FormlyPrimengPasswordModule } from './password.module';
+export { FormlyPrimengPassword } from './password.type';
+export type { FormlyPrimengPasswordConfig } from './password.type';

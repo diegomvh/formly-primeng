@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { withFormlyFieldWrapperArray } from './array.config';
-import { FormlyFormFieldModule } from '../field';
+import { withFormlyPrimengArray } from './array.config';
+import { FormlyPrimengFieldModule } from '../field';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormlyFormFieldModule,
-    FormlyModule.forChild(withFormlyFieldWrapperArray()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengArray()),
   ],
 })
-export class FormlyFieldArrayModule {}
+export class FormlyPrimengArrayModule {}

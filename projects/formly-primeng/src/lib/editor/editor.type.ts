@@ -1,25 +1,25 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FormlyFieldProps } from '../field';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface EditorProps extends FormlyFieldProps {
-}
+export interface FormlyPrimengEditorProps extends FormlyPrimengFieldProps, FormlyPrimengFieldEventProps<FormlyPrimengEditorProps> {}
 
-export interface FormlyInputEditorConfig extends FormlyFieldConfig<EditorProps> {
-  type: 'editor' | Type<FormlyFieldEditor>;
+export interface FormlyPrimengEditorConfig extends FieldTypeConfig<FormlyPrimengEditorProps> {
+  type: 'editor' | Type<FormlyPrimengEditor>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-editor',
+  selector: 'formly-primeng-editor',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, EditorModule],
   template: `
     <p-editor
       [placeholder]="props.placeholder"
-      (onBlur)="props.blur && props.blur(field, $event)"
-      (onFocus)="props.focus && props.focus(field, $event)"
+      (onBlur)="props.onBlur && props.onBlur(field, $event)"
+      (onFocus)="props.onFocus && props.onFocus(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -27,8 +27,8 @@ export interface FormlyInputEditorConfig extends FormlyFieldConfig<EditorProps> 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldEditor extends FieldType<FieldTypeConfig<EditorProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<EditorProps>> = {
+export class FormlyPrimengEditor extends FieldType<FormlyPrimengEditorConfig> {
+  override defaultOptions?: Partial<FormlyPrimengEditorConfig> = {
     props: {
     },
   };

@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldWrapper } from './field.wrapper';
+import { FormlyPrimengFieldWrapper } from './field.wrapper';
 
-export function withFormlyField(): ConfigOption {
+export function withFormlyPrimengField(): ConfigOption {
   return {
     wrappers: [
       {
         name: 'field',
-        component: FormlyFieldWrapper,
+        component: FormlyPrimengFieldWrapper,
       },
     ],
   };

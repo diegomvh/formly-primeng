@@ -1,18 +1,18 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputMaskModule } from 'primeng/inputmask';
 
-interface InputMaskProps extends FormlyFieldProps {}
+export interface FormlyPrimengInputmaskProps extends FormlyPrimengFieldProps {}
 
-export interface FormlyInputMaskFieldConfig extends FormlyFieldConfig<InputMaskProps> {
-  type: 'inputmask' | Type<FormlyFieldInputMask>;
+export interface FormlyPrimengInputmaskConfig extends FieldTypeConfig<FormlyPrimengInputmaskProps> {
+  type: 'inputmask' | Type<FormlyPrimengInputmask>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-inputmask',
+  selector: 'formly-primeng-inputmask',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, InputMaskModule],
   template: `
     <p-inputmask
@@ -23,4 +23,4 @@ export interface FormlyInputMaskFieldConfig extends FormlyFieldConfig<InputMaskP
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInputMask extends FieldType<FieldTypeConfig<InputMaskProps>> {}
+export class FormlyPrimengInputmask extends FieldType<FormlyPrimengInputmaskConfig> {}

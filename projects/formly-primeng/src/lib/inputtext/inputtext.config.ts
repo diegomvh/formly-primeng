@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldInputText } from './inputtext.type';
+import { FormlyPrimengInputtext } from './inputtext.type';
 
-export function withFormlyFieldInputText(): ConfigOption {
+export function withFormlyPrimengInputtext(): ConfigOption {
   return {
     types: [
       {
         name: 'input',
-        component: FormlyFieldInputText,
+        component: FormlyPrimengInputtext,
         wrappers: ['field'],
       },
       { name: 'inputtext', extends: 'input' },

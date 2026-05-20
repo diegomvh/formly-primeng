@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PasswordModule } from 'primeng/password';
 
-import { FormlyFieldModule } from '../field/field.module';
-import { withFormlyFieldRating } from './rating.config';
+import { FormlyPrimengFieldModule } from '../field/field.module';
+import { withFormlyPrimengRating } from './rating.config';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { withFormlyFieldRating } from './rating.config';
     ReactiveFormsModule,
     PasswordModule,
 
-    FormlyFieldModule,
-    FormlyModule.forChild(withFormlyFieldRating()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengRating()),
   ],
 })
-export class FormlyRatingModule {}
+export class FormlyPrimengRatingModule {}

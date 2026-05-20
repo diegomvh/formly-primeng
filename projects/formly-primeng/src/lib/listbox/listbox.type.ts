@@ -1,22 +1,22 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 
-interface ListboxProps extends FormlyFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengListboxProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
   filter?: boolean;
   filterBy?: string;
 }
 
-export interface FormlySelectFieldConfig extends FormlyFieldConfig<ListboxProps> {
-  type: 'listbox' | Type<FormlyFieldListbox>;
+export interface FormlyPrimengListboxConfig extends FieldTypeConfig<FormlyPrimengListboxProps> {
+  type: 'listbox' | Type<FormlyPrimengListbox>;
 }
 
 @Component({
-  selector: 'formly-field-listbox',
+  selector: 'formly-primeng-listbox',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, ListboxModule],
   template: `
     <p-listbox
@@ -33,8 +33,8 @@ export interface FormlySelectFieldConfig extends FormlyFieldConfig<ListboxProps>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldListbox extends FieldType<FieldTypeConfig<ListboxProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<ListboxProps>> = {
+export class FormlyPrimengListbox extends FieldType<FormlyPrimengListboxConfig> {
+  override defaultOptions?: Partial<FormlyPrimengListboxConfig> = {
     props: {
     },
   };

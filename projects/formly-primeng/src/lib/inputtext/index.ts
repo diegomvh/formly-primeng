@@ -1,4 +1,4 @@
-export { withFormlyFieldInputText } from './inputtext.config';
-export { FormlyInputTextModule } from './inputtext.module';
-export { FormlyFieldInputText } from './inputtext.type';
-export type { FormlyInputTextFieldConfig } from './inputtext.type';
+export { withFormlyPrimengInputtext } from './inputtext.config';
+export { FormlyPrimengInputtextModule } from './inputtext.module';
+export { FormlyPrimengInputtext } from './inputtext.type';
+export type { FormlyPrimengInputtextConfig } from './inputtext.type';

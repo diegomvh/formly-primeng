@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldToggleButton } from './togglebutton.type';
+import { FormlyPrimengTogglebutton } from './togglebutton.type';
 
-export function withFormlyFieldToggleButton(): ConfigOption {
+export function withFormlyPrimengTogglebutton(): ConfigOption {
   return {
       types: [
         {
           name: 'togglebutton',
-          component: FormlyFieldToggleButton,
+          component: FormlyPrimengTogglebutton,
           wrappers: ['field'],
         },
       ],

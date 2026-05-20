@@ -1,27 +1,35 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaModule } from 'primeng/textarea';
 
-interface TextAreaProps extends FormlyFieldProps {
+interface FormlyPrimengTextareaProps extends FormlyPrimengFieldProps {
   autoResize?: boolean;
   fluid?: boolean;
   rows?: number;
   cols?: number;
 }
 
-export interface FormlyTextAreaFieldConfig extends FormlyFieldConfig<TextAreaProps> {
-  type: 'textarea' | Type<FormlyFieldTextArea>;
+export interface FormlyPrimengTextareaConfig extends FieldTypeConfig<FormlyPrimengTextareaProps> {
+  type: 'textarea' | Type<FormlyPrimengTextarea>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-textarea',
+  selector: 'formly-primeng-textarea',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, TextareaModule],
   template: ` <textarea 
     [id]="id"
     pInputTextarea
+    (focus)="props.focus && props.focus(field, $event)"
+    (blur)="props.blur && props.blur(field, $event)"
+    (keyup)="props.keyup && props.keyup(field, $event)"
+    (keydown)="props.keydown && props.keydown(field, $event)"
+    (click)="props.click && props.click(field, $event)"
+    (change)="props.change && props.change(field, $event)"
+    (keypress)="props.keypress && props.keypress(field, $event)"
+    (wheel)="props.wheel && props.wheel(field, $event)"
     [autoResize]="props.autoResize"
     [rows]="props.rows"
     [fluid]="props.fluid"
@@ -31,8 +39,8 @@ export interface FormlyTextAreaFieldConfig extends FormlyFieldConfig<TextAreaPro
   ></textarea> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTextArea extends FieldType<FieldTypeConfig<TextAreaProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<TextAreaProps>> = {
+export class FormlyPrimengTextarea extends FieldType<FormlyPrimengTextareaConfig> {
+  override defaultOptions?: Partial<FormlyPrimengTextareaConfig> = {
     props: {},
   };
 }

@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormlyFormFieldModule } from '../field';
+import { FormlyPrimengFieldModule } from '../field';
 
-import { withFormlyFieldInputOtp } from './inputotp.config';
+import { withFormlyPrimengInputotp } from './inputotp.config';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     InputTextModule,
-    FormlyFormFieldModule,
-    FormlyModule.forChild(withFormlyFieldInputOtp()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengInputotp()),
   ],
 })
-export class FormlyInputOtpModule {}
+export class FormlyPrimengInputotpModule {}

@@ -1,19 +1,19 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FormlyFieldProps } from '../field';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { KnobModule } from 'primeng/knob';
 
-interface KnobProps extends FormlyFieldProps {
+export interface FormlyPrimengKnobProps extends FormlyPrimengFieldProps {
 }
 
-export interface FormlyKnobFieldConfig extends FormlyFieldConfig<KnobProps> {
-  type: 'knob' | Type<FormlyFieldKnob>;
+export interface FormlyPrimengKnobConfig extends FieldTypeConfig<FormlyPrimengKnobProps> {
+  type: 'knob' | Type<FormlyPrimengKnob>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-knob',
+  selector: 'formly-primeng-knob',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, KnobModule],
   template: `
     <p-knob
@@ -26,8 +26,8 @@ export interface FormlyKnobFieldConfig extends FormlyFieldConfig<KnobProps> {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldKnob extends FieldType<FieldTypeConfig<KnobProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<KnobProps>> = {
+export class FormlyPrimengKnob extends FieldType<FormlyPrimengKnobConfig> {
+  override defaultOptions?: Partial<FormlyPrimengKnobConfig> = {
     props: {
     },
   };

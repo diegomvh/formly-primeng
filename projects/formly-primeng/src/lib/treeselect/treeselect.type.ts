@@ -1,23 +1,23 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeSelect, TreeSelectModule } from 'primeng/treeselect';
 
-interface TreeSelectProps extends FormlyFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengTreeselectProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
   appendTo?: TreeSelect['appendTo'];
   filter?: boolean;
   filterBy?: string;
 }
 
-export interface FormlyTreeSelectFieldConfig extends FormlyFieldConfig<TreeSelectProps> {
-  type: 'treeselect' | Type<FormlyFieldTreeSelect>;
+export interface FormlyPrimengTreeselectConfig extends FieldTypeConfig<FormlyPrimengTreeselectProps> {
+  type: 'treeselect' | Type<FormlyFieldTreeselect>;
 }
 
 @Component({
-  selector: 'formly-field-treeselect',
+  selector: 'formly-primeng-treeselect',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, TreeSelectModule],
   template: `
     <p-treeselect
@@ -35,8 +35,8 @@ export interface FormlyTreeSelectFieldConfig extends FormlyFieldConfig<TreeSelec
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTreeSelect extends FieldType<FieldTypeConfig<TreeSelectProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<TreeSelectProps>> = {
+export class FormlyFieldTreeselect extends FieldType<FormlyPrimengTreeselectConfig> {
+  override defaultOptions?: Partial<FormlyPrimengTreeselectConfig> = {
     props: {
     },
   };

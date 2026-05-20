@@ -1,24 +1,24 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from 'primeng/rating';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface RatingProps extends FormlyFieldProps {
-}
+export interface FormlyPrimengRatingProps extends FormlyPrimengFieldProps, FormlyPrimengFieldEventProps<FormlyPrimengRatingProps> { }
 
-export interface FormlyRatingFieldConfig extends FormlyFieldConfig<RatingProps> {
-  type: 'rating' | Type<FormlyFieldRating>;
+export interface FormlyPrimengRatingConfig extends FieldTypeConfig<FormlyPrimengRatingProps> {
+  type: 'rating' | Type<FormlyPrimengRating>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-rating',
+  selector: 'formly-primeng-rating',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, RatingModule],
   template: `
     <p-rating
-      (onBlur)="props.blur && props.blur(field, $event)"
-      (onFocus)="props.focus && props.focus(field, $event)"
+      (onBlur)="props.onBlur && props.onBlur(field, $event)"
+      (onFocus)="props.onFocus && props.onFocus(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -26,8 +26,8 @@ export interface FormlyRatingFieldConfig extends FormlyFieldConfig<RatingProps> 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldRating extends FieldType<FieldTypeConfig<RatingProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<RatingProps>> = {
+export class FormlyPrimengRating extends FieldType<FormlyPrimengRatingConfig> {
+  override defaultOptions?: Partial<FormlyPrimengRatingConfig> = {
     props: {
     },
   };

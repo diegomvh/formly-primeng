@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldTreeSelect } from './treeselect.type';
+import { FormlyFieldTreeselect } from './treeselect.type';
 
-export function withFormlyFieldTreeSelect(): ConfigOption {
+export function withFormlyPrimengTreeselect(): ConfigOption {
   return {
     types: [
       {
         name: 'treeselect',
-        component: FormlyFieldTreeSelect,
+        component: FormlyFieldTreeselect,
         wrappers: ['field'],
       }
     ],

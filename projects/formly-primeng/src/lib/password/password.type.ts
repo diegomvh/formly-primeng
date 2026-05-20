@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { PasswordModule } from 'primeng/password';
-import { FormlyFieldProps } from '../field';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-interface PasswordProps extends FormlyFieldProps {
+interface FormlyPrimengPasswordProps extends FormlyPrimengFieldProps {
   toggleMask?: boolean;
 }
 
-export interface FormlyInputTextFieldConfig extends FormlyFieldConfig<PasswordProps> {
-  type: 'password' | Type<FormlyFieldPassword>;
+export interface FormlyPrimengPasswordConfig extends FieldTypeConfig<FormlyPrimengPasswordProps> {
+  type: 'password' | Type<FormlyPrimengPassword>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-password',
+  selector: 'formly-primeng-password',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, PasswordModule],
   template: `
     <p-password
@@ -29,8 +29,8 @@ export interface FormlyInputTextFieldConfig extends FormlyFieldConfig<PasswordPr
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldPassword extends FieldType<FieldTypeConfig<PasswordProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<PasswordProps>> = {
+export class FormlyPrimengPassword extends FieldType<FormlyPrimengPasswordConfig> {
+  override defaultOptions?: Partial<FormlyPrimengPasswordConfig> = {
     props: {
       toggleMask: false,
     },

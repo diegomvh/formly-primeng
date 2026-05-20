@@ -1,4 +1,4 @@
-export { withFormlyFieldRadioButton as withFormlyFieldRadio } from './radiobutton.config';
-export { FormlyRadioButtonModule as FormlyRadioModule } from './radiobutton.module';
-export { FormlyFieldRadioButton as FormlyFieldRadio } from './radiobutton.type';
-export type { FormlyRadioButtonFieldConfig as FormlyRadioFieldConfig } from './radiobutton.type';
+export { withFormlyPrimengRadioButton } from './radiobutton.config';
+export { FormlyPrimengRadioButtonModule } from './radiobutton.module';
+export { FormlyPrimengRadioButton } from './radiobutton.type';
+export type { FormlyPrimengRadioButtonConfig } from './radiobutton.type';

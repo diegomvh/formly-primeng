@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldSelectButton } from './selectbutton.type';
+import { FormlyPrimengSelectbutton } from './selectbutton.type';
 
-export function withFormlyFieldSelectButton(): ConfigOption {
+export function withFormlyPrimengSelectbutton(): ConfigOption {
   return {
     types: [
       {
         name: 'selectbutton',
-        component: FormlyFieldSelectButton,
+        component: FormlyPrimengSelectbutton,
         wrappers: ['field'],
       }
     ],

@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PasswordModule } from 'primeng/password';
 
-import { FormlyFieldModule } from '../field/field.module';
-import { withFormlyFieldEditor } from './editor.config';
+import { FormlyPrimengFieldModule } from '../field/field.module';
+import { withFormlyPrimengEditor } from './editor.config';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { withFormlyFieldEditor } from './editor.config';
     ReactiveFormsModule,
     PasswordModule,
 
-    FormlyFieldModule,
-    FormlyModule.forChild(withFormlyFieldEditor()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengEditor()),
   ],
 })
-export class FormlyEditorModule {}
+export class FormlyPrimengEditorModule {}

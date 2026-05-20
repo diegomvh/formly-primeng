@@ -4,17 +4,17 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormlySelectModule } from '@ngx-formly/core/select';
-import { FormlyFormFieldModule } from '../field';
-import { withFormlyFieldAutoComplete } from './autocomplete.config';
+import { FormlyPrimengFieldModule } from '../field';
+import { withFormlyPrimengAutoComplete } from './autocomplete.config';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AutoCompleteModule,
-    FormlyFormFieldModule,
+    FormlyPrimengFieldModule,
     FormlySelectModule,
-    FormlyModule.forChild(withFormlyFieldAutoComplete()),
+    FormlyModule.forChild(withFormlyPrimengAutoComplete()),
   ],
 })
-export class FormlyAutoCompleteModule {}
+export class FormlyPrimengAutoCompleteModule {}

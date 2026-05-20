@@ -6,11 +6,12 @@ import {
 import { AutoComplete, AutoCompleteCompleteEvent, AutoCompleteDropdownClickEvent, AutoCompleteModule, AutoCompleteSelectEvent, AutoCompleteUnselectEvent } from 'primeng/autocomplete';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface AutoCompleteProps extends FormlyFieldProps, FormlyFieldSelectProps {
+export interface FormlyPrimengAutoCompleteProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps, FormlyPrimengFieldEventProps<FormlyPrimengAutoCompleteProps> {
   appendTo?: AutoComplete['appendTo'];
   multiple?: boolean;
   dropdown?: boolean;
@@ -19,21 +20,19 @@ interface AutoCompleteProps extends FormlyFieldProps, FormlyFieldSelectProps {
   showClear?: boolean;
   showEmptyMessage?: boolean;
   emptyMessage?: string;
-  show?: (field: FieldTypeConfig<AutoCompleteProps>, event: Event) => void;
-  hide?: (field: FieldTypeConfig<AutoCompleteProps>, event: Event) => void;
-  clear?: (field: FieldTypeConfig<AutoCompleteProps>, event?: Event) => void;
-  completeMethod?: (field: FieldTypeConfig<AutoCompleteProps>, event: AutoCompleteCompleteEvent) => void;
-  dropdownClick?: (field: FieldTypeConfig<AutoCompleteProps>, event: AutoCompleteDropdownClickEvent) => void;
-  select?: (field: FieldTypeConfig<AutoCompleteProps>, event: AutoCompleteSelectEvent) => void;
-  unselect?: (field: FieldTypeConfig<AutoCompleteProps>, event: AutoCompleteUnselectEvent) => void;
+  completeMethod?: (field: FieldTypeConfig<FormlyPrimengAutoCompleteProps>, event: AutoCompleteCompleteEvent) => void;
+  onClear?: (field: FormlyFieldConfig<FormlyPrimengAutoCompleteProps>, event?: Event) => void;
+  onSelect?: (field: FormlyFieldConfig<FormlyPrimengAutoCompleteProps>, event: AutoCompleteSelectEvent) => void;
+  onUnselect?: (field: FormlyFieldConfig<FormlyPrimengAutoCompleteProps>, event: AutoCompleteUnselectEvent) => void;
+  onDropdownClick?: (field: FormlyFieldConfig<FormlyPrimengAutoCompleteProps>, event: AutoCompleteDropdownClickEvent) => void;
 }
 
-export interface FormlyAutoCompleteFieldConfig extends FormlyFieldConfig<AutoCompleteProps> {
-  type: 'autocomplete' | Type<FormlyFieldAutoComplete>;
+export interface FormlyPrimengAutoCompleteConfig extends FieldTypeConfig<FormlyPrimengAutoCompleteProps> {
+  type: 'autocomplete' | Type<FormlyPrimengAutoComplete>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-autocomplete',
+  selector: 'formly-primeng-autoComplete',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, AutoCompleteModule],
   template: `
     <p-autoComplete
@@ -50,15 +49,15 @@ export interface FormlyAutoCompleteFieldConfig extends FormlyFieldConfig<AutoCom
       [forceSelection]="props.forceSelection"
       [autofocus]="props.autofocus"
       (completeMethod)="props.completeMethod && props.completeMethod(field, $event)"
-      (onFocus)="props.focus && props.focus(field, $event)"
-      (onBlur)="props.blur && props.blur(field, $event)"
-      (onKeyUp)="props.keyup && props.keyup(field, $event)"
-      (onSelect)="props.select && props.select(field, $event)"
-      (onUnselect)="props.unselect && props.unselect(field, $event)"
-      (onDropdownClick)="props.dropdownClick && props.dropdownClick(field, $event)"
-      (onClear)="props.clear && props.clear(field, $event)"
-      (onShow)="props.show && props.show(field, $event)"
-      (onHide)="props.hide && props.hide(field, $event)"
+      (onFocus)="props.focus && props.focus(field, $event) || props.onFocus && props.onFocus(field, $event)"
+      (onBlur)="props.blur && props.blur(field, $event) || props.onBlur && props.onBlur(field, $event)"
+      (onKeyUp)="props.keyup && props.keyup(field, $event) || props.onKeyUp && props.onKeyUp(field, $event)"
+      (onSelect)="props.onSelect && props.onSelect(field, $event)"
+      (onUnselect)="props.onUnselect && props.onUnselect(field, $event)"
+      (onDropdownClick)="props.onDropdownClick && props.onDropdownClick(field, $event)"
+      (onClear)="props.onClear && props.onClear(field, $event)"
+      (onShow)="props.onShow && props.onShow(field, $event)"
+      (onHide)="props.onHide && props.onHide(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -66,8 +65,8 @@ export interface FormlyAutoCompleteFieldConfig extends FormlyFieldConfig<AutoCom
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldAutoComplete extends FieldType<FieldTypeConfig<AutoCompleteProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<AutoCompleteProps>> = {
+export class FormlyPrimengAutoComplete extends FieldType<FormlyPrimengAutoCompleteConfig> {
+  override defaultOptions?: Partial<FormlyPrimengAutoCompleteConfig> = {
     props: {
       options: [],
       showClear: false,

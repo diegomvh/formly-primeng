@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldEditor } from './editor.type';
+import { FormlyPrimengEditor } from './editor.type';
 
-export function withFormlyFieldEditor(): ConfigOption {
+export function withFormlyPrimengEditor(): ConfigOption {
   return {
     types: [
       {
         name: 'editor',
-        component: FormlyFieldEditor,
+        component: FormlyPrimengEditor,
         wrappers: ['field'],
       },
     ]

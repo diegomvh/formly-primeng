@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-interface InputTextProps extends FormlyFieldProps {
+interface FormlyPrimengInputtextProps extends FormlyPrimengFieldProps {
   fluid?: boolean;
 }
 
-export interface FormlyInputTextFieldConfig extends FormlyFieldConfig<InputTextProps> {
-  type: 'inputtext' | Type<FormlyFieldInputText>;
+export interface FormlyPrimengInputtextConfig extends FieldTypeConfig<FormlyPrimengInputtextProps> {
+  type: 'inputtext' | Type<FormlyPrimengInputtext>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-inputtext',
+  selector: 'formly-primeng-inputtext',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, InputTextModule],
   template: `
     <input
@@ -29,14 +29,17 @@ export interface FormlyInputTextFieldConfig extends FormlyFieldConfig<InputTextP
       (keypress)="props.keypress && props.keypress(field, $event)"
       (wheel)="props.wheel && props.wheel(field, $event)"
       [fluid]="props.fluid"
+
+      [aria-describedby]="props.helpText ? id + '-help' : null"
+
       [formControl]="formControl"
       [formlyAttributes]="field"
     />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInputText extends FieldType<FieldTypeConfig<InputTextProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<InputTextProps>> = {
+export class FormlyPrimengInputtext extends FieldType<FormlyPrimengInputtextConfig> {
+  override defaultOptions?: Partial<FormlyPrimengInputtextConfig> = {
     props: {},
   };
 }

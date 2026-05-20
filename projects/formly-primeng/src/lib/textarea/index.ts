@@ -1,4 +1,4 @@
-export { withFormlyFieldTextArea } from './textarea.config';
-export { FormlyTextAreaModule } from './textarea.module';
-export { FormlyFieldTextArea } from './textarea.type';
-export type { FormlyTextAreaFieldConfig } from './textarea.type';
+export { withFormlyPrimengTextarea } from './textarea.config';
+export { FormlyPrimengTextareaModule } from './textarea.module';
+export { FormlyPrimengTextarea } from './textarea.type';
+export type { FormlyPrimengTextareaConfig } from './textarea.type';

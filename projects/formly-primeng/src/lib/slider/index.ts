@@ -1,4 +1,4 @@
-export { withFormlyFieldSlider } from './slider.config';
-export { FormlySliderModule } from './slider.module';
-export { FormlyFieldSlider } from './slieder.type';
-export type { FormlySliderFieldConfig } from './slieder.type';
+export { withFormlyPrimengSlider } from './slider.config';
+export { FormlyPrimengSliderModule } from './slider.module';
+export { FormlyPrimengSlider } from './slieder.type';
+export type { FormlyPrimengSliderConfig } from './slieder.type';

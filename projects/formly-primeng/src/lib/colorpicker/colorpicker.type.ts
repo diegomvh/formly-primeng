@@ -1,22 +1,28 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface ColorPickerProps extends FormlyFieldProps {
+interface FormlyPrimengColorpickerProps extends FormlyPrimengFieldProps, FormlyPrimengFieldEventProps<FormlyPrimengColorpickerProps> {
+  inline?: boolean;
 }
 
-export interface FormlyColorPickerFieldConfig extends FormlyFieldConfig<ColorPickerProps> {
-  type: 'colorpicker' | Type<FormlyFieldColorPicker>;
+export interface FormlyPrimengColorpickerConfig extends FieldTypeConfig<FormlyPrimengColorpickerProps> {
+  type: 'colorpicker' | Type<FormlyPrimengColorpicker>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-checkbox',
+  selector: 'formly-primeng-colorpicker',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, ColorPickerModule],
   template: `
     <p-colorpicker
+      [inline]="props.inline"
+      (onChange)="props.change && props.change(field, $event)"
+      (onShow)="props.onShow && props.onShow(field, $event)"
+      (onHide)="props.onHide && props.onHide(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >
@@ -24,8 +30,8 @@ export interface FormlyColorPickerFieldConfig extends FormlyFieldConfig<ColorPic
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldColorPicker extends FieldType<FieldTypeConfig<ColorPickerProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<ColorPickerProps>> = {
+export class FormlyPrimengColorpicker extends FieldType<FormlyPrimengColorpickerConfig> {
+  override defaultOptions?: Partial<FormlyPrimengColorpickerConfig> = {
     props: {
     },
   };

@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldRadioButton } from './radiobutton.type';
+import { FormlyPrimengRadioButton } from './radiobutton.type';
 
-export function withFormlyFieldRadioButton(): ConfigOption {
+export function withFormlyPrimengRadioButton(): ConfigOption {
   return {
     types: [
       {
         name: 'radiobutton',
-        component: FormlyFieldRadioButton,
+        component: FormlyPrimengRadioButton,
         wrappers: ['field'],
       },
     ],

@@ -1,22 +1,22 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 
-interface SelectButtonProps extends FormlyFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengSelectbuttonProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
   filter?: boolean;
   filterBy?: string;
 }
 
-export interface FormlySelectButtonFieldConfig extends FormlyFieldConfig<SelectButtonProps> {
-  type: 'selectbutton' | Type<FormlyFieldSelectButton>;
+export interface FormlyPrimengSelectbuttonConfig extends FieldTypeConfig<FormlyPrimengSelectbuttonProps> {
+  type: 'selectbutton' | Type<FormlyPrimengSelectbutton>;
 }
 
 @Component({
-  selector: 'formly-field-selectbutton',
+  selector: 'formly-primeng-selectbutton',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, SelectButtonModule],
   template: `
     <p-selectbutton
@@ -31,8 +31,8 @@ export interface FormlySelectButtonFieldConfig extends FormlyFieldConfig<SelectB
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldSelectButton extends FieldType<FieldTypeConfig<SelectButtonProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<SelectButtonProps>> = {
+export class FormlyPrimengSelectbutton extends FieldType<FormlyPrimengSelectbuttonConfig> {
+  override defaultOptions?: Partial<FormlyPrimengSelectbuttonConfig> = {
     props: {
     },
   };

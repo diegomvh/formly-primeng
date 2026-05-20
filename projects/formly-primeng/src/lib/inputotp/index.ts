@@ -1,4 +1,4 @@
-export { withFormlyFieldInputOtp } from './inputotp.config';
-export { FormlyInputOtpModule } from './inputotp.module';
-export { FormlyFieldInputOtp } from './inputotp.type';
-export type { FormlyInputOtpFieldConfig } from './inputotp.type';
+export { withFormlyPrimengInputotp } from './inputotp.config';
+export { FormlyPrimengInputotpModule } from './inputotp.module';
+export { FormlyPrimengInputotp } from './inputotp.type';
+export type { FormlyPrimengInputotpConfig } from './inputotp.type';

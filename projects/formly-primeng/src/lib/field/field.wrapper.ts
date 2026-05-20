@@ -1,37 +1,48 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FieldWrapper, FormlyFieldConfig, FormlyFieldProps as CoreFormlyFieldProps, FormlyModule } from '@ngx-formly/core';
-
-export interface FormlyFieldProps extends CoreFormlyFieldProps {
-  hideRequiredMarker?: boolean;
-  hideLabel?: boolean;
-  helpText?: boolean;
-  hideHelpText?: boolean;
-}
+import { FieldWrapper, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { FormlyPrimengFieldProps } from './field.props';
 
 @Component({
-  selector: 'formly-wrapper-primeng-field',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule],
+  selector: 'formly-primeng-field',
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FloatLabelModule],
   template: `
-    @if (props.label && !props.hideLabel) {
-    <label [for]="id">
-      {{ props.label }}
-      @if (props.required && !props.hideRequiredMarker) {
-        <span aria-hidden="true">*</span>
+    @if (props.floatLabel) {
+      <p-floatlabel [variant]="props.floatLabelVariant ?? 'over'">
+        <ng-container #fieldComponent></ng-container>
+        @if (props.label && !props.hideLabel) {
+        <label [for]="id">
+          {{ props.label }}
+          @if (props.required && !props.hideRequiredMarker) {
+            <span aria-hidden="true">*</span>
+          }
+        </label>
+        }
+      </p-floatlabel>
+    } @else {
+      @if (props.label && !props.hideLabel) {
+      <label [for]="id">
+        {{ props.label }}
+        @if (props.required && !props.hideRequiredMarker) {
+          <span aria-hidden="true">*</span>
+        }
+      </label>
       }
-    </label>
-    }
-    <ng-container #fieldComponent></ng-container>
-    @if (props.helpText && !props.hideHelpText) {
-      <small>{{props.helpText}}</small>
+      <ng-container #fieldComponent></ng-container>
     }
 
     @if (showError) {
-      <small [ngStyle]="{ color: '#f44336' }">
+      <small [id]="id + '-help'" [ngStyle]="{ color: '#f44336' }">
         <formly-validation-message [field]="field"></formly-validation-message>
       </small>
+    } @else { 
+      @if (props.helpText && !props.hideHelpText) {
+        <small [id]="id + '-help'">{{props.helpText}}</small>
+      }
     }
   `,
 })
-export class FormlyFieldWrapper extends FieldWrapper<FormlyFieldConfig<FormlyFieldProps>> {}
+export class FormlyPrimengFieldWrapper extends FieldWrapper<FormlyFieldConfig<FormlyPrimengFieldProps>> {
+}

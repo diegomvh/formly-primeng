@@ -1,4 +1,4 @@
-export { withFormlyFieldListbox as withFormlyFieldSelect } from './listbox.config';
-export { FormlyListboxModule as FormlySelectModule } from './listbox.module';
-export { FormlyFieldListbox as FormlyFieldSelect } from './listbox.type';
-export type { FormlySelectFieldConfig } from './listbox.type';
+export { withFormlyPrimengListbox } from './listbox.config';
+export { FormlyPrimengListboxModule } from './listbox.module';
+export { FormlyPrimengListbox } from './listbox.type';
+export type { FormlyPrimengListboxConfig } from './listbox.type';

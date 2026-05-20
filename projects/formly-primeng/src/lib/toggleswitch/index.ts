@@ -1,4 +1,4 @@
-export { withFormlyFieldToggleSwitch } from './toggleswitch.config';
-export { FormlyToggleSwitchModule } from './toggleswitch.module';
-export { FormlyFieldToggleSwitch } from './toggleswitch.type';
-export type { FormlyToggleSwitchFieldConfig } from './toggleswitch.type';
+export { withFormlyPrimengToggleswitch } from './toggleswitch.config';
+export { FormlyPrimengToggleswitchModule } from './toggleswitch.module';
+export { FormlyPrimengToggleswitch } from './toggleswitch.type';
+export type { FormlyPrimengToggleswitchConfig } from './toggleswitch.type';

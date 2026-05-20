@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldListbox } from './listbox.type';
+import { FormlyPrimengListbox } from './listbox.type';
 
-export function withFormlyFieldListbox(): ConfigOption {
+export function withFormlyPrimengListbox(): ConfigOption {
   return {
     types: [
       {
         name: 'listbox',
-        component: FormlyFieldListbox,
+        component: FormlyPrimengListbox,
         wrappers: ['field'],
       }
     ],

@@ -1,4 +1,4 @@
-export { withFormlyFieldEditor } from './editor.config';
-export { FormlyEditorModule } from './editor.module';
-export { FormlyFieldEditor } from './editor.type';
-export type { FormlyInputEditorConfig } from './editor.type';
+export { withFormlyPrimengEditor } from './editor.config';
+export { FormlyPrimengEditorModule } from './editor.module';
+export { FormlyPrimengEditor } from './editor.type';
+export type { FormlyPrimengEditorConfig } from './editor.type';

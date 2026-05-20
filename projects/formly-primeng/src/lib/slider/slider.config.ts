@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldSlider } from './slieder.type';
+import { FormlyPrimengSlider } from './slieder.type';
 
-export function withFormlyFieldSlider(): ConfigOption {
+export function withFormlyPrimengSlider(): ConfigOption {
   return {
     types: [
       {
         name: 'slider',
-        component: FormlyFieldSlider,
+        component: FormlyPrimengSlider,
         wrappers: ['field'],
       },
     ]

@@ -1,23 +1,23 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CascadeSelect, CascadeSelectModule } from 'primeng/cascadeselect';
 
-interface CascadeSelectProps extends FormlyFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengCascadeselectProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
   appendTo?: CascadeSelect['appendTo'];
   filter?: boolean;
   filterBy?: string;
 }
 
-export interface FormlyCascadeSelectFieldConfig extends FormlyFieldConfig<CascadeSelectProps> {
-  type: 'cascadeselect' | Type<FormlyFieldCascadeSelect>;
+export interface FormlyPrimengCascadeselectConfig extends FieldTypeConfig<FormlyPrimengCascadeselectProps> {
+  type: 'cascadeselect' | Type<FormlyPrimengCascadeselect>;
 }
 
 @Component({
-  selector: 'formly-field-cascadeselect',
+  selector: 'formly-primeng-cascadeselect',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, CascadeSelectModule],
   template: `
     <p-cascadeselect
@@ -35,8 +35,8 @@ export interface FormlyCascadeSelectFieldConfig extends FormlyFieldConfig<Cascad
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCascadeSelect extends FieldType<FieldTypeConfig<CascadeSelectProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<CascadeSelectProps>> = {
+export class FormlyPrimengCascadeselect extends FieldType<FormlyPrimengCascadeselectConfig> {
+  override defaultOptions?: Partial<FormlyPrimengCascadeselectConfig> = {
     props: {
     },
   };

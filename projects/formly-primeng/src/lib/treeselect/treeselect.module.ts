@@ -5,8 +5,8 @@ import { FormlyModule } from '@ngx-formly/core';
 import { SelectModule } from 'primeng/select';
 import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
 
-import { FormlyFormFieldModule } from '../field';
-import { withFormlyFieldTreeSelect } from './treeselect.config';
+import { FormlyPrimengFieldModule } from '../field';
+import { withFormlyPrimengTreeselect } from './treeselect.config';
 
 @NgModule({
   imports: [
@@ -14,9 +14,9 @@ import { withFormlyFieldTreeSelect } from './treeselect.config';
     ReactiveFormsModule,
     SelectModule,
 
-    FormlyFormFieldModule,
+    FormlyPrimengFieldModule,
     FormlyCoreSelectModule,
-    FormlyModule.forChild(withFormlyFieldTreeSelect()),
+    FormlyModule.forChild(withFormlyPrimengTreeselect()),
   ],
 })
-export class FormlyTreeSelectModule {}
+export class FormlyPrimengTreeselectModule {}

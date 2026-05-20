@@ -1,16 +1,18 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps as CheckboxProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 
-export interface FormlyCheckboxFieldConfig extends FormlyFieldConfig<CheckboxProps> {
-  type: 'checkbox' | Type<FormlyFieldCheckbox>;
+export interface FormlyPrimengCheckboxProps extends FormlyPrimengFieldProps {}
+
+export interface FormlyPrimengCheckboxConfig extends FieldTypeConfig<FormlyPrimengCheckboxProps> {
+  type: 'checkbox' | Type<FormlyPrimengCheckbox>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-checkbox',
+  selector: 'formly-primeng-checkbox',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, CheckboxModule],
   template: `
     <div class="p-field-checkbox flex items-center gap-1">
@@ -26,8 +28,8 @@ export interface FormlyCheckboxFieldConfig extends FormlyFieldConfig<CheckboxPro
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCheckbox extends FieldType<FieldTypeConfig<CheckboxProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<CheckboxProps>> = {
+export class FormlyPrimengCheckbox extends FieldType<FormlyPrimengCheckboxConfig> {
+  override defaultOptions?: Partial<FormlyPrimengCheckboxConfig> = {
     props: {
       hideLabel: true 
     },

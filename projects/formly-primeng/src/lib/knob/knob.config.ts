@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldKnob } from './knob.type';
+import { FormlyPrimengKnob } from './knob.type';
 
-export function withFormlyFieldKnob(): ConfigOption {
+export function withFormlyPrimengKnob(): ConfigOption {
   return {
     types: [
       {
         name: 'knob',
-        component: FormlyFieldKnob,
+        component: FormlyPrimengKnob,
         wrappers: ['field'],
       },
     ]

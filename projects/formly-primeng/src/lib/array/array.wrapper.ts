@@ -1,14 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FieldArrayType, FormlyFieldConfig, FormlyFieldProps as CoreFormlyFieldProps, FormlyModule, FieldTypeConfig } from '@ngx-formly/core';
+import { FieldArrayType, FormlyFieldConfig, FormlyFieldProps, FormlyModule, FieldTypeConfig } from '@ngx-formly/core';
+import { FormlyPrimengFieldHelpTextProps, FormlyPrimengFieldLabelProps } from '../field/field.props';
 
-export interface FormlyArrayProps extends CoreFormlyFieldProps {
-  hideLabel?: boolean;
-  helpText?: boolean;
-  hideHelpText?: boolean;
-  min: number;
-  max: number,
+export interface FormlyPrimengArrayProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {
   editable: boolean,
   add: boolean,
   remove: boolean,
@@ -16,7 +12,7 @@ export interface FormlyArrayProps extends CoreFormlyFieldProps {
 }
 
 @Component({
-  selector: 'formly-wrapper-primeng-array',
+  selector: 'formly-primeng-array',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule],
   template: `
     <div class="flex flex-col">
@@ -86,8 +82,8 @@ export interface FormlyArrayProps extends CoreFormlyFieldProps {
     </div>
   `,
 })
-export class FormlyFieldArrayWrapper extends FieldArrayType<FormlyFieldConfig<FormlyArrayProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<FormlyArrayProps>> = {
+export class FormlyPrimengArrayWrapper extends FieldArrayType<FormlyFieldConfig<FormlyPrimengArrayProps>> {
+  override defaultOptions?: Partial<FieldTypeConfig<FormlyPrimengArrayProps>> = {
     props: {
       min: 0,
       max: Infinity,

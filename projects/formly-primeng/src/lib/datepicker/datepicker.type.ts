@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { DatePickerModule } from 'primeng/datepicker';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-interface DatePickerProps extends FormlyFieldProps {
+interface FormlyPrimengDatePickerProps extends FormlyPrimengFieldProps {
   defaultDate: Date | null;
   dateFormat?: string;
   hourFormat: string;
@@ -22,12 +22,12 @@ interface DatePickerProps extends FormlyFieldProps {
   fluid?: boolean;
 }
 
-export interface FormlyDatepickerFieldConfig extends FormlyFieldConfig<DatePickerProps> {
-  type: 'datepicker' | Type<FormlyFieldDatePicker>;
+export interface FormlyPrimengDatepickerConfig extends FieldTypeConfig<FormlyPrimengDatePickerProps> {
+  type: 'datepicker' | Type<FormlyPrimengDatePicker>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-datepicker',
+  selector: 'formly-primeng-datepicker',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, DatePickerModule],
   template: `
     <p-datepicker
@@ -54,8 +54,8 @@ export interface FormlyDatepickerFieldConfig extends FormlyFieldConfig<DatePicke
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldDatePicker extends FieldType<FieldTypeConfig<DatePickerProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<DatePickerProps>> = {
+export class FormlyPrimengDatePicker extends FieldType<FormlyPrimengDatepickerConfig> {
+  override defaultOptions?: Partial<FormlyPrimengDatepickerConfig> = {
     props: {
       defaultDate: null,
       dateFormat: 'mm/dd/yy',

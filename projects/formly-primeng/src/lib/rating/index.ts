@@ -1,4 +1,4 @@
-export { withFormlyFieldRating } from './rating.config';
-export { FormlyRatingModule } from './rating.module';
-export { FormlyFieldRating } from './rating.type';
-export type { FormlyRatingFieldConfig } from './rating.type';
+export { withFormlyPrimengRating } from './rating.config';
+export { FormlyPrimengRatingModule } from './rating.module';
+export { FormlyPrimengRating } from './rating.type';
+export type { FormlyPrimengRatingConfig } from './rating.type';

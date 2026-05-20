@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputOtpModule } from 'primeng/inputotp';
 
-interface InputOtpProps extends FormlyFieldProps {
+export interface FormlyPrimengInputotpProps extends FormlyPrimengFieldProps {
   integerOnly: boolean;
 }
 
-export interface FormlyInputOtpFieldConfig extends FormlyFieldConfig<InputOtpProps> {
-  type: 'inputotp' | Type<FormlyFieldInputOtp>;
+export interface FormlyPrimengInputotpConfig extends FieldTypeConfig<FormlyPrimengInputotpProps> {
+  type: 'inputotp' | Type<FormlyPrimengInputotp>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-inputotp',
+  selector: 'formly-primeng-inputotp',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, InputOtpModule],
   template: `
     <p-inputotp
@@ -25,8 +25,8 @@ export interface FormlyInputOtpFieldConfig extends FormlyFieldConfig<InputOtpPro
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInputOtp extends FieldType<FieldTypeConfig<InputOtpProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<InputOtpProps>> = {
+export class FormlyPrimengInputotp extends FieldType<FormlyPrimengInputotpConfig> {
+  override defaultOptions?: Partial<FormlyPrimengInputotpConfig> = {
     props: {
       integerOnly: false,
     },

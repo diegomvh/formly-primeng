@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldSelect } from './select.type';
+import { FormlyPrimengSelect } from './select.type';
 
-export function withFormlyFieldSelect(): ConfigOption {
+export function withFormlyPrimengSelect(): ConfigOption {
   return {
     types: [
       {
         name: 'select',
-        component: FormlyFieldSelect,
+        component: FormlyPrimengSelect,
         wrappers: ['field'],
       },
       { name: 'enum', extends: 'select' },

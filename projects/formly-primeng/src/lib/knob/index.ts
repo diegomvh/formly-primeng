@@ -1,4 +1,4 @@
-export { withFormlyFieldKnob } from './knob.config';
-export { FormlyKnobModule } from './knob.module';
-export { FormlyFieldKnob } from './knob.type';
-export type { FormlyKnobFieldConfig } from './knob.type';
+export { withFormlyPrimengKnob } from './knob.config';
+export { FormlyPrimengKnobModule } from './knob.module';
+export { FormlyPrimengKnob } from './knob.type';
+export type { FormlyPrimengKnobConfig } from './knob.type';

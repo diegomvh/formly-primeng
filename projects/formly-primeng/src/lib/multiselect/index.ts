@@ -1,4 +1,4 @@
-export { withFormlyFieldMultiSelect } from './multiselect.config';
-export { FormlyMultiSelectModule } from './multiselect.module';
-export { FormlyFieldMultiSelect } from './multiselect.type';
-export type { FormlyMultiSelectFieldConfig } from './multiselect.type';
+export { withFormlyPrimengMultiselect } from './multiselect.config';
+export { FormlyPrimengMultiselectModule } from './multiselect.module';
+export { FormlyPrimengMultiselect } from './multiselect.type';
+export type { FormlyPrimengMultiselectConfig } from './multiselect.type';

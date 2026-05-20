@@ -5,8 +5,8 @@ import { FormlyModule } from '@ngx-formly/core';
 import { SelectModule } from 'primeng/select';
 import { FormlySelectModule as FormlyCoreSelectModule } from '@ngx-formly/core/select';
 
-import { FormlyFormFieldModule } from '../field';
-import { withFormlyFieldCascadeSelect } from './cascadeselect.config';
+import { FormlyPrimengFieldModule } from '../field';
+import { withFormlyPrimengCascadeselect } from './cascadeselect.config';
 
 @NgModule({
   imports: [
@@ -14,9 +14,9 @@ import { withFormlyFieldCascadeSelect } from './cascadeselect.config';
     ReactiveFormsModule,
     SelectModule,
 
-    FormlyFormFieldModule,
+    FormlyPrimengFieldModule,
     FormlyCoreSelectModule,
-    FormlyModule.forChild(withFormlyFieldCascadeSelect()),
+    FormlyModule.forChild(withFormlyPrimengCascadeselect()),
   ],
 })
-export class FormlyCascadeSelectModule {}
+export class FormlyPrimengCascadeselectModule {}

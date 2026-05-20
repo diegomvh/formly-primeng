@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormlyFormFieldModule } from '../field';
+import { FormlyPrimengFieldModule } from '../field';
 
-import { withFormlyFieldCheckbox } from './checkbox.config';
+import { withFormlyPrimengCheckbox } from './checkbox.config';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     CheckboxModule,
-    FormlyFormFieldModule,
-    FormlyModule.forChild(withFormlyFieldCheckbox()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengCheckbox()),
   ],
 })
-export class FormlyCheckboxModule {}
+export class FormlyPrimengCheckboxModule {}

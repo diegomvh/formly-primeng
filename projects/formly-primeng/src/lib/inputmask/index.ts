@@ -1,4 +1,4 @@
-export { withFormlyFieldInputMask } from './inputmask.config';
-export { FormlyInputMaskModule } from './inputmask.module';
-export { FormlyFieldInputMask } from './inputmask.type';
-export type { FormlyInputMaskFieldConfig } from './inputmask.type';
+export { withFormlyPrimengInputmask } from './inputmask.config';
+export { FormlyPrimengInputmaskModule } from './inputmask.module';
+export { FormlyPrimengInputmask } from './inputmask.type';
+export type { FormlyPrimengInputmaskConfig } from './inputmask.type';

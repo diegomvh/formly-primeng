@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldInputOtp } from './inputotp.type';
+import { FormlyPrimengInputotp } from './inputotp.type';
 
-export function withFormlyFieldInputOtp(): ConfigOption {
+export function withFormlyPrimengInputotp(): ConfigOption {
   return {
     types: [
       {
         name: 'inputotp',
-        component: FormlyFieldInputOtp,
+        component: FormlyPrimengInputotp,
         wrappers: ['field'],
       },
     ],

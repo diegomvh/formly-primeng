@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 
-interface ToggleButtonProps extends FormlyFieldProps {
+interface FormlyPrimengTogglebuttonProps extends FormlyPrimengFieldProps {
   inputId?: string;
   ariaLabelledBy?: string;
   trueValue: boolean;
@@ -13,12 +13,12 @@ interface ToggleButtonProps extends FormlyFieldProps {
   ariaLabel?: string;
 }
 
-export interface FormlyToggleButtonFieldConfig extends FormlyFieldConfig<ToggleButtonProps> {
-  type: 'togglebutton' | Type<FormlyFieldToggleButton>;
+export interface FormlyPrimengTogglebuttonConfig extends FieldTypeConfig<FormlyPrimengTogglebuttonProps> {
+  type: 'togglebutton' | Type<FormlyPrimengTogglebutton>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-togglebutton',
+  selector: 'formly-primeng-togglebutton',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, ToggleButtonModule],
   template: `
     <p-togglebutton
@@ -34,8 +34,8 @@ export interface FormlyToggleButtonFieldConfig extends FormlyFieldConfig<ToggleB
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldToggleButton extends FieldType<FieldTypeConfig<ToggleButtonProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<ToggleButtonProps>> = {
+export class FormlyPrimengTogglebutton extends FieldType<FormlyPrimengTogglebuttonConfig> {
+  override defaultOptions?: Partial<FormlyPrimengTogglebuttonConfig> = {
     props: {
       trueValue: true,
       falseValue: false,

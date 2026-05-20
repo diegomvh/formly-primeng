@@ -1,4 +1,4 @@
-export { withFormlyFieldColorPicker } from './colorpicker.config';
-export { FormlyColorPickerModule } from './colorpicker.module';
-export { FormlyFieldColorPicker as FormlyFieldColorpicker } from './colorpicker.type';
-export type { FormlyColorPickerFieldConfig as FormlyColorpickerFieldConfig } from './colorpicker.type';
+export { withFormlyPrimengColorpicker } from './colorpicker.config';
+export { FormlyPrimengColorpickerModule } from './colorpicker.module';
+export { FormlyPrimengColorpicker } from './colorpicker.type';
+export type { FormlyPrimengColorpickerConfig } from './colorpicker.type';

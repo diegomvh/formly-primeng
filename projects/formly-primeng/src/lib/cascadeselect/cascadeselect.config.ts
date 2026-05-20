@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldCascadeSelect } from './cascadeselect.type';
+import { FormlyPrimengCascadeselect } from './cascadeselect.type';
 
-export function withFormlyFieldCascadeSelect(): ConfigOption {
+export function withFormlyPrimengCascadeselect(): ConfigOption {
   return {
     types: [
       {
         name: 'cascadeselect',
-        component: FormlyFieldCascadeSelect,
+        component: FormlyPrimengCascadeselect,
         wrappers: ['field'],
       },
     ],

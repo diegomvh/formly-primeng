@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PasswordModule } from 'primeng/password';
 
-import { FormlyFieldModule } from '../field/field.module';
-import { withFormlyFieldKnob } from './knob.config';
+import { FormlyPrimengFieldModule } from '../field/field.module';
+import { withFormlyPrimengKnob } from './knob.config';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { withFormlyFieldKnob } from './knob.config';
     ReactiveFormsModule,
     PasswordModule,
 
-    FormlyFieldModule,
-    FormlyModule.forChild(withFormlyFieldKnob()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengKnob()),
   ],
 })
-export class FormlyKnobModule {}
+export class FormlyPrimengKnobModule {}

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormlyFieldModule } from '../field/field.module';
+import { FormlyPrimengFieldModule } from '../field/field.module';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { withFormlyFieldToggleButton } from './togglebutton.config';
+import { withFormlyPrimengTogglebutton } from './togglebutton.config';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { withFormlyFieldToggleButton } from './togglebutton.config';
     ReactiveFormsModule,
     ToggleSwitchModule,
 
-    FormlyFieldModule,
-    FormlyModule.forChild(withFormlyFieldToggleButton()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengTogglebutton()),
   ],
 })
-export class FormlyToggleButtonModule {}
+export class FormlyPrimengTogglebuttonModule {}

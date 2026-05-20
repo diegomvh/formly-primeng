@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldProps } from '../field';
+import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputNumberModule } from 'primeng/inputnumber';
 
-interface InputNumberProps extends FormlyFieldProps {
+interface FormlyPrimengInputnumberProps extends FormlyPrimengFieldProps {
   mode?: 'decimal' | 'currency';
 }
 
-export interface FormlyInputNumberFieldConfig extends FormlyFieldConfig<InputNumberProps> {
-  type: 'inputnumber' | Type<FormlyFieldInputNumber>;
+export interface FormlyPrimengInputnumberConfig extends FieldTypeConfig<FormlyPrimengInputnumberProps> {
+  type: 'inputnumber' | Type<FormlyPrimengInputnumber>;
 }
 
 @Component({
-  selector: 'formly-field-primeng-inputnumber',
+  selector: 'formly-primeng-inputnumber',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, InputNumberModule],
   template: `
     <p-inputnumber
@@ -25,8 +25,8 @@ export interface FormlyInputNumberFieldConfig extends FormlyFieldConfig<InputNum
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldInputNumber extends FieldType<FieldTypeConfig<InputNumberProps>> {
-  override defaultOptions?: Partial<FieldTypeConfig<InputNumberProps>> = {
+export class FormlyPrimengInputnumber extends FieldType<FormlyPrimengInputnumberConfig> {
+  override defaultOptions?: Partial<FormlyPrimengInputnumberConfig> = {
     props: {
       mode: 'decimal',
     },

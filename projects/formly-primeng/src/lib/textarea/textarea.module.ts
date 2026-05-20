@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaModule } from 'primeng/textarea';
-import { FormlyFormFieldModule } from '../field';
-import { withFormlyFieldTextArea } from './textarea.config';
+import { FormlyPrimengFieldModule } from '../field';
+import { withFormlyPrimengTextarea } from './textarea.config';
 
 @NgModule({
   imports: [
@@ -12,8 +12,8 @@ import { withFormlyFieldTextArea } from './textarea.config';
     ReactiveFormsModule,
     TextareaModule,
 
-    FormlyFormFieldModule,
-    FormlyModule.forChild(withFormlyFieldTextArea()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengTextarea()),
   ],
 })
-export class FormlyTextAreaModule {}
+export class FormlyPrimengTextareaModule {}

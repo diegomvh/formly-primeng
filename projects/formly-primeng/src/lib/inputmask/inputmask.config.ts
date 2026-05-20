@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldInputMask } from './inputmask.type';
+import { FormlyPrimengInputmask } from './inputmask.type';
 
-export function withFormlyFieldInputMask(): ConfigOption {
+export function withFormlyPrimengInputmask(): ConfigOption {
   return {
     types: [
       {
         name: 'inputmask',
-        component: FormlyFieldInputMask,
+        component: FormlyPrimengInputmask,
         wrappers: ['field'],
       },
     ],

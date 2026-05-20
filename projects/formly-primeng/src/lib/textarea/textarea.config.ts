@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldTextArea } from './textarea.type';
+import { FormlyPrimengTextarea } from './textarea.type';
 
-export function withFormlyFieldTextArea(): ConfigOption {
+export function withFormlyPrimengTextarea(): ConfigOption {
   return {
     types: [
       {
         name: 'textarea',
-        component: FormlyFieldTextArea,
+        component: FormlyPrimengTextarea,
         wrappers: ['field'],
       },
     ],

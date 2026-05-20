@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldRating } from './rating.type';
+import { FormlyPrimengRating } from './rating.type';
 
-export function withFormlyFieldRating(): ConfigOption {
+export function withFormlyPrimengRating(): ConfigOption {
   return {
     types: [
       {
         name: 'rating',
-        component: FormlyFieldRating,
+        component: FormlyPrimengRating,
         wrappers: ['field'],
       },
     ]

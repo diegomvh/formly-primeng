@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormlyFormFieldModule } from '../field';
+import { FormlyPrimengFieldModule } from '../field';
 
-import { withFormlyFieldInputText } from './inputtext.config';
+import { withFormlyPrimengInputtext } from './inputtext.config';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     InputTextModule,
-    FormlyFormFieldModule,
-    FormlyModule.forChild(withFormlyFieldInputText()),
+    FormlyPrimengFieldModule,
+    FormlyModule.forChild(withFormlyPrimengInputtext()),
   ],
 })
-export class FormlyInputTextModule {}
+export class FormlyPrimengInputtextModule {}

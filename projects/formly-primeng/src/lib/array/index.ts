@@ -1,3 +1,3 @@
-export { withFormlyFieldWrapperArray } from './array.config';
-export { FormlyFieldArrayModule } from './array.module';
-export type { FormlyArrayProps } from './array.wrapper';
+export { withFormlyPrimengArray } from './array.config';
+export { FormlyPrimengArrayModule } from './array.module';
+export type { FormlyPrimengArrayProps } from './array.wrapper';

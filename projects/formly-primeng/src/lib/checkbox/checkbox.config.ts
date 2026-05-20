@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldCheckbox } from './checkbox.type';
+import { FormlyPrimengCheckbox } from './checkbox.type';
 
-export function withFormlyFieldCheckbox(): ConfigOption {
+export function withFormlyPrimengCheckbox(): ConfigOption {
   return {
     types: [
       {
         name: 'checkbox',
-        component: FormlyFieldCheckbox,
+        component: FormlyPrimengCheckbox,
         wrappers: ['field'],
       },
       {

@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldInputNumber } from './inputnumber.type';
+import { FormlyPrimengInputnumber } from './inputnumber.type';
 
-export function withFormlyFieldInputNumber(): ConfigOption {
+export function withFormlyPrimengInputnumber(): ConfigOption {
   return {
     types: [
       {
         name: 'number',
-        component: FormlyFieldInputNumber,
+        component: FormlyPrimengInputnumber,
         wrappers: ['field'],
       },
       { name: 'inputnumber', extends: 'number' },

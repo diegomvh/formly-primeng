@@ -1,13 +1,13 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyFieldPassword } from './password.type';
+import { FormlyPrimengPassword } from './password.type';
 
-export function withFormlyFieldPassword(): ConfigOption {
+export function withFormlyPrimengPassword(): ConfigOption {
   return {
     types: [
       {
         name: 'password',
-        component: FormlyFieldPassword,
+        component: FormlyPrimengPassword,
         wrappers: ['field'],
       },
     ]

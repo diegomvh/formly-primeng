@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyFieldColorPicker } from './colorpicker.type';
+import { FormlyPrimengColorpicker } from './colorpicker.type';
 
-export function withFormlyFieldColorPicker(): ConfigOption {
+export function withFormlyPrimengColorpicker(): ConfigOption {
   return {
     types: [
       {
         name: 'colorpicker',
-        component: FormlyFieldColorPicker,
+        component: FormlyPrimengColorpicker,
         wrappers: ['field'],
       }
     ],
