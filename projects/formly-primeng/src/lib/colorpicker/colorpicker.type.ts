@@ -10,8 +10,7 @@ import { OverlayOptions } from 'primeng/api';
 interface FormlyPrimengColorpickerProps extends FormlyPrimengFieldProps, 
   FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldOverlayProps, 
-  FormlyPrimengFieldEventProps<FormlyPrimengColorpickerProps> 
-{
+  FormlyPrimengFieldEventProps<FormlyPrimengColorpickerProps> {
   inline?: boolean;
   format? : 'hex' | 'rgb' | 'hsb';
   autoZIndex?: boolean;

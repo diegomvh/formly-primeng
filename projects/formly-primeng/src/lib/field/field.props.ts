@@ -27,6 +27,12 @@ export interface FormlyPrimengFieldPassThroughProps {
   name?: string;
 }
 
+export interface FormlyPrimengFieldAriaProps {
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+}
+
+
 export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldPassThroughProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {}
 
 export interface FormlyPrimengFieldEventProps<C> {

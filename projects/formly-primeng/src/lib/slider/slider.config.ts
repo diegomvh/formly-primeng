@@ -1,6 +1,6 @@
 import { ConfigOption } from '@ngx-formly/core';
 
-import { FormlyPrimengSlider } from './slieder.type';
+import { FormlyPrimengSlider } from './slider.type';
 
 export function withFormlyPrimengSlider(): ConfigOption {
   return {
