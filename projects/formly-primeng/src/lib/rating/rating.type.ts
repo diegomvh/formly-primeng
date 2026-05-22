@@ -6,7 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from 'primeng/rating';
 import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-export interface FormlyPrimengRatingProps extends FormlyPrimengFieldProps, FormlyPrimengFieldEventProps<FormlyPrimengRatingProps> { }
+export interface FormlyPrimengRatingProps extends FormlyPrimengFieldProps, FormlyPrimengFieldEventProps<FormlyPrimengRatingProps> { 
+  stars?: number;
+  onRate?: (field: FormlyPrimengRatingConfig, event?: any) => void;
+}
 
 export interface FormlyPrimengRatingConfig extends FieldTypeConfig<FormlyPrimengRatingProps> {
   type: 'rating' | Type<FormlyPrimengRating>;
@@ -17,8 +20,10 @@ export interface FormlyPrimengRatingConfig extends FieldTypeConfig<FormlyPrimeng
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, RatingModule],
   template: `
     <p-rating
-      (onBlur)="props.onBlur && props.onBlur(field, $event)"
+      [stars]="props.stars"
+      (onRate)="props.onRate && props.onRate(field, $event)"
       (onFocus)="props.onFocus && props.onFocus(field, $event)"
+      (onBlur)="props.onBlur && props.onBlur(field, $event)"
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

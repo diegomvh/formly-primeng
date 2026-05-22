@@ -1,4 +1,6 @@
+import { InputSignal, InputSignalWithTransform } from "@angular/core";
 import { FormlyFieldConfig, FormlyFieldProps } from "@ngx-formly/core";
+import { PassThrough, PassThroughOptions } from "primeng/api";
 
 export interface FormlyPrimengFieldLabelProps {
   hideRequiredMarker?: boolean;
@@ -12,7 +14,20 @@ export interface FormlyPrimengFieldHelpTextProps {
   hideHelpText?: boolean;
 }
 
-export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {}
+export interface FormlyPrimengFieldOverlayProps {
+  appendTo?: InputSignal<any>;
+}
+
+export interface FormlyPrimengFieldPassThroughProps {
+  dt?: Object;
+  unstyled?: boolean;
+  pt?: PassThrough;
+  ptOptions?:	PassThroughOptions;
+  invalid?:	boolean;
+  name?: string;
+}
+
+export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldPassThroughProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {}
 
 export interface FormlyPrimengFieldEventProps<C> {
   onFocus?: (field: FormlyFieldConfig<C>, event?: any) => void;

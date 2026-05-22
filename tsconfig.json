@@ -5,9 +5,7 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "formly-primeng": [
-        "./dist/formly-primeng"
-      ]
+      "formly-primeng": ["./dist/formly-primeng"]
     },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -24,7 +22,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
     "strictTemplates": true
   },
   "files": [],
