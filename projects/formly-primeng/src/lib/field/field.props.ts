@@ -19,7 +19,7 @@ export interface FormlyPrimengFieldOverlayProps {
 }
 
 export interface FormlyPrimengFieldPassThroughProps {
-  dt?: Object;
+  dt?: { [key: string]: any };
   unstyled?: boolean;
   pt?: PassThrough;
   ptOptions?:	PassThroughOptions;

@@ -6,10 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormlyPrimengFieldEventProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
 
-export interface FormlyPrimengCheckboxProps extends FormlyPrimengFieldProps, 
+export interface FormlyPrimengCheckboxProps extends FormlyPrimengFieldProps,
   FormlyPrimengFieldPassThroughProps,
-  FormlyPrimengFieldEventProps<FormlyPrimengCheckboxProps>
-  {
+  FormlyPrimengFieldEventProps<FormlyPrimengCheckboxProps> {
   value?: any;
   binary?: boolean;
   ariaLabelledBy?: string;
@@ -72,6 +71,6 @@ export interface FormlyPrimengCheckboxConfig extends FieldTypeConfig<FormlyPrime
 })
 export class FormlyPrimengCheckbox extends FieldType<FormlyPrimengCheckboxConfig> {
   override defaultOptions?: Partial<FormlyPrimengCheckboxConfig> = {
-    props: { },
+    props: {},
   };
 }
