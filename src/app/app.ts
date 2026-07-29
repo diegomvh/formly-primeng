@@ -16,7 +16,7 @@ export class App {
   model = {};
   fields: FormlyFieldConfig[] = [
     {
-      fieldGroupClassName: 'grid grid-cols-4 gap-4',
+      fieldGroupClassName: 'grid grid-cols-8 gap-4',
       props: {
         hideLabel: true,
       },
@@ -39,6 +39,15 @@ export class App {
             label: 'CascadeSelect',
             fluid: true,
             placeholder: 'CascadeSelect placeholder',
+            optionLabel: 'label',
+            optionGroupLabel: 'name',
+            optionGroupChildren: 'options',
+            options: [
+              { name: 'Options', options: [{ label: 'Option 1', value: '1' }]},
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+              { label: 'Option 3', value: '3' },
+            ],
           },
         },
         {
@@ -190,7 +199,7 @@ export class App {
           className: 'col-span-2',
           props: {
             label: 'Rating',
-            fluid: true,
+            stars: 5,
             placeholder: 'Rating placeholder',
           },
         },

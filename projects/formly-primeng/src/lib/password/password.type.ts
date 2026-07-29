@@ -31,6 +31,7 @@ export interface FormlyPrimengPasswordConfig extends FieldTypeConfig<FormlyPrime
       [invalid]="props.invalid ?? false"
       [disabled]="props.disabled ?? false"
       [name]="props.name"
+      [fluid]="props.fluid"
 
       [placeholder]="props.placeholder"
       [toggleMask]="props.toggleMask"

@@ -4,8 +4,11 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { KnobModule } from 'primeng/knob';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-export interface FormlyPrimengKnobProps extends FormlyPrimengFieldProps {
+export interface FormlyPrimengKnobProps extends 
+  FormlyPrimengFieldProps,
+  FormlyPrimengFieldEventProps<FormlyPrimengKnobProps> {
 }
 
 export interface FormlyPrimengKnobConfig extends FieldTypeConfig<FormlyPrimengKnobProps> {
@@ -17,10 +20,20 @@ export interface FormlyPrimengKnobConfig extends FieldTypeConfig<FormlyPrimengKn
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, KnobModule],
   template: `
     <p-knob
-      (onBlur)="props.blur && props.blur(field, $event)"
-      (onFocus)="props.focus && props.focus(field, $event)"
+      [dt]="props.dt"
+      [unstyled]="props.unstyled"
+      [pt]="props.pt"
+      [ptOptions]="props.ptOptions"
+      [required]="props.required ?? false"
+      [invalid]="props.invalid ?? false"
+      [disabled]="props.disabled ?? false"
+      [name]="props.name"
+
       [formControl]="formControl"
       [formlyAttributes]="field"
+
+      (onFocus)="props.focus && props.focus(field, $event) || props.onFocus && props.onFocus(field, $event)"
+      (onBlur)="props.blur && props.blur(field, $event) || props.onBlur && props.onBlur(field, $event)"
     >
     </p-knob>
   `,

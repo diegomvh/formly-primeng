@@ -39,6 +39,7 @@ export interface FormlyPrimengCascadeselectConfig extends FieldTypeConfig<Formly
       [invalid]="props.invalid ?? false"
       [disabled]="props.disabled ?? false"
       [name]="props.name"
+      [fluid]="props.fluid"
 
       [appendTo]="props.appendTo"
       [placeholder]="props.placeholder"

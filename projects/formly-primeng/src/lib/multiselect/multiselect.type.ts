@@ -37,11 +37,11 @@ export interface FormlyPrimengMultiselectConfig extends FieldTypeConfig<FormlyPr
       [invalid]="props.invalid ?? false"
       [disabled]="props.disabled ?? false"
       [name]="props.name"
+      [fluid]="props.fluid"
 
       [placeholder]="props.placeholder"
       [options]="$any(props.options | formlySelectOptions: field | async)"
       [showClear]="!props.required"
-      [fluid]="props.fluid"
       [appendTo]="props.appendTo"
       [filter]="props.filter"
       [filterBy]="props.filterBy"
