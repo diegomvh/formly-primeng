@@ -18,7 +18,6 @@ interface FormlyPrimengMultiselectProps extends
   optionDisabled?: string;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
-  fluid?: boolean;
 }
 
 export interface FormlyPrimengMultiselectConfig extends FieldTypeConfig<FormlyPrimengMultiselectProps> {

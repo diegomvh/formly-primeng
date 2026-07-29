@@ -7,7 +7,6 @@ import { TextareaModule } from 'primeng/textarea';
 
 interface FormlyPrimengTextareaProps extends FormlyPrimengFieldProps {
   autoResize?: boolean;
-  fluid?: boolean;
   rows?: number;
   cols?: number;
 }

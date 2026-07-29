@@ -9,7 +9,7 @@ import { withFormlyPrimengRadioButton } from './radiobutton';
 import { withFormlyFieldCheckbox } from './checkbox';
 import { withFormlyPrimengSelect } from './select';
 import { withFormlyPrimengDatepicker } from './datepicker';
-import { withFormlyPrimengAutoComplete } from './autocomplete';
+import { withFormlyPrimengAutocomplete } from './autocomplete';
 import { withFormlyPrimengToggleswitch } from './toggleswitch';
 import { withFormlyPrimengInputotp } from './inputotp';
 import { withFormlyPrimengPassword } from './password';
@@ -28,7 +28,7 @@ import { withFormlyPrimengCascadeselect } from './cascadeselect';
 
 export function withFormlyPrimeNG() {
   return [
-    withFormlyPrimengAutoComplete(),
+    withFormlyPrimengAutocomplete(),
     withFormlyPrimengCascadeselect(),
     withFormlyPrimengField(),
     withFormlyFieldWrapperObject(),

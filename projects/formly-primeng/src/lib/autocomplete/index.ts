@@ -1,4 +1,4 @@
-export { withFormlyPrimengAutoComplete } from './autocomplete.config';
-export { FormlyPrimengAutoCompleteModule } from './autocomplete.module';
-export { FormlyPrimengAutoComplete } from './autocomplete.type';
-export type { FormlyPrimengAutoCompleteConfig } from './autocomplete.type';
+export { withFormlyPrimengAutocomplete } from './autocomplete.config';
+export { FormlyPrimengAutocompleteModule } from './autocomplete.module';
+export { FormlyPrimengAutocomplete } from './autocomplete.type';
+export type { FormlyPrimengAutocompleteConfig } from './autocomplete.type';

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormlyPrimengFieldModule } from './field';
 import { FormlyPrimengInputtextModule } from './inputtext';
 import { FormlyPrimengInputnumberModule } from './inputnumber';
-import { FormlyPrimengAutoCompleteModule } from './autocomplete';
+import { FormlyPrimengAutocompleteModule } from './autocomplete';
 import { FormlyPrimengTextareaModule } from './textarea';
 import { FormlyPrimengRadioButtonModule } from './radiobutton';
 import { FormlyPrimengCheckboxModule } from './checkbox';
@@ -26,7 +26,7 @@ import { FormlyPrimengCascadeselectModule } from './cascadeselect';
 
 @NgModule({
   imports: [
-    FormlyPrimengAutoCompleteModule,
+    FormlyPrimengAutocompleteModule,
     FormlyPrimengCascadeselectModule,
     FormlyPrimengFieldModule,
     FormlyPrimengInputtextModule,

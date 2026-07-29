@@ -1,12 +1,12 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyPrimengAutoComplete } from './autocomplete.type';
+import { FormlyPrimengAutocomplete } from './autocomplete.type';
 
-export function withFormlyPrimengAutoComplete(): ConfigOption {
+export function withFormlyPrimengAutocomplete(): ConfigOption {
   return {
     types: [
       {
         name: 'autocomplete',
-        component: FormlyPrimengAutoComplete,
+        component: FormlyPrimengAutocomplete,
         wrappers: ['field'],
       },
     ],

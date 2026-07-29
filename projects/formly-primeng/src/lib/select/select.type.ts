@@ -18,7 +18,6 @@ interface FormlyPrimengSelectProps extends
   optionDisabled?: string;
   optionGroupLabel?: string;
   optionGroupChildren?: string;
-  fluid?: boolean;
   onFilter?: (field: FormlyPrimengSelectConfig, event: SelectFilterEvent) => void;
   onClear?: (field: FormlyPrimengSelectConfig, event: Event) => void;
   onLazyLoad?: (field: FormlyPrimengSelectConfig, event: SelectLazyLoadEvent) => void;
@@ -41,12 +40,12 @@ export interface FormlyPrimengSelectConfig extends FieldTypeConfig<FormlyPrimeng
       [invalid]="props.invalid ?? false"
       [disabled]="props.disabled ?? false"
       [name]="props.name"
+      [fluid]="props.fluid"
 
       [appendTo]="props.appendTo"
       [placeholder]="props.placeholder"
       [options]="$any(props.options | formlySelectOptions: field | async)"
       [showClear]="!props.required"
-      [fluid]="props.fluid"
       [filter]="props.filter"
       [filterBy]="props.filterBy"
       [optionLabel]="props.optionLabel"
