@@ -3,11 +3,10 @@ import { FormlyPrimengFieldProps } from '../field';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditorChangeEvent, EditorInitEvent, EditorModule, EditorSelectionChangeEvent, EditorTextChangeEvent } from 'primeng/editor';
-import { FormlyPrimengFieldEventProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
+import { EditorChangeEvent, EditorModule, EditorSelectionChangeEvent, EditorTextChangeEvent } from 'primeng/editor';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
 export interface FormlyPrimengEditorProps extends FormlyPrimengFieldProps, 
-  FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldEventProps<FormlyPrimengEditorProps> {
   style?: { [key: string]: any };
   formats?: string[];

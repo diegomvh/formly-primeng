@@ -4,10 +4,9 @@ import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
+import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps } from '../field/field.props';
 
 export interface FormlyPrimengCheckboxProps extends FormlyPrimengFieldProps,
-  FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldAriaProps,
   FormlyPrimengFieldEventProps<FormlyPrimengCheckboxProps> {
   value?: any;

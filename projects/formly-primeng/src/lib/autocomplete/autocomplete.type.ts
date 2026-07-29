@@ -5,14 +5,16 @@ import {
 } from '@angular/core';
 import { AutoComplete, AutoCompleteCompleteEvent, AutoCompleteDropdownClickEvent, AutoCompleteModule, AutoCompleteSelectEvent, AutoCompleteUnselectEvent } from 'primeng/autocomplete';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { FormlyPrimengFieldEventProps } from '../field/field.props';
+import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
 
-export interface FormlyPrimengAutoCompleteProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps, FormlyPrimengFieldEventProps<FormlyPrimengAutoCompleteProps> {
-  appendTo?: AutoComplete['appendTo'];
+export interface FormlyPrimengAutoCompleteProps extends 
+  FormlyPrimengFieldProps, 
+  FormlyPrimengFieldOverlayProps, 
+  FormlyPrimengFieldEventProps<FormlyPrimengAutoCompleteProps> {
   multiple?: boolean;
   dropdown?: boolean;
   forceSelection?: boolean;
@@ -48,7 +50,12 @@ export interface FormlyPrimengAutoCompleteConfig extends FieldTypeConfig<FormlyP
       [dropdown]="props.dropdown"
       [forceSelection]="props.forceSelection"
       [autofocus]="props.autofocus"
+
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+
       (completeMethod)="props.completeMethod && props.completeMethod(field, $event)"
+
       (onFocus)="props.focus && props.focus(field, $event) || props.onFocus && props.onFocus(field, $event)"
       (onBlur)="props.blur && props.blur(field, $event) || props.onBlur && props.onBlur(field, $event)"
       (onKeyUp)="props.keyup && props.keyup(field, $event) || props.onKeyUp && props.onKeyUp(field, $event)"
@@ -58,8 +65,6 @@ export interface FormlyPrimengAutoCompleteConfig extends FieldTypeConfig<FormlyP
       (onClear)="props.onClear && props.onClear(field, $event)"
       (onShow)="props.onShow && props.onShow(field, $event)"
       (onHide)="props.onHide && props.onHide(field, $event)"
-      [formControl]="formControl"
-      [formlyAttributes]="field"
     >
     </p-autoComplete>
   `,

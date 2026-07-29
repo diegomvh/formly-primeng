@@ -4,8 +4,11 @@ import { FormlyPrimengFieldProps } from '../field';
 import { DatePickerModule } from 'primeng/datepicker';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface FormlyPrimengDatePickerProps extends FormlyPrimengFieldProps {
+interface FormlyPrimengDatePickerProps extends 
+  FormlyPrimengFieldProps,
+  FormlyPrimengFieldEventProps<FormlyPrimengDatePickerProps> {
   defaultDate: Date | null;
   dateFormat?: string;
   hourFormat: string;
@@ -19,7 +22,6 @@ interface FormlyPrimengDatePickerProps extends FormlyPrimengFieldProps {
   inline?: boolean;
   readonlyInput?: boolean;
   touchUI?: boolean;
-  fluid?: boolean;
 }
 
 export interface FormlyPrimengDatepickerConfig extends FieldTypeConfig<FormlyPrimengDatePickerProps> {
@@ -32,7 +34,17 @@ export interface FormlyPrimengDatepickerConfig extends FieldTypeConfig<FormlyPri
   template: `
     <p-datepicker
       [inputId]="id"
+
+      [dt]="props.dt"
+      [unstyled]="props.unstyled"
+      [pt]="props.pt"
+      [ptOptions]="props.ptOptions"
+      [required]="props.required ?? false"
+      [invalid]="props.invalid ?? false"
+      [disabled]="props.disabled ?? false"
+      [name]="props.name"
       [fluid]="props.fluid"
+
       [defaultDate]="props.defaultDate"
       [dateFormat]="props.dateFormat"
       [hourFormat]="props.hourFormat"
@@ -47,6 +59,7 @@ export interface FormlyPrimengDatepickerConfig extends FieldTypeConfig<FormlyPri
       [readonlyInput]="props.readonlyInput"
       [touchUI]="props.touchUI"
       [placeholder]="props.placeholder"
+
       [formControl]="formControl"
       [formlyAttributes]="field"
     >

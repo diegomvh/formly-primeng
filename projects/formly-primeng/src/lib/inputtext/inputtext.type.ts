@@ -5,9 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-interface FormlyPrimengInputtextProps extends FormlyPrimengFieldProps {
-  fluid?: boolean;
-}
+interface FormlyPrimengInputtextProps extends FormlyPrimengFieldProps {}
 
 export interface FormlyPrimengInputtextConfig extends FieldTypeConfig<FormlyPrimengInputtextProps> {
   type: 'inputtext' | Type<FormlyPrimengInputtext>;

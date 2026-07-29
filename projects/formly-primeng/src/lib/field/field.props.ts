@@ -9,6 +9,10 @@ export interface FormlyPrimengFieldLabelProps {
   hideLabel?: boolean;
 }
 
+export interface FormlyPrimengFieldFluidProps {
+  fluid?: boolean;
+}
+
 export interface FormlyPrimengFieldHelpTextProps {
   helpText?: boolean;
   hideHelpText?: boolean;
@@ -33,7 +37,7 @@ export interface FormlyPrimengFieldAriaProps {
 }
 
 
-export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldPassThroughProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {}
+export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldPassThroughProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps, FormlyPrimengFieldFluidProps {}
 
 export interface FormlyPrimengFieldEventProps<C> {
   onFocus?: (field: FormlyFieldConfig<C>, event?: any) => void;

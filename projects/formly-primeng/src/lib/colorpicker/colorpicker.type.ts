@@ -4,11 +4,10 @@ import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'primeng/colorpicker';
-import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
+import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
 import { OverlayOptions } from 'primeng/api';
 
 interface FormlyPrimengColorpickerProps extends FormlyPrimengFieldProps, 
-  FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldOverlayProps, 
   FormlyPrimengFieldEventProps<FormlyPrimengColorpickerProps> {
   inline?: boolean;

@@ -4,10 +4,9 @@ import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
+import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps } from '../field/field.props';
 
 interface FormlyPrimengTogglebuttonProps extends FormlyPrimengFieldProps,
-  FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldAriaProps,
   FormlyPrimengFieldEventProps<FormlyPrimengTogglebuttonProps> {
   inputId?: string;

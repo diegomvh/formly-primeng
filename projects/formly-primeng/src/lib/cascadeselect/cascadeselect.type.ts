@@ -1,13 +1,16 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CascadeSelect, CascadeSelectModule } from 'primeng/cascadeselect';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
 
-interface FormlyPrimengCascadeselectProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
-  appendTo?: CascadeSelect['appendTo'];
+interface FormlyPrimengCascadeselectProps extends 
+  FormlyPrimengFieldProps, 
+  FormlyPrimengFieldOverlayProps, 
+  FormlyPrimengFieldEventProps<FormlyPrimengCascadeselectProps> {
   filter?: boolean;
   filterBy?: string;
 }

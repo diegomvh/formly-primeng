@@ -4,10 +4,9 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ng
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SliderModule, SliderSlideEndEvent } from 'primeng/slider';
-import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps, FormlyPrimengFieldPassThroughProps } from '../field/field.props';
+import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps } from '../field/field.props';
 
 export interface FormlyPrimengSliderProps extends FormlyPrimengFieldProps, 
-  FormlyPrimengFieldPassThroughProps,
   FormlyPrimengFieldAriaProps,
   FormlyPrimengFieldEventProps<FormlyPrimengSliderProps> {
   animate?: boolean;
