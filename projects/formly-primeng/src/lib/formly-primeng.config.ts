@@ -1,4 +1,10 @@
 import { withFormlyPrimengField } from './field';
+import { withFormlyPrimengFloatlabel } from './floatlabel';
+import { withFormlyPrimengIftalabel } from './iftalabel';
+import { withFormlyPrimengHelptext } from './helptext';
+import { withFormlyPrimengInputgroup } from './inputgroup';
+import { withFormlyPrimengError } from './error';
+
 import { withFormlyFieldWrapperObject } from './object';
 import { withFormlyPrimengArray } from './array';
 
@@ -28,9 +34,15 @@ import { withFormlyPrimengCascadeselect } from './cascadeselect';
 
 export function withFormlyPrimeNG() {
   return [
+    withFormlyPrimengField(),
+    withFormlyPrimengFloatlabel(),
+    withFormlyPrimengIftalabel(),
+    withFormlyPrimengHelptext(),
+    withFormlyPrimengInputgroup(),
+    withFormlyPrimengError(),
+
     withFormlyPrimengAutocomplete(),
     withFormlyPrimengCascadeselect(),
-    withFormlyPrimengField(),
     withFormlyFieldWrapperObject(),
     withFormlyPrimengArray(),
     withFormlyPrimengInputtext(),

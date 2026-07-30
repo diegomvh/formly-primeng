@@ -7,7 +7,7 @@ export function withFormlyPrimengInputnumber(): ConfigOption {
       {
         name: 'number',
         component: FormlyPrimengInputnumber,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
       { name: 'inputnumber', extends: 'number' },
       { name: 'integer', extends: 'number' },

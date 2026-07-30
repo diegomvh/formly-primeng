@@ -7,7 +7,7 @@ export function withFormlyPrimengTextarea(): ConfigOption {
       {
         name: 'textarea',
         component: FormlyPrimengTextarea,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
     ],
   };

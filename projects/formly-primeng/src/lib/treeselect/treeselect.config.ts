@@ -7,7 +7,7 @@ export function withFormlyPrimengTreeselect(): ConfigOption {
       {
         name: 'treeselect',
         component: FormlyFieldTreeselect,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       }
     ],
   };

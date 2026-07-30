@@ -7,7 +7,7 @@ export function withFormlyPrimengListbox(): ConfigOption {
       {
         name: 'listbox',
         component: FormlyPrimengListbox,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       }
     ],
   };

@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldArrayType, FormlyFieldConfig, FormlyFieldProps, FormlyModule, FieldTypeConfig } from '@ngx-formly/core';
-import { FormlyPrimengFieldHelpTextProps, FormlyPrimengFieldLabelProps } from '../field/field.props';
+import { FormlyPrimengFieldLabelProps } from '../field/field.props';
 
-export interface FormlyPrimengArrayProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps {
+export interface FormlyPrimengArrayProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps {
   editable: boolean,
   add: boolean,
   remove: boolean,

@@ -7,7 +7,7 @@ export function withFormlyPrimengSelectbutton(): ConfigOption {
       {
         name: 'selectbutton',
         component: FormlyPrimengSelectbutton,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       }
     ],
   };

@@ -4,18 +4,20 @@ import { PassThrough, PassThroughOptions } from "primeng/api";
 
 export interface FormlyPrimengFieldLabelProps {
   hideRequiredMarker?: boolean;
-  floatLabel?: boolean;
-  floatLabelVariant?: 'in' | 'over' | 'on';
   hideLabel?: boolean;
+}
+
+export interface FormlyPrimengFieldHelptextProps {
+  helpText?: string;
+}
+
+export interface FormlyPrimengFieldIconsProps {
+  rightIcons?: string[];
+  leftIcons?: string[];
 }
 
 export interface FormlyPrimengFieldFluidProps {
   fluid?: boolean;
-}
-
-export interface FormlyPrimengFieldHelpTextProps {
-  helpText?: boolean;
-  hideHelpText?: boolean;
 }
 
 export interface FormlyPrimengFieldOverlayProps {
@@ -37,7 +39,13 @@ export interface FormlyPrimengFieldAriaProps {
 }
 
 
-export interface FormlyPrimengFieldProps extends FormlyFieldProps, FormlyPrimengFieldPassThroughProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelpTextProps, FormlyPrimengFieldFluidProps {}
+export interface FormlyPrimengFieldProps extends 
+FormlyFieldProps, 
+FormlyPrimengFieldPassThroughProps, 
+FormlyPrimengFieldLabelProps, 
+FormlyPrimengFieldHelptextProps, 
+FormlyPrimengFieldIconsProps, 
+FormlyPrimengFieldFluidProps {}
 
 export interface FormlyPrimengFieldEventProps<C> {
   onFocus?: (field: FormlyFieldConfig<C>, event?: any) => void;

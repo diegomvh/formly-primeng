@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
+// Wrappers
 import { FormlyPrimengFieldModule } from './field';
+import { FormlyPrimengFloatlabelModule } from './floatlabel';
+import { FormlyPrimengIftalabelModule } from './iftalabel';
+import { FormlyPrimengHelptextModule } from './helptext';
+import { FormlyPrimengInputgroupModule } from './inputgroup';
+import { FormlyPrimengErrorModule } from './error';
+
 import { FormlyPrimengInputtextModule } from './inputtext';
 import { FormlyPrimengInputnumberModule } from './inputnumber';
 import { FormlyPrimengAutocompleteModule } from './autocomplete';
@@ -26,9 +33,15 @@ import { FormlyPrimengCascadeselectModule } from './cascadeselect';
 
 @NgModule({
   imports: [
+    FormlyPrimengFieldModule,
+    FormlyPrimengFloatlabelModule,
+    FormlyPrimengIftalabelModule,
+    FormlyPrimengErrorModule,
+    FormlyPrimengHelptextModule,
+    FormlyPrimengInputgroupModule,
+
     FormlyPrimengAutocompleteModule,
     FormlyPrimengCascadeselectModule,
-    FormlyPrimengFieldModule,
     FormlyPrimengInputtextModule,
     FormlyPrimengInputmaskModule,
     FormlyPrimengInputnumberModule,

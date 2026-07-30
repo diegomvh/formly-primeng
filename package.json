@@ -21,6 +21,7 @@
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/postcss": "^4.3.3",
     "postcss": "^8.5.24",
+    "primeicons": "^8.0.0",
     "primeng": "^21.1.8",
     "quill": "^2.0.3",
     "rxjs": "~7.8.0",

@@ -7,7 +7,7 @@ export function withFormlyPrimengAutocomplete(): ConfigOption {
       {
         name: 'autocomplete',
         component: FormlyPrimengAutocomplete,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
     ],
   };

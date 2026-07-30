@@ -7,7 +7,7 @@ export function withFormlyPrimengCascadeselect(): ConfigOption {
       {
         name: 'cascadeselect',
         component: FormlyPrimengCascadeselect,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
     ],
   };

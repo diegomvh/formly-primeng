@@ -1,14 +1,22 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface FormlyPrimengListboxProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengListboxProps extends 
+  FormlyPrimengFieldProps,
+  FormlyPrimengFieldEventProps<FormlyPrimengListboxProps> {
   filter?: boolean;
   filterBy?: string;
+  optionLabel?: string;
+  optionValue?: string;
+  optionDisabled?: string;
+  optionGroupLabel?: string;
+  optionGroupChildren?: string;
 }
 
 export interface FormlyPrimengListboxConfig extends FieldTypeConfig<FormlyPrimengListboxProps> {
@@ -20,13 +28,28 @@ export interface FormlyPrimengListboxConfig extends FieldTypeConfig<FormlyPrimen
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, ListboxModule],
   template: `
     <p-listbox
+      [dt]="props.dt"
+      [unstyled]="props.unstyled"
+      [pt]="props.pt"
+      [ptOptions]="props.ptOptions"
+      [required]="props.required ?? false"
+      [invalid]="props.invalid ?? false"
+      [disabled]="props.disabled ?? false"
+      [name]="props.name"
+      [fluid]="props.fluid"
+
       [options]="$any(props.options | formlySelectOptions: field | async)"
+      [filter]="props.filter"
+      [filterBy]="props.filterBy"
+      [optionLabel]="props.optionLabel"
+      [optionValue]="props.optionValue"
+      [optionDisabled]="props.optionDisabled"
+      [optionGroupLabel]="props.optionGroupLabel"
+      [optionGroupChildren]="props.optionGroupChildren ?? 'label'"
+
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [filter]="props.filter"
-      [filterBy]="props.filterBy ?? 'label'"
-      [optionLabel]="'label'"
-      [optionValue]="'value'"
+
       (onChange)="props.change && props.change(field, $event)"
     >
     </p-listbox>

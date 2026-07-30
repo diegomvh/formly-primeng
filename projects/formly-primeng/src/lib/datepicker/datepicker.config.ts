@@ -7,7 +7,7 @@ export function withFormlyPrimengDatepicker(): ConfigOption {
       {
         name: 'datepicker',
         component: FormlyPrimengDatePicker,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
     ],
   };

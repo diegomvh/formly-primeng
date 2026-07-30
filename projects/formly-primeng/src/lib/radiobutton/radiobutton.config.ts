@@ -7,7 +7,7 @@ export function withFormlyPrimengRadioButton(): ConfigOption {
       {
         name: 'radiobutton',
         component: FormlyPrimengRadioButton,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
     ],
   };

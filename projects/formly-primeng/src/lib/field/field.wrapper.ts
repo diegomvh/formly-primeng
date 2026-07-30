@@ -2,45 +2,34 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldWrapper, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { FormlyPrimengFieldProps } from './field.props';
 
 @Component({
   selector: 'formly-primeng-field',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FloatLabelModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, IconFieldModule, InputIconModule],
   template: `
-    @if (props.floatLabel) {
-      <p-floatlabel [variant]="props.floatLabelVariant ?? 'over'">
-        <ng-container #fieldComponent></ng-container>
-        @if (props.label && !props.hideLabel) {
-        <label [for]="id">
-          {{ props.label }}
-          @if (props.required && !props.hideRequiredMarker) {
-            <span aria-hidden="true">*</span>
-          }
-        </label>
-        }
-      </p-floatlabel>
-    } @else {
-      @if (props.label && !props.hideLabel) {
-      <label [for]="id">
-        {{ props.label }}
-        @if (props.required && !props.hideRequiredMarker) {
-          <span aria-hidden="true">*</span>
-        }
-      </label>
+    @if (props.label && !props.hideLabel) {
+    <label [for]="id">
+      {{ props.label }}
+      @if (props.required && !props.hideRequiredMarker) {
+        <span aria-hidden="true">*</span>
       }
-      <ng-container #fieldComponent></ng-container>
+    </label>
     }
-
-    @if (showError) {
-      <small [id]="id + '-help'" [ngStyle]="{ color: '#f44336' }">
-        <formly-validation-message [field]="field"></formly-validation-message>
-      </small>
-    } @else { 
-      @if (props.helpText && !props.hideHelpText) {
-        <small [id]="id + '-help'">{{props.helpText}}</small>
-      }
+    @if (props.leftIcons || props.rightIcons) {
+      <p-iconfield>
+        @for (icon of props.leftIcons; track icon) {
+          <p-inputicon class="{{ icon }}" />
+        }
+        <ng-container #fieldComponent></ng-container>
+        @for (icon of props.rightIcons; track icon) {
+          <p-inputicon class="{{ icon }}" />
+        } 
+      </p-iconfield>
+    } @else {
+      <ng-container #fieldComponent></ng-container>
     }
   `,
 })

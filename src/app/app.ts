@@ -22,6 +22,7 @@ export class App {
       },
       fieldGroup: [
         {
+          //https://v21.primeng.org/autocomplete
           key: 'autocomplete',
           type: 'autocomplete',
           className: 'col-span-2',
@@ -32,6 +33,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/cascadeselect
           key: 'cascadeselect',
           type: 'cascadeselect',
           className: 'col-span-2',
@@ -51,6 +53,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/checkbox
           key: 'checkbox',
           type: 'checkbox',
           className: 'col-span-2',
@@ -61,6 +64,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/colorpicker
           key: 'colorpicker',
           type: 'colorpicker',
           className: 'col-span-2',
@@ -71,6 +75,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/datepicker
           key: 'datepicker',
           type: 'datepicker',
           className: 'col-span-2',
@@ -81,6 +86,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/editor
           key: 'editor',
           type: 'editor',
           className: 'col-span-2',
@@ -91,6 +97,57 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/floatlabel
+          key: 'inputtext',
+          type: 'inputtext',
+          className: 'col-span-2',
+          wrappers: ['error', 'helptext', 'floatlabel', 'field'],
+          props: {
+            label: 'InputText with FloatLabel',
+            helpText: 'This is a help text',
+            fluid: true,
+          },
+        },
+        {
+          //https://v21.primeng.org/iconfield
+          key: 'inputtext',
+          type: 'inputtext',
+          className: 'col-span-2',
+          props: {
+            rightIcons: ['pi pi-search'],
+            leftIcons: ['pi pi-user'],
+            label: 'InputText with IconField',
+            fluid: true,
+          },
+        },
+        {
+          //https://v21.primeng.org/iftalabel
+          key: 'inputtext',
+          type: 'inputtext',
+          className: 'col-span-2',
+          wrappers: ['error', 'helptext', 'iftalabel', 'field'],
+          props: {
+            label: 'InputText with IfTaLabel',
+            helpText: 'This is a help text',
+            fluid: true,
+          },
+        },
+        {
+          //https://v21.primeng.org/inputgroup
+          //#TODO
+          key: 'inputtext',
+          type: 'inputtext',
+          className: 'col-span-2',
+          wrappers: ['error', 'helptext', 'inputgroup', 'field'],
+          props: {
+            label: 'InputText with InputGroup',
+            leftAddons: ['hi'],
+            hideLabel: true,
+            fluid: true,
+          },
+        },
+        {
+          //https://v21.primeng.org/inputmask
           key: 'inputmask',
           type: 'inputmask',
           className: 'col-span-2',
@@ -101,6 +158,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/inputnumber
           key: 'inputnumber',
           type: 'inputnumber',
           className: 'col-span-2',
@@ -111,6 +169,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/inputotp
           key: 'inputotp',
           type: 'inputotp',
           className: 'col-span-2',
@@ -121,6 +180,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/inputtext
           key: 'input',
           type: 'input',
           className: 'col-span-2',
@@ -131,6 +191,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/inputtext
           key: 'inputtext',
           type: 'inputtext',
           className: 'col-span-2',
@@ -141,6 +202,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/knob
           key: 'knob',
           type: 'knob',
           className: 'col-span-2',
@@ -151,16 +213,22 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/listbox
           key: 'listbox',
           type: 'listbox',
           className: 'col-span-2',
           props: {
             label: 'Listbox',
             fluid: true,
+            options: [
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+            ],
             placeholder: 'Listbox placeholder',
           },
         },
         {
+          //https://v21.primeng.org/multiselect
           key: 'multiselect',
           type: 'multiselect',
           className: 'col-span-2',
@@ -171,6 +239,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/password
           key: 'password',
           type: 'password',
           className: 'col-span-2',
@@ -181,6 +250,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/radiobutton
           key: 'radiobutton',
           type: 'radiobutton',
           className: 'col-span-2',
@@ -194,6 +264,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/rating
           key: 'rating',
           type: 'rating',
           className: 'col-span-2',
@@ -204,6 +275,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/select
           key: 'select',
           type: 'select',
           className: 'col-span-2',
@@ -220,6 +292,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/selectbutton
           key: 'selectbutton',
           type: 'selectbutton',
           className: 'col-span-2',
@@ -236,6 +309,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/slider
           key: 'slider',
           type: 'slider',
           className: 'col-span-2',
@@ -246,6 +320,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/textarea
           key: 'textarea',
           type: 'textarea',
           className: 'col-span-2',
@@ -256,6 +331,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/togglebutton
           key: 'togglebutton',
           type: 'togglebutton',
           className: 'col-span-2',
@@ -266,6 +342,7 @@ export class App {
           },
         },
         {
+          //https://v21.primeng.org/toggleswitch
           key: 'toggleswitch',
           type: 'toggleswitch',
           className: 'col-span-2',
@@ -273,6 +350,23 @@ export class App {
             label: 'ToggleSwitch',
             fluid: true,
             placeholder: 'ToggleSwitch placeholder',
+          },
+        },
+        {
+          //https://v21.primeng.org/treeselect
+          key: 'treeselect',
+          type: 'treeselect',
+          className: 'col-span-2',
+          props: {
+            label: 'TreeSelect',
+            fluid: true,
+            placeholder: 'TreeSelect placeholder',
+            options: [
+              { name: 'Options', options: [{ label: 'Option 1', value: '1' }]},
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+              { label: 'Option 3', value: '3' },
+            ],
           },
         },
       ],

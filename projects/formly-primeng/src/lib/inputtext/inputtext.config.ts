@@ -7,7 +7,7 @@ export function withFormlyPrimengInputtext(): ConfigOption {
       {
         name: 'input',
         component: FormlyPrimengInputtext,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
       { name: 'inputtext', extends: 'input' },
       { name: 'string', extends: 'input' }

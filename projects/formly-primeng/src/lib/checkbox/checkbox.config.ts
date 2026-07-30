@@ -7,7 +7,7 @@ export function withFormlyPrimengCheckbox(): ConfigOption {
       {
         name: 'checkbox',
         component: FormlyPrimengCheckbox,
-        wrappers: ['field'],
+        wrappers: ['error', 'helptext', 'field'],
       },
       {
         name: 'boolean',
