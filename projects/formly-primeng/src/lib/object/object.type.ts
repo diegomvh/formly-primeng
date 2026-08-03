@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FieldWrapper, FormlyFieldConfig, FormlyFieldProps as CoreFormlyFieldProps, FormlyModule } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyModule, FormlyFieldProps, FieldType } from '@ngx-formly/core';
+import { FormlyPrimengFieldHelptextProps, FormlyPrimengFieldLabelProps } from '../field/field.props';
 
-export interface FormlyObjectProps extends CoreFormlyFieldProps {
-  hideLabel?: boolean;
-  helpText?: boolean;
+export interface FormlyPrimengObjectProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps, FormlyPrimengFieldHelptextProps {
   hideHelpText?: boolean;
 }
 
 @Component({
-  selector: 'formly-primengwrapper-primeng-object',
+  selector: 'formly-primeng-object',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule],
   template: `
     @if (props.label && !props.hideLabel) {
@@ -29,8 +28,8 @@ export interface FormlyObjectProps extends CoreFormlyFieldProps {
     </div>
   `,
 })
-export class FormlyFieldObjectWrapper extends FieldWrapper<FormlyFieldConfig<FormlyObjectProps>> {
-  override defaultOptions?: Partial<FormlyFieldConfig<FormlyObjectProps>> = {
+export class FormlyPrimengObject extends FieldType<FormlyFieldConfig<FormlyPrimengObjectProps>> {
+  override defaultOptions?: Partial<FormlyFieldConfig<FormlyPrimengObjectProps>> = {
     props: { },
   };
 }

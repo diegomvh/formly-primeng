@@ -9,3 +9,11 @@
 ></formly-form>
 
 <p>{{ model | json }}</p>
+
+<formly-form 
+  [form]="jsonform" 
+  [model]="jsonmodel" 
+  [fields]="jsonfields"
+></formly-form>
+
+<p>{{ jsonmodel | json }}</p>

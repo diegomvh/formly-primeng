@@ -7,6 +7,9 @@ import { FormlyPrimengHelptextModule } from './helptext';
 import { FormlyPrimengInputgroupModule } from './inputgroup';
 import { FormlyPrimengErrorModule } from './error';
 
+import { FormlyPrimengArrayModule } from './array';
+import { FormlyPrimengObjectModule } from './object';
+
 import { FormlyPrimengInputtextModule } from './inputtext';
 import { FormlyPrimengInputnumberModule } from './inputnumber';
 import { FormlyPrimengAutocompleteModule } from './autocomplete';
@@ -39,6 +42,9 @@ import { FormlyPrimengCascadeselectModule } from './cascadeselect';
     FormlyPrimengErrorModule,
     FormlyPrimengHelptextModule,
     FormlyPrimengInputgroupModule,
+
+    FormlyPrimengArrayModule,
+    FormlyPrimengObjectModule,
 
     FormlyPrimengAutocompleteModule,
     FormlyPrimengCascadeselectModule,

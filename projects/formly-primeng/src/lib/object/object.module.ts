@@ -4,7 +4,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormlyPrimengFieldModule } from '../field';
-import { withFormlyFieldWrapperObject } from './object.config';
+import { withFormlyPrimengObject } from './object.config';
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { withFormlyFieldWrapperObject } from './object.config';
     ReactiveFormsModule,
     InputTextModule,
     FormlyPrimengFieldModule,
-    FormlyModule.forChild(withFormlyFieldWrapperObject())
+    FormlyModule.forChild(withFormlyPrimengObject())
   ]
 })
-export class FormlyFieldObjectModule {}
+export class FormlyPrimengObjectModule {}

@@ -5,7 +5,7 @@ import { withFormlyPrimengHelptext } from './helptext';
 import { withFormlyPrimengInputgroup } from './inputgroup';
 import { withFormlyPrimengError } from './error';
 
-import { withFormlyFieldWrapperObject } from './object';
+import { withFormlyPrimengObject } from './object';
 import { withFormlyPrimengArray } from './array';
 
 import { withFormlyPrimengInputtext } from './inputtext';
@@ -41,10 +41,11 @@ export function withFormlyPrimeNG() {
     withFormlyPrimengInputgroup(),
     withFormlyPrimengError(),
 
+    withFormlyPrimengArray(),
+    withFormlyPrimengObject(),
+
     withFormlyPrimengAutocomplete(),
     withFormlyPrimengCascadeselect(),
-    withFormlyFieldWrapperObject(),
-    withFormlyPrimengArray(),
     withFormlyPrimengInputtext(),
     withFormlyPrimengInputnumber(),
     withFormlyPrimengInputotp(),

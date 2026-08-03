@@ -1,8 +1,10 @@
 import { JsonPipe } from '@angular/common';
-import { Component, EventEmitter } from '@angular/core';
+import { afterRenderEffect, Component, EventEmitter, inject } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ButtonModule } from 'primeng/button';
+import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
+
 
 @Component({
   selector: 'app-root',
@@ -45,7 +47,7 @@ export class App {
             optionGroupLabel: 'name',
             optionGroupChildren: 'options',
             options: [
-              { name: 'Options', options: [{ label: 'Option 1', value: '1' }]},
+              { name: 'Options', options: [{ label: 'Option 1', value: '1' }] },
               { label: 'Option 1', value: '1' },
               { label: 'Option 2', value: '2' },
               { label: 'Option 3', value: '3' },
@@ -362,7 +364,7 @@ export class App {
             fluid: true,
             placeholder: 'TreeSelect placeholder',
             options: [
-              { name: 'Options', options: [{ label: 'Option 1', value: '1' }]},
+              { name: 'Options', options: [{ label: 'Option 1', value: '1' }] },
               { label: 'Option 1', value: '1' },
               { label: 'Option 2', value: '2' },
               { label: 'Option 3', value: '3' },
@@ -372,6 +374,76 @@ export class App {
       ],
     },
   ];
+
+  jsonform = new FormGroup({});
+  jsonmodel = {};
+  formlyjsonschema = inject(FormlyJsonschema)
+  jsonfields = [this.formlyjsonschema.toFieldConfig({
+    type: 'object',
+    widget: {
+      formlyConfig: {
+        fieldGroupClassName: 'grid grid-cols-3 gap-4',
+      }
+    },
+    properties: {
+      name: { type: 'string', widget: {formlyConfig: {props: {fluid: true}}} },
+      age: { type: 'number', widget: {formlyConfig: {props: {fluid: true}}} },
+      emails: {
+        type: 'array',
+        widget: {formlyConfig: {props: {min: 1, max: 4, columns: 2}}},
+        items: {
+          type: 'string',
+          format: 'email',
+          widget: {formlyConfig: {props: {fluid: true}}}
+        },
+      },
+      isActive: { type: 'boolean', widget: {formlyConfig: {props: {label: 'Active', binary: true}}} },
+      role: {
+        type: 'string',
+        widget: {formlyConfig: {props: {fluid: true}}},
+        enum: ['Admin', 'User', 'Guest'],
+      },
+      preferences: {
+        type: 'object',
+        widget: {
+          formlyConfig: {
+            fieldGroupClassName: 'grid grid-cols-12 gap-4',
+          }
+        },
+        properties: {
+          theme: { type: 'string', widget: {formlyConfig: {className: "col-span-8", props: {fluid: true}}} },
+          notifications: { type: 'boolean', widget: {formlyConfig: { className: "col-span-4", props: {label: 'Notifications', binary: true}}} },
+        },
+      },
+      addresses: {
+        type: 'array',
+        widget: {formlyConfig: {
+          className: "col-span-3", 
+          props: {min: 1, max: 3, add: true, remove: true, label: 'Addresses', description: 'List of addresses'}}},
+        items: {
+          type: 'object',
+          widget: {
+            formlyConfig: {
+              fieldGroupClassName: 'grid grid-cols-4 gap-4',
+              props: {label: 'Address'}
+            }
+          },
+          properties: {
+            street: { type: 'string', widget: {formlyConfig: {props: {fluid: true}}} },
+            city: { type: 'string', widget: {formlyConfig: {props: {fluid: true}}} },
+            state: { type: 'string', widget: {formlyConfig: {props: {fluid: true}}} },
+            zip: { type: 'string', widget: {formlyConfig: {props: {fluid: true}}} },
+          },
+        },
+      },
+    },
+  })];
+
+  constructor() {
+    afterRenderEffect(() => {
+      console.log(this.jsonfields);
+    });
+  }
 
   onSubmit() {
     if (this.form.valid) {

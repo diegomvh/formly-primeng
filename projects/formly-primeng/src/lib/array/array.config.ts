@@ -1,13 +1,14 @@
 import { ConfigOption } from '@ngx-formly/core';
-import { FormlyPrimengArrayWrapper } from './array.wrapper';
+import { FormlyPrimengArray } from './array.type';
 
 export function withFormlyPrimengArray(): ConfigOption {
   return {
-      types: [
-        {
-          name: 'array',
-          component: FormlyPrimengArrayWrapper,
-        },
-      ]
+    types: [
+      {
+        name: 'array',
+        component: FormlyPrimengArray,
+        wrappers: ['error'],
+      },
+    ],
   };
 }
