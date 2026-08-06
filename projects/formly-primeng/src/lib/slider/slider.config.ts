@@ -8,7 +8,7 @@ export function withFormlyPrimengSlider(): ConfigOption {
       {
         name: 'slider',
         component: FormlyPrimengSlider,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ]
   }

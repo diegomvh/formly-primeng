@@ -7,7 +7,7 @@ export function withFormlyPrimengInputotp(): ConfigOption {
       {
         name: 'inputotp',
         component: FormlyPrimengInputotp,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ],
   };

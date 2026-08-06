@@ -11,7 +11,7 @@ export interface FormlyPrimengFloatlabelProps extends
 }
 
 @Component({
-  selector: 'formly-primeng-field',
+  selector: 'formly-primeng-floatlabel',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FloatLabelModule],
   template: `
     <p-floatlabel [variant]="props.floatLabelVariant ?? 'over'">

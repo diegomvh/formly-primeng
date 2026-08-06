@@ -7,7 +7,7 @@ export function withFormlyPrimengMultiselect(): ConfigOption {
       {
         name: 'multiselect',
         component: FormlyPrimengMultiselect,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       }
     ],
   };

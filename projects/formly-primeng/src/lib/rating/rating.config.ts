@@ -8,7 +8,7 @@ export function withFormlyPrimengRating(): ConfigOption {
       {
         name: 'rating',
         component: FormlyPrimengRating,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ]
   }

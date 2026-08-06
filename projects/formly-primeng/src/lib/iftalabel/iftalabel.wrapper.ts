@@ -10,7 +10,7 @@ export interface FormlyPrimengIftalabelProps extends
 }
 
 @Component({
-  selector: 'formly-primeng-field',
+  selector: 'formly-primeng-iftalabel',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, IftaLabelModule],
   template: `
     <p-iftalabel>

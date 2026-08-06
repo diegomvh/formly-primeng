@@ -7,7 +7,7 @@ export function withFormlyPrimengSelect(): ConfigOption {
       {
         name: 'select',
         component: FormlyPrimengSelect,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
       { name: 'enum', extends: 'select' },
     ],

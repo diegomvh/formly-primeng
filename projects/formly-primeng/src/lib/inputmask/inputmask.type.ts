@@ -4,11 +4,17 @@ import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputMaskModule } from 'primeng/inputmask';
-import { FormlyPrimengFieldEventProps } from '../field/field.props';
+import { FormlyPrimengFieldAriaProps, FormlyPrimengFieldEventProps } from '../field/field.props';
 
 export interface FormlyPrimengInputmaskProps extends 
   FormlyPrimengFieldProps,
+  FormlyPrimengFieldAriaProps,
   FormlyPrimengFieldEventProps<FormlyPrimengInputmaskProps> {
+  unmask?: boolean;
+  mask?: string;
+  slotChar?: string;
+  characterPattern?: string;
+  keepBuffer?: boolean;
   onComplete?: (field: FormlyPrimengInputmaskConfig, event: Event) => void;
   onInput?: (field: FormlyPrimengInputmaskConfig, event: Event) => void;
   onClear?: (field: FormlyPrimengInputmaskConfig, event: void) => void;
@@ -33,6 +39,13 @@ export interface FormlyPrimengInputmaskConfig extends FieldTypeConfig<FormlyPrim
       [disabled]="props.disabled ?? false"
       [name]="props.name"
       [fluid]="props.fluid"
+
+      [ariaLabel]="props.ariaLabel"
+      [ariaLabelledBy]="props.ariaLabelledBy"
+      [unmask]="props.unmask"
+      [mask]="props.mask"
+      [characterPattern]="props.characterPattern ?? '[A-Za-z]'"
+      [keepBuffer]="props.keepBuffer"
 
       [formControl]="formControl"
       [formlyAttributes]="field"

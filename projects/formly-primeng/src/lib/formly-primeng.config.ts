@@ -4,6 +4,8 @@ import { withFormlyPrimengIftalabel } from './iftalabel';
 import { withFormlyPrimengHelptext } from './helptext';
 import { withFormlyPrimengInputgroup } from './inputgroup';
 import { withFormlyPrimengError } from './error';
+import { withFormlyPrimengLabel } from './label';
+import { withFormlyPrimengIconfield } from './iconfield';
 
 import { withFormlyPrimengObject } from './object';
 import { withFormlyPrimengArray } from './array';
@@ -40,7 +42,8 @@ export function withFormlyPrimeNG() {
     withFormlyPrimengHelptext(),
     withFormlyPrimengInputgroup(),
     withFormlyPrimengError(),
-
+    withFormlyPrimengLabel(),
+    withFormlyPrimengIconfield(),
     withFormlyPrimengArray(),
     withFormlyPrimengObject(),
 

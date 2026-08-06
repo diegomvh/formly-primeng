@@ -8,7 +8,7 @@ export function withFormlyPrimengTogglebutton(): ConfigOption {
         {
           name: 'togglebutton',
           component: FormlyPrimengTogglebutton,
-          wrappers: ['error', 'helptext', 'field'],
+          wrappers: ['error', 'helptext', 'label', 'field'],
         },
       ],
   };

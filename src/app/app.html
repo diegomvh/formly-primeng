@@ -1,14 +1,20 @@
 <div class="header">
-  <h4 class="mat-h2">Angular Formly PrimeNg</h4>
+  <h1 class="mat-h2">Angular Formly PrimeNg</h1>
 </div>
 
+<h4>Basic Form Fields</h4>
+
 <formly-form 
-  [form]="form" 
-  [model]="model" 
-  [fields]="fields"
+  [form]="basicform" 
+  [model]="basicmodel" 
+  [fields]="basicfields"
 ></formly-form>
 
-<p>{{ model | json }}</p>
+<p>{{ basicmodel | json }}</p>
+
+<hr />
+
+<h4>JSON Form Fields</h4>
 
 <formly-form 
   [form]="jsonform" 
@@ -17,3 +23,15 @@
 ></formly-form>
 
 <p>{{ jsonmodel | json }}</p>
+
+<hr />
+
+<h4>Custom Form Fields</h4>
+
+<formly-form 
+  [form]="customform" 
+  [model]="custommodel" 
+  [fields]="customfields"
+></formly-form>
+
+<p>{{ custommodel | json }}</p>

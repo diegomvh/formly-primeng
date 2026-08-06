@@ -8,7 +8,7 @@ export function withFormlyPrimengEditor(): ConfigOption {
       {
         name: 'editor',
         component: FormlyPrimengEditor,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ]
   }

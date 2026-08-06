@@ -8,7 +8,7 @@ export function withFormlyPrimengPassword(): ConfigOption {
       {
         name: 'password',
         component: FormlyPrimengPassword,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ]
   }

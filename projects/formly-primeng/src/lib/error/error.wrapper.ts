@@ -8,6 +8,7 @@ import { FormlyPrimengFieldProps } from '../field';
 export interface FormlyPrimengErrorProps extends 
   FormlyPrimengFieldProps {
 }
+
 @Component({
   selector: 'formly-primeng-error',
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, FloatLabelModule],

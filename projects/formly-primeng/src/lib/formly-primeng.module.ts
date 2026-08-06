@@ -6,6 +6,8 @@ import { FormlyPrimengIftalabelModule } from './iftalabel';
 import { FormlyPrimengHelptextModule } from './helptext';
 import { FormlyPrimengInputgroupModule } from './inputgroup';
 import { FormlyPrimengErrorModule } from './error';
+import { FormlyPrimengLabelModule } from './label';
+import { FormlyPrimengIconfieldModule } from './iconfield';
 
 import { FormlyPrimengArrayModule } from './array';
 import { FormlyPrimengObjectModule } from './object';
@@ -40,6 +42,8 @@ import { FormlyPrimengCascadeselectModule } from './cascadeselect';
     FormlyPrimengFloatlabelModule,
     FormlyPrimengIftalabelModule,
     FormlyPrimengErrorModule,
+    FormlyPrimengLabelModule,
+    FormlyPrimengIconfieldModule,
     FormlyPrimengHelptextModule,
     FormlyPrimengInputgroupModule,
 

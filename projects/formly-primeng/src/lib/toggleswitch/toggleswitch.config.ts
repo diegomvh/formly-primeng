@@ -8,7 +8,7 @@ export function withFormlyPrimengToggleswitch(): ConfigOption {
         {
           name: 'toggleswitch',
           component: FormlyPrimengToggleswitch,
-          wrappers: ['error', 'helptext', 'field'],
+          wrappers: ['error', 'helptext', 'label', 'field'],
         },
       ],
   };

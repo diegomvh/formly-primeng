@@ -7,7 +7,7 @@ export function withFormlyPrimengColorpicker(): ConfigOption {
       {
         name: 'colorpicker',
         component: FormlyPrimengColorpicker,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       }
     ],
   };

@@ -8,7 +8,7 @@ export function withFormlyPrimengKnob(): ConfigOption {
       {
         name: 'knob',
         component: FormlyPrimengKnob,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ]
   }

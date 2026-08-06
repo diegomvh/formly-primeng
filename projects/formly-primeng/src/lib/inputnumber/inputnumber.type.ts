@@ -10,6 +10,9 @@ interface FormlyPrimengInputnumberProps extends
   FormlyPrimengFieldProps, 
   FormlyPrimengFieldEventProps<FormlyPrimengInputnumberProps> {
   mode?: 'decimal' | 'currency';
+  suffix?: string;
+  minFractionDigits?: number;
+  maxFractionDigits?: number;
   onInput?: (field: FormlyPrimengInputnumberConfig, event: InputNumberInputEvent) => void;
   onClear?: (field: FormlyPrimengInputnumberConfig, event: void) => void;
 }
@@ -34,6 +37,11 @@ export interface FormlyPrimengInputnumberConfig extends FieldTypeConfig<FormlyPr
       [fluid]="props.fluid"
 
       [mode]="props.mode"
+      [suffix]="props.suffix"
+      [max]="props.max"
+      [min]="props.min"
+      [minFractionDigits]="props.minFractionDigits"
+      [maxFractionDigits]="props.maxFractionDigits"
 
       [formControl]="formControl"
       [formlyAttributes]="field"

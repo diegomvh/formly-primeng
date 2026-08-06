@@ -7,7 +7,7 @@ export function withFormlyPrimengInputmask(): ConfigOption {
       {
         name: 'inputmask',
         component: FormlyPrimengInputmask,
-        wrappers: ['error', 'helptext', 'field'],
+        wrappers: ['error', 'helptext', 'label', 'field'],
       },
     ],
   };

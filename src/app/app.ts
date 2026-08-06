@@ -14,9 +14,9 @@ import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
 })
 export class App {
   autoComplete$ = new EventEmitter<any>();
-  form = new FormGroup({});
-  model = {};
-  fields: FormlyFieldConfig[] = [
+  basicform = new FormGroup({});
+  basicmodel = {};
+  basicfields: FormlyFieldConfig[] = [
     {
       fieldGroupClassName: 'grid grid-cols-8 gap-4',
       props: {
@@ -103,7 +103,7 @@ export class App {
           key: 'inputtext',
           type: 'inputtext',
           className: 'col-span-2',
-          wrappers: ['error', 'helptext', 'floatlabel', 'field'],
+          wrappers: ['error', 'helptext', 'floatlabel', 'label', 'field'],
           props: {
             label: 'InputText with FloatLabel',
             helpText: 'This is a help text',
@@ -115,6 +115,7 @@ export class App {
           key: 'inputtext',
           type: 'inputtext',
           className: 'col-span-2',
+          wrappers: ['error', 'helptext', 'label', 'iconfield', 'field'],
           props: {
             rightIcons: ['pi pi-search'],
             leftIcons: ['pi pi-user'],
@@ -127,7 +128,7 @@ export class App {
           key: 'inputtext',
           type: 'inputtext',
           className: 'col-span-2',
-          wrappers: ['error', 'helptext', 'iftalabel', 'field'],
+          wrappers: ['error', 'helptext', 'iftalabel', 'label', 'field'],
           props: {
             label: 'InputText with IfTaLabel',
             helpText: 'This is a help text',
@@ -140,11 +141,10 @@ export class App {
           key: 'inputtext',
           type: 'inputtext',
           className: 'col-span-2',
-          wrappers: ['error', 'helptext', 'inputgroup', 'field'],
+          wrappers: ['error', 'helptext', 'label', 'field', 'inputgroup'],
           props: {
             label: 'InputText with InputGroup',
-            leftAddons: ['hi'],
-            hideLabel: true,
+            leftAddons: [{icon: 'pi pi-user'}],
             fluid: true,
           },
         },
@@ -439,19 +439,25 @@ export class App {
     },
   })];
 
-  constructor() {
-    afterRenderEffect(() => {
-      console.log(this.jsonfields);
-    });
-  }
 
-  onSubmit() {
-    if (this.form.valid) {
-      alert(JSON.stringify(this.model, null, 2));
-    }
-  }
-
-  setValue(): void {
-    this.model = { ...this.model, treeSelect: 'Scarface Movie' };
-  }
+  customform = new FormGroup({});
+  custommodel = {};
+  customfields: FormlyFieldConfig[] = [
+    {
+      fieldGroupClassName: 'grid grid-cols-4 gap-4',
+      props: {
+        hideLabel: true,
+      },
+      fieldGroup: [
+        {
+          key: 'email',
+          type: 'email',
+          props: {
+            fluid: true,
+            placeholder: 'Email placeholder',
+          },
+        },
+      ],
+    },
+  ];
 }

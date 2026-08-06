@@ -1,4 +1,4 @@
-import { ConfigOption } from '@ngx-formly/core';
+import { ConfigOption, FormlyExtension } from '@ngx-formly/core';
 import { FormlyPrimengInputgroupWrapper } from './inputgroup.wrapper';
 
 export function withFormlyPrimengInputgroup(): ConfigOption {
@@ -8,6 +8,6 @@ export function withFormlyPrimengInputgroup(): ConfigOption {
         name: 'inputgroup',
         component: FormlyPrimengInputgroupWrapper,
       },
-    ],
+    ]
   };
 }
