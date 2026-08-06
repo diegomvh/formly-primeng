@@ -8,6 +8,8 @@ import { FormlyPrimengFieldProps } from '../field';
 
 export interface FormlyPrimengIconfieldProps extends 
   FormlyPrimengFieldProps {
+  rightIcons?: string[];
+  leftIcons?: string[];
 }
 
 @Component({

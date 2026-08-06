@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FieldWrapper, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlyPrimengFieldProps } from '../field';
+import { FieldWrapper, FormlyFieldConfig, FormlyFieldProps, FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimengFieldLabelProps } from '../field/field.props';
 
-export interface FormlyPrimengLabelProps extends 
-  FormlyPrimengFieldProps {
+export interface FormlyPrimengLabelProps extends FormlyFieldProps, FormlyPrimengFieldLabelProps {
 }
 
 @Component({

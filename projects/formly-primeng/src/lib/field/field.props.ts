@@ -11,11 +11,6 @@ export interface FormlyPrimengFieldHelptextProps {
   helpText?: string;
 }
 
-export interface FormlyPrimengFieldIconsProps {
-  rightIcons?: string[];
-  leftIcons?: string[];
-}
-
 export interface FormlyPrimengFieldFluidProps {
   fluid?: boolean;
 }
@@ -42,9 +37,7 @@ export interface FormlyPrimengFieldAriaProps {
 export interface FormlyPrimengFieldProps extends 
 FormlyFieldProps, 
 FormlyPrimengFieldPassThroughProps, 
-FormlyPrimengFieldLabelProps, 
 FormlyPrimengFieldHelptextProps, 
-FormlyPrimengFieldIconsProps, 
 FormlyPrimengFieldFluidProps {}
 
 export interface FormlyPrimengFieldEventProps<C> {
