@@ -457,6 +457,14 @@ export class App {
             placeholder: 'Email placeholder',
           },
         },
+        {
+          key: 'phone',
+          type: 'phone',
+          props: {
+            fluid: true,
+            placeholder: 'Phone placeholder',
+          },
+        },
       ],
     },
   ];

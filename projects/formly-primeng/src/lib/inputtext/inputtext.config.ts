@@ -1,17 +1,6 @@
-import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+import { ConfigOption } from '@ngx-formly/core';
 import { FormlyPrimengInputtext } from './inputtext.type';
-import { AbstractControl, ValidationErrors, Validators } from '@angular/forms';
-
-export function EmailValidator(
-  control: AbstractControl,
-  field: FormlyFieldConfig
-): ValidationErrors | null {
-  return Validators.email(control);
-}
-
-export function EmailValidatorMessage(err: any, field: FormlyFieldConfig) {
-  return `Invalid email "${field.formControl?.value}"`;
-}
+import { EmailValidator, EmailValidatorMessage } from '../validators/email';
 
 export function withFormlyPrimengInputtext(): ConfigOption {
   return {
@@ -29,17 +18,17 @@ export function withFormlyPrimengInputtext(): ConfigOption {
       },
       { name: 'inputtext', extends: 'input' },
       { name: 'string', extends: 'input' },
-    {
-      name: 'email',
-      extends: 'input',
-      wrappers: ['error', 'helptext', 'label', 'field', 'inputgroup'],
-      defaultOptions: {
-        validators: { validation: ['email'] },
-        props: {
-          leftAddons: [{ icon: 'pi pi-envelope' }],
-        }
+      {
+        name: 'email',
+        extends: 'input',
+        wrappers: ['error', 'helptext', 'label', 'field', 'inputgroup'],
+        defaultOptions: {
+          validators: { validation: ['email'] },
+          props: {
+            leftAddons: [{ icon: 'pi pi-envelope' }],
+          }
+        },
       },
-    },
     ],
   };
 }

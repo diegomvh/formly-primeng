@@ -49,6 +49,10 @@ export class FormlyPrimengInputgroupWrapper extends FieldWrapper<FormlyFieldConf
       const elements = (<ElementRef[]>(this.field as any)._elementRefs);
       if (elements && elements.length > 0) {
         const inputElement = elements[0].nativeElement;
+        if (inputElement) {
+          inputElement.style.display = "flex";
+          inputElement.style.width = "100%";
+        }
         const parentElement = inputElement?.parentElement;
         if (parentElement) {
           parentElement.style.display = "flex";
