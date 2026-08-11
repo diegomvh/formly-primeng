@@ -1,6 +1,30 @@
 {
   "name": "formly-primeng",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.1",
+  "license": "MIT",
+  "description": "Formly Primeng is a UI for ngx-formly.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegomvh/formly-primeng.git"
+  },
+  "keywords": [
+    "@angular",
+    "angular",
+    "forms",
+    "ngx-formly",
+    "formly",
+    "angular forms",
+    "json forms",
+    "dynamic forms",
+    "form library",
+    "primeng"
+  ],
+  "author": "Diego van Haaster",
+  "bugs": {
+    "url": "https://github.com/diegomvh/formly-primeng/issues"
+  },
+  "homepage": "https://github.com/diegomvh/formly-primeng",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.0",
