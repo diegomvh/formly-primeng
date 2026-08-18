@@ -5,7 +5,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-interface FormlyPrimengInputtextProps extends FormlyPrimengFieldProps {}
+interface FormlyPrimengInputtextProps extends FormlyPrimengFieldProps {
+  pSize?: 'large' | 'small';
+  variant?: 'outlined' | 'filled';
+  invalid?: boolean; 
+}
 
 export interface FormlyPrimengInputtextConfig extends FieldTypeConfig<FormlyPrimengInputtextProps> {
   type: 'inputtext' | Type<FormlyPrimengInputtext>;
@@ -18,6 +22,21 @@ export interface FormlyPrimengInputtextConfig extends FieldTypeConfig<FormlyPrim
     <input
       [id]="id"
       pInputText
+
+      [dt]="props.dt"
+      [unstyled]="props.unstyled"
+      [pt]="props.pt"
+      [ptOptions]="props.ptOptions"
+      [required]="props.required ?? false"
+      [invalid]="props.invalid ?? false"
+      [disabled]="props.disabled ?? false"
+      [name]="props.name"
+      [fluid]="props.fluid"
+
+      [variant]="props.variant"
+      [pSize]="props.pSize"
+      [invalid]="props.invalid"
+
       (focus)="props.focus && props.focus(field, $event)"
       (blur)="props.blur && props.blur(field, $event)"
       (keyup)="props.keyup && props.keyup(field, $event)"
@@ -26,7 +45,6 @@ export interface FormlyPrimengInputtextConfig extends FieldTypeConfig<FormlyPrim
       (change)="props.change && props.change(field, $event)"
       (keypress)="props.keypress && props.keypress(field, $event)"
       (wheel)="props.wheel && props.wheel(field, $event)"
-      [fluid]="props.fluid"
 
       [aria-describedby]="props.helpText ? id + '-help' : null"
 

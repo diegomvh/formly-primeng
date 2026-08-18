@@ -13,6 +13,10 @@ interface FormlyPrimengInputnumberProps extends
   suffix?: string;
   minFractionDigits?: number;
   maxFractionDigits?: number;
+  locale?: string;
+  localeMatcher?: 'best fit' | 'lookup';
+  currency?: string;
+  currencyDisplay?: 'code' | 'name' | 'symbol';
   onInput?: (field: FormlyPrimengInputnumberConfig, event: InputNumberInputEvent) => void;
   onClear?: (field: FormlyPrimengInputnumberConfig, event: void) => void;
 }
@@ -26,6 +30,7 @@ export interface FormlyPrimengInputnumberConfig extends FieldTypeConfig<FormlyPr
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, InputNumberModule],
   template: `
     <p-inputnumber
+      [inputId]="id"
       [dt]="props.dt"
       [unstyled]="props.unstyled"
       [pt]="props.pt"
@@ -42,6 +47,10 @@ export interface FormlyPrimengInputnumberConfig extends FieldTypeConfig<FormlyPr
       [min]="props.min"
       [minFractionDigits]="props.minFractionDigits"
       [maxFractionDigits]="props.maxFractionDigits"
+      [locale]="props.locale"
+      [localeMatcher]="props.localeMatcher"
+      [currency]="props.currency"
+      [currencyDisplay]="props.currencyDisplay"
 
       [formControl]="formControl"
       [formlyAttributes]="field"
