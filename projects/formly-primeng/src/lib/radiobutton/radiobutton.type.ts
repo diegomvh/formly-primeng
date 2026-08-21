@@ -4,9 +4,13 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
 import { CommonModule } from '@angular/common';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { FormlySelectModule } from '@ngx-formly/core/select';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
+import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
 
-export interface FormlyPrimengRadioButtonProps extends FormlyPrimengFieldProps {}
+interface FormlyPrimengRadioButtonProps extends 
+  FormlyPrimengFieldProps, 
+  FormlyPrimengFieldEventProps<FormlyPrimengRadioButtonProps> {
+}
 
 export interface FormlyPrimengRadioButtonConfig extends FieldTypeConfig<FormlyPrimengRadioButtonProps> {
   type: 'radiobutton' | Type<FormlyPrimengRadioButton>;
@@ -14,21 +18,20 @@ export interface FormlyPrimengRadioButtonConfig extends FieldTypeConfig<FormlyPr
 
 @Component({
   selector: 'formly-primeng-radioButton',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, RadioButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlyAsyncPipe, RadioButtonModule],
   template: `
-    <div
-      class="p-field-radiobutton"
-      *ngFor="let option of props.options | formlySelectOptions: field | async; let index = index"
-    >
-      <p-radioButton
-        [name]="field.name || id"
-        [formControl]="option.disabled ? disabledControl : formControl"
-        [value]="option.value"
-        [inputId]="id + index"
-      >
-      </p-radioButton>
-      <label [for]="id + index" class="ml-2">{{ option.label }}</label>
-    </div>
+    @for (option of (props.options | formlyAsync: field | async); track option; let index = $index) {
+      <div class="p-field-radiobutton">
+        <p-radioButton
+          [name]="field.name || id"
+          [formControl]="option.disabled ? disabledControl : formControl"
+          [value]="option.value"
+          [inputId]="id + index"
+        >
+        </p-radioButton>
+        <label [for]="id + index" class="ml-2">{{ option.label }}</label>
+      </div>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

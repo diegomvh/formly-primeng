@@ -1,14 +1,15 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
+import { FormlyPrimengFieldEventProps } from '../field/field.props';
 
-interface FormlyPrimengSelectbuttonProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
-  filter?: boolean;
-  filterBy?: string;
+interface FormlyPrimengSelectbuttonProps extends 
+  FormlyPrimengFieldProps, 
+  FormlyPrimengFieldEventProps<FormlyPrimengSelectbuttonProps> {
 }
 
 export interface FormlyPrimengSelectbuttonConfig extends FieldTypeConfig<FormlyPrimengSelectbuttonProps> {
@@ -17,10 +18,10 @@ export interface FormlyPrimengSelectbuttonConfig extends FieldTypeConfig<FormlyP
 
 @Component({
   selector: 'formly-primeng-selectbutton',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, SelectButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlyAsyncPipe, SelectButtonModule],
   template: `
     <p-selectbutton
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [formControl]="formControl"
       [formlyAttributes]="field"
       [optionLabel]="'label'"

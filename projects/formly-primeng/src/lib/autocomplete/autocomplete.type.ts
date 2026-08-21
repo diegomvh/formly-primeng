@@ -5,11 +5,11 @@ import {
 } from '@angular/core';
 import { AutoCompleteCompleteEvent, AutoCompleteDropdownClickEvent, AutoCompleteModule, AutoCompleteSelectEvent, AutoCompleteUnselectEvent } from 'primeng/autocomplete';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyPrimengFieldProps } from '../field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
 export interface FormlyPrimengAutocompleteProps extends 
   FormlyPrimengFieldProps, 
@@ -35,7 +35,7 @@ export interface FormlyPrimengAutocompleteConfig extends FieldTypeConfig<FormlyP
 
 @Component({
   selector: 'formly-primeng-autoComplete',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, AutoCompleteModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, AutoCompleteModule, FormlyAsyncPipe],
   template: `
     <p-autocomplete
       [inputId]="id"
@@ -54,7 +54,7 @@ export interface FormlyPrimengAutocompleteConfig extends FieldTypeConfig<FormlyP
       [tabindex]="props.tabindex"
       [showEmptyMessage]="props.showEmptyMessage"
       [emptyMessage]="props.emptyMessage"
-      [suggestions]="$any(props.options | formlySelectOptions: field | async)"
+      [suggestions]="(props.options | formlyAsync: field | async) ?? []"
       [multiple]="props.multiple"
       [showClear]="props.showClear"
       [dropdown]="props.dropdown"

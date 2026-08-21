@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, Type, InputSignal } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlySelectModule } from '@ngx-formly/core/select';
 import { SelectFilterEvent, SelectLazyLoadEvent, SelectModule } from 'primeng/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
+import { isObservable } from 'rxjs';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
 interface FormlyPrimengSelectProps extends 
   FormlyPrimengFieldProps, 
@@ -29,7 +30,7 @@ export interface FormlyPrimengSelectConfig extends FieldTypeConfig<FormlyPrimeng
 
 @Component({
   selector: 'formly-primeng-select',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, SelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, SelectModule, FormlyAsyncPipe],
   template: `
     <p-select
       [dt]="props.dt"
@@ -44,7 +45,7 @@ export interface FormlyPrimengSelectConfig extends FieldTypeConfig<FormlyPrimeng
 
       [appendTo]="props.appendTo"
       [placeholder]="props.placeholder"
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [showClear]="!props.required"
       [filter]="props.filter"
       [filterBy]="props.filterBy"

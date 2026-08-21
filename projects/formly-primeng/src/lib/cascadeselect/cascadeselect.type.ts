@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CascadeSelectBeforeHideEvent, CascadeSelectBeforeShowEvent, CascadeSelectModule } from 'primeng/cascadeselect';
 import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
 interface FormlyPrimengCascadeselectProps extends 
   FormlyPrimengFieldProps, 
@@ -28,7 +28,7 @@ export interface FormlyPrimengCascadeselectConfig extends FieldTypeConfig<Formly
 
 @Component({
   selector: 'formly-primeng-cascadeselect',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, CascadeSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, CascadeSelectModule, FormlyAsyncPipe],
   template: `
     <p-cascadeselect
       [dt]="props.dt"
@@ -43,7 +43,7 @@ export interface FormlyPrimengCascadeselectConfig extends FieldTypeConfig<Formly
 
       [appendTo]="props.appendTo"
       [placeholder]="props.placeholder"
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [showClear]="!props.required"
       [optionLabel]="props.optionLabel"
       [optionValue]="props.optionValue"

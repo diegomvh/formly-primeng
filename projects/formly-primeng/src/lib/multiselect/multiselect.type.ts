@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { FormlyPrimengFieldEventProps, FormlyPrimengFieldOverlayProps } from '../field/field.props';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
 interface FormlyPrimengMultiselectProps extends 
   FormlyPrimengFieldProps, 
@@ -26,7 +26,7 @@ export interface FormlyPrimengMultiselectConfig extends FieldTypeConfig<FormlyPr
 
 @Component({
   selector: 'formly-primeng-multiselect',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, MultiSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlyAsyncPipe, MultiSelectModule],
   template: `
     <p-multiselect
       [dt]="props.dt"
@@ -40,7 +40,7 @@ export interface FormlyPrimengMultiselectConfig extends FieldTypeConfig<FormlyPr
       [fluid]="props.fluid"
 
       [placeholder]="props.placeholder"
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [showClear]="!props.required"
       [appendTo]="props.appendTo"
       [filter]="props.filter"

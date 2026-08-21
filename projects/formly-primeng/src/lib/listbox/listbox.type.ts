@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 import { FormlyPrimengFieldEventProps } from '../field/field.props';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
 interface FormlyPrimengListboxProps extends 
   FormlyPrimengFieldProps,
@@ -25,7 +25,7 @@ export interface FormlyPrimengListboxConfig extends FieldTypeConfig<FormlyPrimen
 
 @Component({
   selector: 'formly-primeng-listbox',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, ListboxModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlyAsyncPipe, ListboxModule],
   template: `
     <p-listbox
       [dt]="props.dt"
@@ -38,7 +38,7 @@ export interface FormlyPrimengListboxConfig extends FieldTypeConfig<FormlyPrimen
       [name]="props.name"
       [fluid]="props.fluid"
 
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [filter]="props.filter"
       [filterBy]="props.filterBy"
       [optionLabel]="props.optionLabel"

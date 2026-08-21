@@ -1,12 +1,12 @@
 import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
 import { FormlyPrimengFieldProps } from '../field';
-import { FormlyFieldSelectProps, FormlySelectModule } from '@ngx-formly/core/select';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeSelect, TreeSelectModule } from 'primeng/treeselect';
+import { FormlyAsyncPipe } from '../pipes/formly-async.pipe';
 
-interface FormlyPrimengTreeselectProps extends FormlyPrimengFieldProps, FormlyFieldSelectProps {
+interface FormlyPrimengTreeselectProps extends FormlyPrimengFieldProps {
   appendTo?: TreeSelect['appendTo'];
   filter?: boolean;
   filterBy?: string;
@@ -18,11 +18,11 @@ export interface FormlyPrimengTreeselectConfig extends FieldTypeConfig<FormlyPri
 
 @Component({
   selector: 'formly-primeng-treeselect',
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlySelectModule, TreeSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, FormlyAsyncPipe, TreeSelectModule],
   template: `
     <p-treeselect
       [placeholder]="props.placeholder"
-      [options]="$any(props.options | formlySelectOptions: field | async)"
+      [options]="(props.options | formlyAsync: field | async) ?? []"
       [formControl]="formControl"
       [formlyAttributes]="field"
       [showClear]="!props.required"
